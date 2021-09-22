@@ -1,0 +1,103 @@
+22. 09. 2021
+
+Konektory
+BNC (bionet naval coax?)- rychlý, špatný (nacvakávací)
+N - šroubovací (20 let garantuje výrobce), momenťákem, antény (které se nastaví a nehýbe se s nimi dlouho), kapacita válcového kondenzátoru závisí např. na tloušťce středního kolíku, správná práce v rukavicích (pot)
+SMA (sub miniature typ A) - antény od wifi, levné, ale drobné a šroubovací, na měřicí aparatuře je SMA male, my dotahujeme co se dá
+
+Po kalibraci neohýbat kabely - protáhnutí kabelu
+Efekt zpříčení, držet to co nejsoustředněji při dotahování
+Na kalibraci portu je potřeba tři různé impedance - zkrat(+maličká indukčnost), otevřený obvod (+maličká kapacita), přizpůsobený obvod, my máme kalibrační člen, flashka od výrobce měla korekce co je nahraná do mašiny
+Pokud by mašina byla dokonale naladěná tak je pouze na portech, ne na konci kabelu (minimálně fáze je špatná), za dokonalý prohlásíme kalibrační prvek
+Nakalibrujeme 1 port, 2port, a spolu 
+Kalibrace two port open short match through
+ZVZ135 sériové číslo kalibračního čísla
+
+Přístroj- Rohde&Schwarz ZVL - Network Analyzer 9 kHz - 13,6 GHz
+
+Kalibrace: port 1 S11, port 2 S22, through S12 = S21 symetrie, a budeme předpokládat i S11 = S22
+- port 1 připojit open inf ohm - odraz, 0 dB
+- port 1 short 0 ohm - odraz (nemá se to kam ztratit), 0 dB
+- port 1 match - 100 % absorb - 10GHz -25 dB, jinak -40-50 dB
+- port 2 open 
+- port 2 short
+- port 2 match
+- through S21 = 0 dB
+ kalibrace hotova
+
+lehký šum, nedokonalost na vyoských frekvencích ale na setinnách dB
+
+spojka - na obou koncích stejná rodina
+přechodka - různé rodiny
+BNCf/BNCm atd...
+
+MĚŘENÍ: trace trace import/export export data
+S11 a S21
+3 sloupce dat - frekvence/absolutní hodnota v dB/fáze ve stupních, desetinná tečka, oddělovač mezera
+
+01: (SMAf/SMAf) - zlatá barva, fotka 11:29
+	S21 u vysokých frekvencí vzdáleno od ideálu (desetiny dB, ok)
+	-(0 - 0,5) dB
+	S11 na vysokých odrazy
+
+02: (SMAf/SMAf) - stříbrná barva, fotka 1134
+
+porovnat zlatou a stříbrnou a rozhodnout která je lepší, například nastavit kritérium (odraz chci max -20 dB, a proto spojka XY je dobrá v rozsahu XZ)
+
+03: (SMAf/SMAf)_zlata / (SMAm/SMAm)_zlata / (SMAf/SMAf)_stribrna, fotka 1141
+	známe matice female spojek a musíme vymlátit matici prostředního male prvku
+
+04: (SMAf/BNCm) / (BNCf/SMAf), fotka 1148
+měřím samečka a samičku dohromady protože jinak nezapojím, řeknu že jsou stejný, pak odmocním a zjistím matici jednoho
+conclusion: BNC ne tak dobré jako SMA, kvůli tomu jak se spojuje
+
+05: (SMAf/BNCm) / (BNCf/BNCf) / (BNCm/SMAf), fotka 1155
+chci naměřit to uprostřed, musím využít výsledky předchozího 04
+
+06: (SMAf/BNCm) / (BNCf/BNCm/BNCf) tentokrát téčko, ten třetí kolmý BNCm, značení odteď takto / (BNCm/SMAf), fotka 1158
+3,2GHz, propad pod -40 dB, odraz na volném kolmém konektoru v téčku, destruktivní interference v této oblasti
+úkol: okomentovat, rezonanční frekvence souvisí s délkou pahýlu - měříme délku pahýlu a srováme s vypočtenou, d = 23mm, rychlost šíření v pahýlu je pomalejší, protože je tam dielaktrikum polyethylen - najít v tabulkách a přepočítat
+
+07: (SMAf/BNCm) / (BNCf/BNCm/BNCf), na téčko připojen kabel / (BNCm/SMAf), fotka 1206
+úkol: urči délku kabelu (měl by být asi 2m), délka lze určit z obou S matic, z S11 se určuje délka kabelu z maxim, z S21 z minim. Kabel z polyethylenu. Postup: nejnižší minimum S21, z té frekvence to spočítám.
+musíme přijít na to, jestli se na konci mění fáze
+ideálně udělat schéma zapojení do protokolu
+
+08: (SMAf/BNCm) / (BNCf/BNCm/BNCf), na téčko připojen kabel s terminátorem 50ohm, přes spojku protože problém pohlaví konec kabelu a terminátor / (BNCm/SMAf), fotka 1213
+jedna polovina šla do kabelu s terminátorem, druhá do přijímače
+úkol: komentář, dále: dochází k dělení a ke skoku na impedanci. Mám ověřit S11 v nízkých frekvencích, že je tam polovina 25ohm, my jsme se na to podívali na VNAčku. Déle propojit komentář s tím skokem
+
+09: (SMAf/BNCm) / (BNCf/banánky m) / (banánky f/BNCf) spojení plášťplášť a centrcentr / (BNCm/SMAf), fotka 1220
+
+10: (SMAf/BNCm) / (BNCf/banánky m) / (banánky f/BNCf) spojení do kříže plášťcentr a centrplášť / (BNCm/SMAf), fotka 1224
+čekáme od tohoto o dost horší výsledky než 09
+
+11: měřím jednobran (přijímač nezapojen), (SMAf/BNCm) / (BNCf/banánky m) / (krokodýlky na prázdno), fotka 1226
+
+12: měřím jednobran (přijímač nezapojen), (SMAf/BNCm) / (BNCf/banánky m) / (krokodýlky s cívkou), fotka 1228
+v cívkce mezizávitová kapacita
+jak na úkol: z S11 impedanci na konci vedení, vydělím omega, dostanu L, tam kde je přímka tak to z toho vymlátím, vidíme že do 6 MHz se to chová jako cívka
+úkol: nalézt rezonanční frekvenci cívky, dále určit její L (mili nebo mikro H cca)
+
+13: měřím jednobran (přijímač nezapojen), (SMAf/BNCm) / (BNCf/banánky m) / (krokodýlky s kondenzátorem), fotka 1232
+úkol: ověr kacapicu (možná 15pF)
+
+Protože jsou kabely otevřené a rozdělené, tak vyzařujeme ven, zároveň se to odráží všude a vrací (správně by to byla echoická komora s kuželama absorbčníma po stěnách).
+
+14: (SMAf/BNCf) / (BNCm/zelenýkabel/banánky), fotka 1236, S11
+	měříme kabely
+15: (SMAf/BNCf) / (BNCm/zelenýkabel/banánky) / odpor, fotka 1238, S11
+	určit hodnotu odporu (125 ohmu)
+	problémy s vysokými frekvencemi, můžou za to volné konce, můžou za to rozměry - důvod miniaturizace pro vysoké frekvence aby se R,C,L chovalo jako R,C,L a platily Kirchhoffovy zákony
+
+16: (SMAf/BNCf) / (BNCm/terminátor), fotka 1242, S11
+	měření terminátoru, -20 dB cca na 1 GHz
+	určit impedanci (51 ohmů)
+	přeměřili jsme také stejnosměrně ohmmetrem - vyšlo 51 ohmů
+
+17: (SMAf/SMAf) / VLNOVOD (se spoustou přechodek) / (SMAm/SMAm) tři fotky 1249
+	ve vlnovodu neplatí E kolmé B, je to jen jeden vodič, nepřenáší všechny frekvence, jen od kritické frekvence nahoru, závisí to na větší straně obdélníku, řešením jsou vidy (anglicky módy) např. T01	
+	naměřit S21, určit jeho rozměry, lambda_kritická = 2*a, kde a je širší rozměr (89 mm vnější rozměr, 2mm plech, tedy a = 85 mm) => cca lambda_krit = 170 mm tzn mezi 1,5 - 2 GHz (1,6 GHz), skočí to skoro na nulu dB, ztráty hlavně v drátech.
+
+
+
