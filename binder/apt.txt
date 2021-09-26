@@ -1,2 +1,5 @@
 gnuplot
 ghostscript
+texlive-latex-extra
+texlive-lang-czechslovak
+texlive-science
