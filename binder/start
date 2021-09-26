@@ -1,0 +1,6 @@
+#!/bin/bash
+
+octave-cli --silent --eval '
+	pkg install https://github.com/Singond/Octave-report/releases/download/v0.4.1/report-0.4.1.tar.gz'
+
+exec "$@"
