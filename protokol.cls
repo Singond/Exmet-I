@@ -11,6 +11,7 @@
 \LoadClass[a4paper,11pt]{article}
 \usepackage[margin=2cm]{geometry}
 \usepackage[utf8]{inputenc}
+\usepackage{xstring}
 \usepackage{tabularx}
 
 % Sloupce pro zarovnani na desetinnem oddelovaci v tabulkach.
@@ -96,7 +97,7 @@
 		\sf
 		\noindent
 		\begin{tabularx}{\textwidth}{@{}XXX@{}}
-			\multicolumn{2}{@{}l@{}}{\large {\bfseries Zpracoval:} \the\jmeno} &
+			\multicolumn{2}{@{}l@{}}{\large {\bfseries \IfSubStr{\the\jmeno}{,}{Zpracovali:}{Zpracoval:}} \the\jmeno} &
 			\large {\bfseries Naměřeno:} \the\datum
 			\\ [0.5em]
 			\large {\bfseries Obor:} \the\obor &
