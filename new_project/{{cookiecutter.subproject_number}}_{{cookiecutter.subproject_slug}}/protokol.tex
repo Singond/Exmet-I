@@ -19,7 +19,17 @@
 \usepackage{csvtabular}
 
 % Jednotky
-\usepackage[cdot]{SIunits}
+\usepackage{siunitx}
+\sisetup{
+	locale               = DE,
+	inter-unit-product   = \ensuremath{{}\cdot{}},
+	list-units           = single,
+	list-separator       = {; },
+	list-final-separator = \text{ a },
+	list-pair-separator  = \text{ a },
+	range-phrase         = \text{ až },
+	range-units          = single,
+}
 \usepackage{amsmath}
 
 % Obvody

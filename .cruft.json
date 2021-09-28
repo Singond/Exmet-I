@@ -1,6 +1,6 @@
 {
   "template": "https://Singon@bitbucket.org/Singon/school-lab-template.git",
-  "commit": "8764463aa053ca5445513728103c42db471e4b36",
+  "commit": "f241985699663ae1b4e809651dc3c52154381990",
   "checkout": null,
   "context": {
     "cookiecutter": {
