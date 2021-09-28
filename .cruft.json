@@ -1,0 +1,22 @@
+{
+  "template": "https://Singon@bitbucket.org/Singon/school-lab-template.git",
+  "commit": "8764463aa053ca5445513728103c42db471e4b36",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "Experimentální metody I",
+      "project_slug": "Exmet-I",
+      "header_title": "Experimentální metody I",
+      "header_author": "$USER",
+      "header_fieldofstudy": "F",
+      "header_time": "Čt 15:00",
+      "header_schoolyear": "I",
+      "header_schoolterm": "I",
+      "_copy_without_render": [
+        "protokol.cls"
+      ],
+      "_template": "https://Singon@bitbucket.org/Singon/school-lab-template.git"
+    }
+  },
+  "directory": null
+}

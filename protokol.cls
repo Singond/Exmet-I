@@ -135,7 +135,7 @@
 		\sf
 		\noindent
 		\begin{tabularx}{\textwidth}{@{}XXX@{}}
-			\multicolumn{2}{@{}l@{}}{\large {\bfseries Zpracoval:} \the\jmeno} &
+			\multicolumn{2}{@{}l@{}}{\large {\bfseries \IfSubStr{\the\jmeno}{,}{Zpracovali:}{Zpracoval:}} \the\jmeno} &
 			\large {\bfseries Naměřeno:} \the\datum
 			\\ [0.5em]
 			\large {\bfseries Obor:} \the\obor &
@@ -169,7 +169,7 @@
 		\sf
 		\noindent
 		\begin{tabularx}{\textwidth}{@{}XXX@{}}
-			\multicolumn{2}{@{}l@{}}{\large {\bfseries Student:} \the\jmeno} &
+			\multicolumn{2}{@{}l@{}}{\large {\bfseries \IfSubStr{\the\jmeno}{,}{Students:}{Student:}} \the\jmeno} &
 			\large {\bfseries Measured at:} \the\datum
 			\\ [0.5em]
 			\large {\bfseries Programme:} \the\obor &

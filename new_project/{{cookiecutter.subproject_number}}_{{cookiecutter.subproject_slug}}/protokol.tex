@@ -16,7 +16,7 @@
 \usepackage{csvsimple}
 \usepackage{multirow}
 \usepackage{multicol}
-%\usepackage{csvtabular}
+\usepackage{csvtabular}
 
 % Jednotky
 \usepackage[cdot]{SIunits}
@@ -35,21 +35,21 @@
 \epstopdfsetup{outdir=./build/plots/}
 
 \jmenopraktika={Experimentální metody I}  % jmeno predmetu
-\jmeno={Jan Slaný}    % jmeno mericiho
+\jmeno={$USER}                             % jmeno mericiho
 \obor={F}                               % zkratka studovaneho oboru
 \skupina={Čt 15:00}                     % doba vyuky seminarni skupiny
 \rocnik={I}
 \semestr={I}
 
-\cisloulohy={01}
-\jmenoulohy={Vektorový síťový analyzátor}
+\cisloulohy={{"{"}}{{cookiecutter.subproject_number}}{{"}"}}
+\jmenoulohy={{"{"}}{{cookiecutter.subproject_name}}{{"}"}}
 
-\datum={22. září 2021}                  % datum mereni ulohy
-\tlak={}% [hPa]
-\teplota={}% [C]
-\vlhkost={}% [%]
+\datum={{"{"}}{{cookiecutter.date}}{{"}"}}                  % datum mereni ulohy
+\tlak={{"{"}}{{cookiecutter.pressure}}{{"}"}}% [hPa]
+\teplota={{"{"}}{{cookiecutter.temperature}}{{"}"}}% [C]
+\vlhkost={{"{"}}{{cookiecutter.humidity}}{{"}"}}% [%]
 
 \begin{document}
-\headernoenv
+\header
 
 \end{document}

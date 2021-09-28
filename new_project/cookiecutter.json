@@ -1,0 +1,10 @@
+{
+	"subproject_name": "New Protocol",
+	"subproject_slug": "{{cookiecutter.subproject_name.lower()|replace(' ', '_')|trim()}}",
+	"subproject_number": "01",
+
+	"date": "1. ledna 2020",
+	"pressure": "",
+	"temperature": "",
+	"humidity": ""
+}

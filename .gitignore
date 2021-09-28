@@ -1,1 +1,13 @@
+tmp/
+.~*
+*.ods
 *.pdf
+*.md.backup
+octave-workspace
+
+# Eclipse files
+.externalToolBuilders/
+.settings/
+.project
+.texlipse
+
