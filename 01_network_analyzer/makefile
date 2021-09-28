@@ -2,7 +2,7 @@ PROJECT_NAME=Exmet-I-01
 include ../basic.make
 
 .PHONY: all clean tex_resources
-all: tex_resources
+all: protokol.pdf
 
 PLOTS != find data -name data*.csv | sed -E 's/^data\/(.*).csv/plots\/\1.tex/'
 plots/data%.tex plots/data%.eps : main.m export.m real.gp imag.gp
@@ -12,6 +12,9 @@ plots/data%.tex plots/data%.eps : main.m export.m real.gp imag.gp
 tex_resources: makefile ${PLOTS}
 	@mkdir -p build/plots
 	@echo Successfully updated prerequisities for protokol.tex
+
+protokol.pdf : protokol.tex tex_resources
+	TEXINPUTS=.:..: pdflatex protokol.tex
 
 clean:
 	rm -rf plots
