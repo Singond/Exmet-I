@@ -3,3 +3,4 @@ ghostscript
 texlive-latex-extra
 texlive-lang-czechslovak
 texlive-science
+texlive-font-utils
