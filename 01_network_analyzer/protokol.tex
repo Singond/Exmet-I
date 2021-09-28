@@ -16,10 +16,19 @@
 \usepackage{csvsimple}
 \usepackage{multirow}
 \usepackage{multicol}
-%\usepackage{csvtabular}
 
 % Jednotky
-\usepackage[cdot]{SIunits}
+\usepackage{siunitx}
+\sisetup{
+	locale               = DE,
+	inter-unit-product   = \ensuremath{{}\cdot{}},
+	list-units           = single,
+	list-separator       = {; },
+	list-final-separator = \text{ a },
+	list-pair-separator  = \text{ a },
+	range-phrase         = \text{ až },
+	range-units          = single,
+}
 \usepackage{amsmath}
 
 % Obvody
@@ -51,5 +60,194 @@
 
 \begin{document}
 \headernoenv
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data01-s11}
+	\caption{$s_{11}$}
+	\label{fig:01-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data01-s21}
+	\caption{$s_{21}$}
+	\label{fig:01-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data02-s11}
+	\caption{$s_{11}$}
+	\label{fig:02-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data02-s21}
+	\caption{$s_{21}$}
+	\label{fig:02-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data03-s11}
+	\caption{$s_{11}$}
+	\label{fig:03-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data03-s21}
+	\caption{$s_{21}$}
+	\label{fig:03-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data04-s11}
+	\caption{$s_{11}$}
+	\label{fig:04-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data04-s21}
+	\caption{$s_{21}$}
+	\label{fig:04-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data05-s11}
+	\caption{$s_{11}$}
+	\label{fig:05-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data05-s21}
+	\caption{$s_{21}$}
+	\label{fig:05-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data06-s11}
+	\caption{$s_{11}$}
+	\label{fig:06-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data06-s21}
+	\caption{$s_{21}$}
+	\label{fig:06-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data07-s11}
+	\caption{$s_{11}$}
+	\label{fig:07-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data07-s21}
+	\caption{$s_{21}$}
+	\label{fig:07-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data08-s11}
+	\caption{$s_{11}$}
+	\label{fig:08-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data08-s21}
+	\caption{$s_{21}$}
+	\label{fig:08-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data09-s11}
+	\caption{$s_{11}$}
+	\label{fig:09-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data09-s21}
+	\caption{$s_{21}$}
+	\label{fig:09-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data10-s11}
+	\caption{$s_{11}$}
+	\label{fig:10-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data10-s21}
+	\caption{$s_{21}$}
+	\label{fig:10-s21}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data11-s11}
+	\caption{$s_{11}$}
+	\label{fig:11-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data12-s11}
+	\caption{$s_{11}$}
+	\label{fig:12-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data13-s11}
+	\caption{$s_{11}$}
+	\label{fig:13-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data14-s11}
+	\caption{$s_{11}$}
+	\label{fig:14-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data15-s11}
+	\caption{$s_{11}$}
+	\label{fig:15-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data16-s11}
+	\caption{$s_{11}$}
+	\label{fig:16-s11}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data17-s21}
+	\caption{$s_{21}$}
+	\label{fig:17-s21}
+\end{figure}
 
 \end{document}
