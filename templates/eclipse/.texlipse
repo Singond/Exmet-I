@@ -1,0 +1,13 @@
+#TeXlipse project settings
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=protokol.tex
+outputFile=protokol.pdf
+langSpell=en
+markDer=true
+srcDir=
