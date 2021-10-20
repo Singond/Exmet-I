@@ -16,7 +16,8 @@ plots/%.eps plots/%.tex: %.tsv %.m
 	@mkdir -p plots
 	octave $*.m
 
-# Initialize an Eclipse project
+# Initialize an Eclipse project.
+# The optional ".template" suffix on template names will be stripped.
 .PHONY: eclipse
 eclipse:
 	@echo "Initializing Eclipse project..."
@@ -26,7 +27,7 @@ eclipse:
 			*/*) mkdir -p "$${frel%/*}" ;; \
 			*) ;; \
 		esac; \
-		m4 -D "VAR_PROJECTNAME=${PROJECT_NAME}" "$$file" > "$${frel}"; \
+		target="$${frel%.template}"; \
+		m4 -D "VAR_PROJECTNAME=${PROJECT_NAME}" "$$file" > "$${target}"; \
 	done
 	@echo "Success"
-
