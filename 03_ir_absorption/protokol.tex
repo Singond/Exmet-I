@@ -1,0 +1,65 @@
+\documentclass{protokol}
+
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{icomma}
+
+% Plovouci bloky (obrazky, tabulky)
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\floatsetup[figure]{frameset={\fboxsep16pt}}
+\usepackage{subcaption}
+
+% Tabulky
+\usepackage{tabu}
+\usepackage{booktabs}
+\usepackage{csvsimple}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{csvtabular}
+
+% Jednotky
+\usepackage{siunitx}
+\sisetup{
+	locale               = DE,
+	inter-unit-product   = \ensuremath{{}\cdot{}},
+	list-units           = single,
+	list-separator       = {; },
+	list-final-separator = \text{ a },
+	list-pair-separator  = \text{ a },
+	range-phrase         = \text{ až },
+	range-units          = single,
+}
+\usepackage{amsmath}
+
+% Obvody
+\usepackage{circuitikz}
+
+% Obrazky a grafy
+% \usepackage{graphicx}
+\graphicspath{
+	{plots/}
+	{build/plots/}
+}
+\usepackage{epstopdf}
+\epstopdfsetup{outdir=./build/plots/}
+
+\jmenopraktika={Experimentální metody I}  % jmeno predmetu
+\jmeno={Radek Horňák, Jan Slaný, Lukáš Vrána}  % jmeno mericiho
+\obor={F}                               % zkratka studovaneho oboru
+\skupina={Čt 15:00}                     % doba vyuky seminarni skupiny
+\rocnik={IV}
+\semestr={I}
+
+\cisloulohy={03}
+\jmenoulohy={Infračervená absorpční spektroskopie}
+
+\datum={10. listopadu 2021}                  % datum mereni ulohy
+\tlak={}% [hPa]
+\teplota={}% [C]
+\vlhkost={}% [%]
+
+\begin{document}
+\header
+
+\end{document}
