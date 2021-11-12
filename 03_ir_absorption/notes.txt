@@ -1,0 +1,44 @@
+10.11.2021 - 16:15
+
+IR
+
+Kyveta, udìlaná v dílnách, kupovaná germaniová okna 600 cm-1 (hloub tøeba polyethylen 100 cm-1), naše spektrum vibrace 4000 - 500 cm-1 
+KBr, druhý Miller (Silon?) - interferometry
+
+ve skøíni zdroj - vzorek (kyveta) - hranol - detektor
+
+N2 - 1,32 sccm
+O2 - 0,294 sccm - jako vzduch ale bez ostatních kravin
+
+ve výboji to ne uplnì tìsní, tak aby to došlo do kyvety tak z druhé strany to èerpáme (pøes prùtokomìr jako ventil 0,8sccm aby nerupla keramika a abychom mìli pøetlak a nevnikalo nám dovnitø okolí)
+
+evakuování mìøicí aparatury abychom se zbavili vodní páry apod., pøibližnì 2-3 hPa - staèí na absorpci (alternativa evakuace je zaplynit suchým vzduchem)
+
+èekáme na proplach kyvety a vytvoøení vakua uvnitø
+pak jsme zkontrolovali a odstranili pøítomnost bublin v oleji v koplanárním výboji
+
+namìøíme pozadí: experiment load pøednastavené hodnoty pro kyvetu a další kraviny ale také rozlišení 0,2 cm-1 je minimum, ale má to hodnì požadavkù a dlouho trvá
+                    2 cm-1 jsou dostaèující èasto, záleží co mìøíme, reálnì 2,5 - 3 cm-1
+                    100 scanù - jezdí zrcadlo (mìní cm-1), potom se to zprùmìruje
+                    poté zmìøíme vzorek bez výboje, pozadí oproti pozadí, jestli se nám to nemìní, mìla by správnì vyjít propustnost 1
+                    
+generátor + zesilovaè recall 13,63 kHz
+zapnutí chlazení (olej v koplanáru)
+
+Mìøení 0 a 1: kontrola pozadí
+
+Mìøení 2: zapalíme výboj, 5 minut èekáme 70 V + 1,6 A
+        asi problémy v netìsnosti, dost vody
+
+Mìøení 3: 100 V, 1,5 A
+
+Mìøení 4: 130 V, 1,5 ?
+
+?ìøení 5: 160 V, 1,4 A
+
+Mìøení 6: 190 V, 1,4 A
+
+Mìøení 7: 230 V, 1,5 A
+                    
+                    
+Popsat píky (molekuly), popsat chování se zmìnou výkonu a potom v Pythonu nafitovat spektra, N2O5 nemá databázi, zdravotní limity
