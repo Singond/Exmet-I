@@ -2,43 +2,43 @@
 
 IR
 
-Kyveta, udìlaná v dílnách, kupovaná germaniová okna 600 cm-1 (hloub tøeba polyethylen 100 cm-1), naše spektrum vibrace 4000 - 500 cm-1 
-KBr, druhı Miller (Silon?) - interferometry
+Kyveta, udÄ›lanÃ¡ v dÃ­lnÃ¡ch, kupovanÃ¡ germaniovÃ¡ okna 600 cm-1 (hloub tÅ™eba polyethylen 100 cm-1), naÅ¡e spektrum vibrace 4000 - 500 cm-1
+KBr, druhÃ½ Miller (Silon?) - interferometry
 
-ve skøíni zdroj - vzorek (kyveta) - hranol - detektor
+ve skÅ™Ã­ni zdroj - vzorek (kyveta) - hranol - detektor
 
 N2 - 1,32 sccm
-O2 - 0,294 sccm - jako vzduch ale bez ostatních kravin
+O2 - 0,294 sccm - jako vzduch ale bez ostatnÃ­ch kravin
 
-ve vıboji to ne uplnì tìsní, tak aby to došlo do kyvety tak z druhé strany to èerpáme (pøes prùtokomìr jako ventil 0,8sccm aby nerupla keramika a abychom mìli pøetlak a nevnikalo nám dovnitø okolí)
+ve vÃ½boji to ne uplnÄ› tÄ›snÃ­, tak aby to doÅ¡lo do kyvety tak z druhÃ© strany to ÄerpÃ¡me (pÅ™es prÅ¯tokomÄ›r jako ventil 0,8sccm aby nerupla keramika a abychom mÄ›li pÅ™etlak a nevnikalo nÃ¡m dovnitÅ™ okolÃ­)
 
-evakuování mìøicí aparatury abychom se zbavili vodní páry apod., pøiblinì 2-3 hPa - staèí na absorpci (alternativa evakuace je zaplynit suchım vzduchem)
+evakuovÃ¡nÃ­ mÄ›Å™icÃ­ aparatury abychom se zbavili vodnÃ­ pÃ¡ry apod., pÅ™ibliÅ¾nÄ› 2-3 hPa - staÄÃ­ na absorpci (alternativa evakuace je zaplynit suchÃ½m vzduchem)
 
-èekáme na proplach kyvety a vytvoøení vakua uvnitø
-pak jsme zkontrolovali a odstranili pøítomnost bublin v oleji v koplanárním vıboji
+ÄekÃ¡me na proplach kyvety a vytvoÅ™enÃ­ vakua uvnitÅ™
+pak jsme zkontrolovali a odstranili pÅ™Ã­tomnost bublin v oleji v koplanÃ¡rnÃ­m vÃ½boji
 
-namìøíme pozadí: experiment load pøednastavené hodnoty pro kyvetu a další kraviny ale také rozlišení 0,2 cm-1 je minimum, ale má to hodnì poadavkù a dlouho trvá
-                    2 cm-1 jsou dostaèující èasto, záleí co mìøíme, reálnì 2,5 - 3 cm-1
-                    100 scanù - jezdí zrcadlo (mìní cm-1), potom se to zprùmìruje
-                    poté zmìøíme vzorek bez vıboje, pozadí oproti pozadí, jestli se nám to nemìní, mìla by správnì vyjít propustnost 1
-                    
-generátor + zesilovaè recall 13,63 kHz
-zapnutí chlazení (olej v koplanáru)
+namÄ›Å™Ã­me pozadÃ­: experiment load pÅ™ednastavenÃ© hodnoty pro kyvetu a dalÅ¡Ã­ kraviny ale takÃ© rozliÅ¡enÃ­ 0,2 cm-1 je minimum, ale mÃ¡ to hodnÄ› poÅ¾adavkÅ¯ a dlouho trvÃ¡
+                    2 cm-1 jsou dostaÄujÃ­cÃ­ Äasto, zÃ¡leÅ¾Ã­ co mÄ›Å™Ã­me, reÃ¡lnÄ› 2,5 - 3 cm-1
+                    100 scanÅ¯ - jezdÃ­ zrcadlo (mÄ›nÃ­ cm-1), potom se to zprÅ¯mÄ›ruje
+                    potÃ© zmÄ›Å™Ã­me vzorek bez vÃ½boje, pozadÃ­ oproti pozadÃ­, jestli se nÃ¡m to nemÄ›nÃ­, mÄ›la by sprÃ¡vnÄ› vyjÃ­t propustnost 1
 
-Mìøení 0 a 1: kontrola pozadí
+generÃ¡tor + zesilovaÄ recall 13,63 kHz
+zapnutÃ­ chlazenÃ­ (olej v koplanÃ¡ru)
 
-Mìøení 2: zapalíme vıboj, 5 minut èekáme 70 V + 1,6 A
-        asi problémy v netìsnosti, dost vody
+MÄ›Å™enÃ­ 0 a 1: kontrola pozadÃ­
 
-Mìøení 3: 100 V, 1,5 A
+MÄ›Å™enÃ­ 2: zapalÃ­me vÃ½boj, 5 minut ÄekÃ¡me 70 V + 1,6 A
+        asi problÃ©my v netÄ›snosti, dost vody
 
-Mìøení 4: 130 V, 1,5 ?
+MÄ›Å™enÃ­ 3: 100 V, 1,5 A
 
-?ìøení 5: 160 V, 1,4 A
+MÄ›Å™enÃ­ 4: 130 V, 1,5 ?
 
-Mìøení 6: 190 V, 1,4 A
+?Ä›Å™enÃ­ 5: 160 V, 1,4 A
 
-Mìøení 7: 230 V, 1,5 A
-                    
-                    
-Popsat píky (molekuly), popsat chování se zmìnou vıkonu a potom v Pythonu nafitovat spektra, N2O5 nemá databázi, zdravotní limity
+MÄ›Å™enÃ­ 6: 190 V, 1,4 A
+
+MÄ›Å™enÃ­ 7: 230 V, 1,5 A
+
+
+Popsat pÃ­ky (molekuly), popsat chovÃ¡nÃ­ se zmÄ›nou vÃ½konu a potom v Pythonu nafitovat spektra, N2O5 nemÃ¡ databÃ¡zi, zdravotnÃ­ limity
