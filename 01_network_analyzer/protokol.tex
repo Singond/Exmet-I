@@ -58,6 +58,19 @@
 \teplota={}% [C]
 \vlhkost={}% [%]
 
+\newcommand\male{m}
+\newcommand\female{f}
+
+\newcommand\connector[2]{#1 -- #2}
+\newcommand\connectord[3]{#1 -- #2\\ #3}
+\tikzset{
+	connector/.style={
+		draw,
+		align=center,
+		minimum width=4cm,
+		minimum height=1.5cm}
+}
+
 \begin{document}
 \headernoenv
 
@@ -67,10 +80,170 @@
 		\node[draw, minimum width=2cm, minimum height=2cm] at (0,3){VNA};
 		\draw (-1,3) -- (-6,3) -- (-6,0);
 		\draw (1,3) -- (6,3) -- (6,0);
-		\draw (-6,0) to[generic, l=měřené prvky] (6,0);
+		\draw (-6,0) to[short, -o] (-1,0);
+		\draw (1,0) to[short, o-] (6,0);
+		\node at (0,0.5) {měřené prvky};
 	\end{circuitikz}
 	\caption{Schéma zapojení měřicího obvodu.}
 	\label{fig:circuit-generic}
+\end{figure}
+
+\section{Měření}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (0,0)
+			{\connectord{SMA\female}{SMA\female}{zlatý}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con1.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Uspořádání prvního experimentu}
+	\label{fig:exp1}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (0,0)
+			{\connectord{SMA\female}{SMA\female}{stříbrný}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con1.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Uspořádání druhého experimentu}
+	\label{fig:exp1}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-4,0)
+			{\connectord{SMA\female}{SMA\female}{zlatý}};
+		\node[connector] (con2) at (0,0)
+			{\connectord{SMA\male}{SMA\male}{zlatý}};
+		\node[connector] (con3) at (4,0)
+			{\connectord{SMA\female}{SMA\female}{stříbrný}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Uspořádání třetího experimentu}
+	\label{fig:exp1}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
+			{\connector{SMA\female}{BNC\male}};
+		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
+			-- (-0.75,2) -- (-0.75,0.75) -- (-2,0.75) -- cycle;
+		\node at (-1.2,0) {BNC\female};
+		\node at (0,1.375) {BNC\male};
+		\node at (1.2,0) {BNC\female};
+		\node[connector, minimum height=1.5cm] (con3) at (4,0)
+			{\connector{BNC\male}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Uspořádání čtvrtého experimentu}
+	\label{fig:exp1}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
+			{\connector{SMA\female}{BNC\male}};
+		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
+			-- (-0.75,2) -- (-0.75,0.75) -- (-2,0.75) -- cycle;
+		\node at (-1.2,0) {BNC\female};
+		\node at (0,1.375) {BNC\male};
+		\node at (1.2,0) {BNC\female};
+		\node[connector, minimum height=1.5cm] (con3) at (4,0)
+			{\connector{BNC\male}{SMA\female}};
+		\draw (0,2) to[short, -o] (0,3);
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Uspořádání pátého experimentu}
+	\label{fig:exp1}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+			{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+			{BNC\female};
+		\node[connector, minimum width=1.4cm] (con3) at (2.3,0)
+			{BNC\female};
+		\coordinate[yshift=2mm] (n1) at (con2.east) {};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\coordinate[yshift=2mm] (n3) at (con3.west) {};
+		\coordinate[yshift=0-2mm] (n4) at (con3.west) {};
+		\draw (n1) to[short, -o] +(1.4,0);
+		\draw (n2) to[short, -*] +(1.4,0);
+		\draw (n3) to[short, -o] +(-1.4,0);
+		\draw (n4) to[short, -*] +(-1.4,0);
+		\node at (0,0.6) {banánky};
+		\node[connector] (con4) at (5,0)
+			{\connector{BNC\male}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con4.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Uspořádání šestého experimentu}
+	\label{fig:exp1}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+			{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+			{BNC\female};
+		\node[connector, minimum width=1.4cm] (con3) at (2.3,0)
+			{BNC\female};
+		\coordinate[yshift=2mm] (n1) at (con2.east) {};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\coordinate[yshift=2mm] (n3) at (con3.west) {};
+		\coordinate[yshift=0-2mm] (n4) at (con3.west) {};
+		\draw (n1) to[short, -o] +(1.4,0);
+		\draw (n2) to[short, -*] +(1.4,0);
+		\draw (n3) to[short, -*] +(-1.4,0);
+		\draw (n4) to[short, -o] +(-1.4,0);
+		\node at (0,0.6) {banánky};
+		\node[connector] (con4) at (5,0)
+			{\connector{BNC\male}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con4.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Uspořádání sedmého experimentu}
+	\label{fig:exp1}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+			{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+			{BNC\female};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\draw (con2.east)++(0,0.2) to[short, -o] ++(1.4,0) -- ++(0,0.5)
+			-- node[midway] (clip1) {} ++(4,0) to[inductor]
+			++(0,-1.4) -- node[midway] (clip2) {} ++(-4,0) -- ++(0,0.5);
+		\draw (con2.east)++(0,-0.2) to[short, -*] +(1.4,0);
+		\draw[very thick] (clip1.center) -- +(150:1);
+		\draw (clip1.center) +(-0.7,0) arc (180:150:0.7);
+		\draw[very thick] (clip2.center) -- +(150:1);
+		\draw (clip2.center) +(-0.7,0) arc (180:150:0.7);
+		\node[yshift=1cm] at (clip2) {krokodýlky};
+		\draw (con1.west) to[short, -o] +(-1,0);
+	\end{circuitikz}
+	\caption{Uspořádání osmého experimentu}
+	\label{fig:exp1}
 \end{figure}
 
 \begin{figure}[htp]
