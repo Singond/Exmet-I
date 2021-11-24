@@ -24,7 +24,7 @@ exercise06: d=23mm = lambda/4 = 1/(4*f*sqrt(e0*er*mu0)
             f = v / lambda
             er_XLPE = 2.25
             v = 1 / sqrt(e0 * er * mu0)
-            
+
 exercise12: %https://leleivre.com/rf_gammatoz.html
             %https://www.eevblog.com/forum/rf-microwave/how-to-transfer-s11-to-impedance/?fbclid=IwAR2MYBqwAcYFeM4NXK4NuwSpRTsZI-wNtIweqdrxlnHKhgHxYBHTcdkBQvY
             %https://electronics.stackexchange.com/questions/555024/how-to-find-z-impedance-if-i-have-only-s11-db-and-phase?fbclid=IwAR0ho_HZI2K9mcu_IOO5wMfpOEo2g1DIED7LJ5U72BG3wtzBwAJQNd3rcSE
@@ -34,28 +34,28 @@ exercise12: %https://leleivre.com/rf_gammatoz.html
             Re(gamma) = cos(theta) * MAG
             Im(gamma) = sin(theta) * MAG
             %Z = Z0 * (1+gamma) / (1-gamma) - obecný vztah
-            
+
             Re(Z) = Z0 * ((1+Re(gamma))*(1-Re(gamma))+Im(gamma)*Im(gamma))/((1-Re(gamma))^2 + Im(gamma)^2)
             Im(Z) = Z0 * ((1+Re(gamma))*Im(gamma) + (1-Re(gamma))*Im(gamma))  /((1-Re(gamma))^2 + Im(gamma)^2)
-            
+
             %Z = omega iL - obecný vztah
             L = Z/(omega)
             nevím jestli Z = sqrt(Re(Z)^2 + Im(Z)^2) -- velikost vektoru, ale nejspíše L_2 = sqrt((Im(Z)/omega)^2) je správný výsledek
             -> výsledkem je L_1 a L_2 -- z reálné a imaginární části Z
 
 exercise13: %Z = 1/(i omega C)
-            C = 1/(i omega Z)   
-            
-            -> výsledkem je C_1 a C_2 -- z reálné a imaginární části Z, nejspíše C_2 = sqrt((1/omegaZ)^2) je správně        
-            
+            C = 1/(i omega Z)
+
+            -> výsledkem je C_1 a C_2 -- z reálné a imaginární části Z, nejspíše C_2 = sqrt((1/omegaZ)^2) je správně
+
 exercise15: Z = sqrt(R^2) (pro odstranění záporné hodnoty)
             %Odpor začne od 1 MHz měnit fázi a přestává se chovat pouze jako odpor, výsledek 122 Ohm
-            
+
 exercise16: Terminátor 51 Ohmů
             začne od 1e8 Hz posouvat fázi
-            
+
 exercise17: lambda = c/f
             f = 1,75 GHz
             lambda = 0,171 m
             d = lambda/2 = 85,5 mm (ručně jsme naměřili 85 mm)
-            
+
