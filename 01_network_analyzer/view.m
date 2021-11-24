@@ -3,7 +3,7 @@ main
 ## Plot the data for each experiment.
 axes_config = {"tickdir", "in"};
 line_config = {"linewidth", 0.5};
-for e = experiment(1:4)
+for e = experiment
 	figure;
 	clf;
 	## Real part
