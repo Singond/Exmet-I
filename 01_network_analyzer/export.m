@@ -1,7 +1,7 @@
 pkg load report
 main
 
-function plot_sparams(freq, s, name, elem)
+function plot_sparam(freq, s, name, elem)
 	gp = gnuplotter();
 	p1 = gp.newplot();
 	p1.plot(freq, real(s), "with lines ls 2");
@@ -30,9 +30,9 @@ endfunction
 for e = experiment
 	printf("Plotting experiment %s.\n", e.name);
 	if (!isempty(e.s11))
-		plot_sparams(e.freq, e.s11, e.name, "s11");
+		plot_sparam(e.freq, e.s11, e.name, "s11");
 	end
 	if (!isempty(e.s21))
-		plot_sparams(e.freq, e.s21, e.name, "s21");
+		plot_sparam(e.freq, e.s21, e.name, "s21");
 	end
 endfor
