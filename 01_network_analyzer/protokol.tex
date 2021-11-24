@@ -37,6 +37,7 @@
 % Obrazky a grafy
 % \usepackage{graphicx}
 \graphicspath{
+	{img/}
 	{plots/}
 	{build/plots/}
 }
@@ -74,175 +75,240 @@
 \begin{document}
 \headernoenv
 
-\begin{figure}[htp]
+\section{Úvod}
+Elektrické obvody pracující na nízkých frekvencích, jejichž rozměry jsou malé oproti vlnové délce signálu, mají v~každém bodě jasně definované napětí a proud. Díky malým rozměrům je v nich zároveň zanedbatelné fázové zpoždění mezi jednotlivými body v~obvodu. Tyto vlastnosti však obecně neplatí pro vysokofrekvenční obvody. K~jejich analýze je potřeba přistupovat odlišným způsobem, než jaký se využívá pro nízkofrekvenční obvody \cite{Pozar}.
+V~této úloze budeme zabývat vektorovým síťovým analyzátorem, který je vhodný pro měření parametrů vysokofrekvenčních obvodů.
+
+\section{Teorie}
+
+\subsection{Vektorový síťový analyzátor}
+
+Pro označení vektorového síťového analyzátoru budeme z~anglického vector network analyzer používat zkratku VNA. VNA je zpravidla dvoukanálový mikrovlnný měřící přístroj, pomocí nějž se měří rozptylové parametry elektrických obvodů s~různými prvky pro vysokofrekvenční aplikace. VNA je konstruován na měření velikosti a fáze prošlého a odraženého vlnění z~měřeného obvodu, který je obecně označován zkratkou DUT z~anglického device under test \cite{Pozar}.
+VNA obsahuje zdroj signálu o~známých frekvencích a soustavu přijímačů, které měří změny v~signálu způsobené připojeným DUT. Schéma funkce přístroje je na obr. \ref{VNA}. Vygenerovaný signál postupuje směrem k~DUT. Část signálu se na vstupu DUT odrazí zpět, část projde k~výstupnímu portu. Přijímače poté porovnávají výsledný signál na ně dopadající se signálem vygenerovaným ve zdroji. Výsledek je poté počítačově zpracován a zobrazen na displeji. Výstupem měření VNA jsou prvky rozptylové matice.
+
+\begin{figure}[b]
 	\centering
-	\begin{circuitikz}
-		\node[draw, minimum width=2cm, minimum height=2cm] at (0,3){VNA};
-		\draw (-1,3) -- (-6,3) -- (-6,0);
-		\draw (1,3) -- (6,3) -- (6,0);
-		\draw (-6,0) to[short, -o] (-1,0);
-		\draw (1,0) to[short, o-] (6,0);
-		\node at (0,0.5) {měřené prvky};
-	\end{circuitikz}
-	\caption{Schéma zapojení měřicího obvodu.}
-	\label{fig:circuit-generic}
+	\includegraphics[width=100mm,]{network-analyzer-diagram}
+	\caption{Princip funkce VNA, převzato z~\cite{schema} a upraveno}
+	\label{VNA}
 \end{figure}
 
-\section{Měření}
+
+\subsection{Rozptylová matice}
+
+Přímé měření napětí a proudů v~mikrovlnných obvodech není vhodné, jelikož naměřené hodnoty obsahují velikost a fázi postupující vlny v~daném směru nebo vlny stojaté. Je potřeba brát v~potaz dopadající, prošlé i odražené vlny. Proto zavádíme pojem rozptylová matice, která se označuje jako $(S)$ matice \cite{Pozar}. Rozptylová matice poskytuje kompletní popis obvodu s~$N$ svorkami, konkrétně vytváří vztah mezi vlněním dopadajícím na svorky a vlněním na svorkách odraženým. Pro některé prvky je možné $(S)$ matice dopočítat, ovšem jednodušší způsob je prvky matice přímo změřit pomocí VNA. $(S)$ matice je definovaná jako
+
+\[
+\begin{pmatrix}
+	U^-
+\end{pmatrix}
+=
+\begin{pmatrix}
+	S~\end{pmatrix}
+%
+\begin{pmatrix}
+	U^+
+\end{pmatrix}
+,\]
+
+kde $U^+$ a $U^-$ jsou amplitudy dopadajícího a odraženého napětí v~tomto pořadí \cite{Pozar}.
+
+Pro obvod s~$N$ svorkami má $(S)$ matice tvar:
+
+\[
+\begin{pmatrix}
+	U_1^-     \\
+	U_2^-		\\
+	\vdots	\\
+	U_N^-
+\end{pmatrix}
+=
+\begin{pmatrix}
+	S_{11} & S_{12} & \dots & S_{1N}   \\
+	S_{21} &		& 		& \vdots	\\
+	\vdots &		& 		& \vdots	\\
+	S_{N1} & \dots	& \dots & S_{NN} 	\\    
+\end{pmatrix} 
+%
+\begin{pmatrix}
+	U_1^+     \\
+	U_2^+		\\
+	\vdots	\\
+	U_N^+      
+\end{pmatrix}
+.\]
+
+Pro obvod s~dvěma svorkami tedy bude $(S)$ matice řádu 2. V~ní prvek $S_{11}$ vyjadřuje odražený signál na vstupu, $S_{22}$ odraz na výstupu, $S_{21}$ je transmisní prvek ze vstupu na výstup a $S_{12}$ je transmisní prvek z~výstupu na vstup. 
+
+\subsection{Impedanční a admitanční matice}
+
+Impedance $Z$ je komplexní veličinou a je definovaná jako poměr napětí a proudu:
+\begin{equation}
+	Z~= \frac{U}{I} \:.
+\end{equation}
+
+Admitance $Y$ je převrácenou hodnotou impedance, tedy platí:
+\begin{equation}
+	Y = \frac{1}{Z} \:.
+\end{equation}
+
+Impedanční matice $(Z)$ mikrovlnného obvodu s~$N$ svorkami udává vztah mezi napětími a proudy následovně:
+
+\[
+\begin{pmatrix}
+	V_1     \\
+	V_2		\\
+	\vdots	\\
+	V_N       
+\end{pmatrix}
+= 
+\begin{pmatrix}
+	Z_{11} & Z_{12} & \dots & Z_{1N}   \\
+	Z_{21} &		& 		& \vdots	\\
+	\vdots &		& 		& \vdots	\\
+	Z_{N1} & \dots	& \dots & Z_{NN} 	\\    
+\end{pmatrix} 
+%
+\begin{pmatrix}
+	I_1     \\
+	I_2		\\
+	\vdots	\\
+	I_N        
+\end{pmatrix}
+.\]
+
+Admitanční matice $(Y)$ je definovaná jako
+\[
+\begin{pmatrix}
+	Y
+\end{pmatrix}
+=
+\begin{pmatrix}
+	Z~\end{pmatrix}^{-1}
+,\]
+
+což pro obvod s~$N$ svorkami můžeme rozepsat ve tvaru
+
+\[
+\begin{pmatrix}
+	I_1     \\
+	I_2		\\
+	\vdots	\\
+	I_N       
+\end{pmatrix}
+= 
+\begin{pmatrix}
+	Y_{11} & Y_{12} & \dots & Y_{1N}   \\
+	Y_{21} &		& 		& \vdots	\\
+	\vdots &		& 		& \vdots	\\
+	Y_{N1} & \dots	& \dots & Y_{NN} 	\\    
+\end{pmatrix} 
+%
+\begin{pmatrix}
+	V_1     \\
+	V_2		\\
+	\vdots	\\
+	V_N     
+\end{pmatrix}
+.\]
+
+\subsection{Výpočet impedanční a admitanční matice z~rozptylové matice}
+
+Impedanční matici $(Z)$ můžeme vyjádřit pomocí rozptylové matice $(S)$ jako
+
+\[
+\begin{pmatrix}
+	Z~\end{pmatrix}
+=
+[\begin{pmatrix}
+	A~\end{pmatrix}
++
+\begin{pmatrix}
+	S~\end{pmatrix}]
+%
+[\begin{pmatrix}
+	A~\end{pmatrix}
+-
+\begin{pmatrix}
+	S~\end{pmatrix}]^{-1}
+,\]
+kde $(A)$ je jednotková matice.
+\bigskip
+
+Obdobně můžeme pomocí rozptylové matice $(S)$ a jednotkové matice $(A)$ vyjádřit i admitanční matici jako
+\[
+\begin{pmatrix}
+	Y
+\end{pmatrix}
+=
+[\begin{pmatrix}
+	A~\end{pmatrix}
+-
+\begin{pmatrix}
+	S~\end{pmatrix}]
+%
+[\begin{pmatrix}
+	A~\end{pmatrix}
++
+\begin{pmatrix}
+	S~\end{pmatrix}]^{-1}
+.\]
+
+\subsection{Typy konektorů}
+V~tomto praktiku budeme měřit různá zapojení koaxiálních konektorů typu SMA, BNC a N s~impedancí 50 $\Omega$.
+
+SubMiniature Type-A neboli SMA konektor je jedním z~nejpoužívanějších mikrovlnných konektorů. Je zobrazený na obr. \ref{SMA}. Vnitřní průměry jeho koaxiálního vedení jsou 4,1 mm a 1,27 mm, funkci izolantu v~něm plní teflon. Spojení se zajišťuje pomocí šroubovacího mechanismu. Obecně se uvádí, že je vhodný až do frekvence 18 GHz \cite{rfhandbook}. 
+
+Bayonet Neill Concelman, někdy nazývaný Bayonet Navel Connector, zkráceně BNC, je konektor vyvinutý ve čtyřicátých letech dvacátého století. Jeho charakteristikou je bajonetový mechanismus spojení. Tento mechanismus je tvořen dvěma výstupky na samičím konektoru a drážkou se spirálou a vybráním na převlečné části samčího konektoru, viz obr. \ref{BNC}. Umožňuje rychlé a spolehlivé spojení nasunutím a pootočením převlečné části o~90$^{\circ}$ \cite{czwiki}. Konektor je vhodný až do frekvence 11 GHz \cite{rfhandbook}.
+
+Konektor typu N, pojmenovaný po jeho vynálezci Paulu Neillovi, vznikl ve čtyřicátých letech dvacátého století. Jedná se o~konektor s~klasickým šroubovacím mechanismem. Využívá se při aplikacích kde frekvence nepřesahuje 11 GHz \cite{rfhandbook}. Je zobrazený na obr. \ref{N}.
+
+\begin{center}
+	\captionsetup{justification=centering}
+	\begin{minipage}{0.32\textwidth}
+		\includegraphics[width=\textwidth]{connector-sma}
+		\captionof{figure}{SMA konektor, převzato z \cite{gme}}
+		\label{SMA}
+	\end{minipage}
+	\begin{minipage}{0.40\linewidth}
+		\includegraphics[width=\linewidth]{connector-bnc}
+		\captionof{figure}{BNC konektor, převzato z \cite{czwiki}}
+		\label{BNC}
+	\end{minipage}
+	\begin{minipage}{0.29\textwidth}
+		\includegraphics[width=\textwidth]{connector-n}
+		\captionof{figure}{N konektor, převzato z \cite{enwiki}}
+		\label{N}
+	\end{minipage}
+\end{center}
+
+\section{Praktická část}
+\subsection{Kalibrace přístroje}
+K~měření budeme používat vektorový síťový analyzátor Rohde \& Schwarz ZVL, který měří v~rozsahu 9 kHz až 13,6 GHz. Měřený prvek se k přístroji připojuje pomocí testovacích kabelů. Tyto kabely však nejsou dokonalé a mění parametry celého systému. Před samotným měřením je tedy potřeba přístroj s~kabely nakalibrovat. Pro kalibraci jednoho portu potřebujeme tři různé impedance. Z~praktických důvodů se volí známé impedance při třech situacích - zkrat, otevřený obvod a přizpůsobený obvod. Nejvhodnějším způsobem kalibrace je využití kalibračního členu, pomocí nějž lze jednoduše výše zmíněné impedance vytvořit. K~dispozici máme kalibrační člen Rohde \& Schwarz ZV-Z135, k~němuž jsou dodávány i korekce, které už máme ve VNA nahrané. Kalibraci je potřeba provést na každém portu zvlášť i na obou portech současně.
+Zároveň je potřeba kalibraci provést pečlivě, protože nedbalá kalibrace způsobená špatně připojeným kalibračním členem by mohla ovlivnit všechna následně naměřená data.
+
+První připojíme port 1 jako otevřený obvod. Veškerý signál by se měl odrazit, čemuž odpovídá $S_{11}$ = 0 dB. Další na řadě je zkrat na portu 1. Na zkratu se nemá výkon kde ztratit, takže opět dochází k~úplnému odrazu a znovu platí, že $S_{11}$ = 0 dB. Zbývá připojení portu 1 na přizpůsobenou impedanci. V~tomto případě by se měl ideálně veškerý signál absorbovat, tedy $S_{11}$ by měla být co nejnižší. U~frekvence 10 GHz je $S_{11}$ přibližně -25 dB, minimum $S_{11}$ je okolo -50 dB. Tyto hodnoty považujeme za dostatečně nízké.
+
+Kalibrace druhého portu probíhá obdobně, přičemž se místo $S_{11}$ měří $S_{22}$. Pro otevřený obvod, zkrat i přizpůsobený obvod dává přístroj prakticky stejné hodnoty $S_{22}$ na portu 2 jako jsme naměřili pro $S_{11}$ na portu 1.
+
+Posledním krokem je kalibrace obou portů současně nazývaná jako zapojení through. Přístroj měří $S_{21}$, která je podle očekávání kolem 0 dB. Tím je kalibrace hotová.
+
+Z~předpokladu symetrie budeme dále uvažovat rovnosti $S_{11}$ = $S_{22}$ a $S_{21}$ = $S_{12}$.
+
+\subsection{1. měření}
+Jako první měříme konektor SMA, který má z~obou stran samičí vstup (značíme f), schéma zapojení je na obr. \ref{fig:exp1}. Konektor je zlaté barvy (index $_Z$), což rozlišuje pouze z důvodu, že budeme srovnávat dva konektory stejného typu lišící se barvou. Výsledné zapojení tedy označíme jako (SMAf/SMAf)$_Z$. Obdobné značení budeme využívat i nadále. Z $S_{11}$ na obr. \ref{fig:01-s11}
+je vidět, že při vyšších frekvencích se na konektoru začíná signál odrážet. Z $S_{21}$ na obr. \ref{fig:01-s21}
+vyplývá, že ve vysokých frekvencích je signál zeslaben jen o přibližně 0,5 dB .
 
 \begin{figure}[htp]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (0,0)
-			{\connectord{SMA\female}{SMA\female}{zlatý}};
+		{\connectord{SMA\female}{SMA\female}{zlatý}};
 		\draw (con1.west) to[short, -o] +(-1,0);
 		\draw (con1.east) to[short, -o] +(1,0);
 	\end{circuitikz}
-	\caption{Uspořádání prvního experimentu}
-	\label{fig:exp1}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\begin{circuitikz}
-		\node[connector] (con1) at (0,0)
-			{\connectord{SMA\female}{SMA\female}{stříbrný}};
-		\draw (con1.west) to[short, -o] +(-1,0);
-		\draw (con1.east) to[short, -o] +(1,0);
-	\end{circuitikz}
-	\caption{Uspořádání druhého experimentu}
-	\label{fig:exp1}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\begin{circuitikz}
-		\node[connector] (con1) at (-4,0)
-			{\connectord{SMA\female}{SMA\female}{zlatý}};
-		\node[connector] (con2) at (0,0)
-			{\connectord{SMA\male}{SMA\male}{zlatý}};
-		\node[connector] (con3) at (4,0)
-			{\connectord{SMA\female}{SMA\female}{stříbrný}};
-		\draw (con1.west) to[short, -o] +(-1,0);
-		\draw (con3.east) to[short, -o] +(1,0);
-	\end{circuitikz}
-	\caption{Uspořádání třetího experimentu}
-	\label{fig:exp1}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\begin{circuitikz}
-		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
-			{\connector{SMA\female}{BNC\male}};
-		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
-			-- (-0.75,2) -- (-0.75,0.75) -- (-2,0.75) -- cycle;
-		\node at (-1.2,0) {BNC\female};
-		\node at (0,1.375) {BNC\male};
-		\node at (1.2,0) {BNC\female};
-		\node[connector, minimum height=1.5cm] (con3) at (4,0)
-			{\connector{BNC\male}{SMA\female}};
-		\draw (con1.west) to[short, -o] +(-1,0);
-		\draw (con3.east) to[short, -o] +(1,0);
-	\end{circuitikz}
-	\caption{Uspořádání čtvrtého experimentu}
-	\label{fig:exp1}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\begin{circuitikz}
-		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
-			{\connector{SMA\female}{BNC\male}};
-		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
-			-- (-0.75,2) -- (-0.75,0.75) -- (-2,0.75) -- cycle;
-		\node at (-1.2,0) {BNC\female};
-		\node at (0,1.375) {BNC\male};
-		\node at (1.2,0) {BNC\female};
-		\node[connector, minimum height=1.5cm] (con3) at (4,0)
-			{\connector{BNC\male}{SMA\female}};
-		\draw (0,2) to[short, -o] (0,3);
-		\draw (con1.west) to[short, -o] +(-1,0);
-		\draw (con3.east) to[short, -o] +(1,0);
-	\end{circuitikz}
-	\caption{Uspořádání pátého experimentu}
-	\label{fig:exp1}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\begin{circuitikz}
-		\node[connector] (con1) at (-5,0)
-			{\connector{SMA\female}{BNC\male}};
-		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
-			{BNC\female};
-		\node[connector, minimum width=1.4cm] (con3) at (2.3,0)
-			{BNC\female};
-		\coordinate[yshift=2mm] (n1) at (con2.east) {};
-		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
-		\coordinate[yshift=2mm] (n3) at (con3.west) {};
-		\coordinate[yshift=0-2mm] (n4) at (con3.west) {};
-		\draw (n1) to[short, -o] +(1.4,0);
-		\draw (n2) to[short, -*] +(1.4,0);
-		\draw (n3) to[short, -o] +(-1.4,0);
-		\draw (n4) to[short, -*] +(-1.4,0);
-		\node at (0,0.6) {banánky};
-		\node[connector] (con4) at (5,0)
-			{\connector{BNC\male}{SMA\female}};
-		\draw (con1.west) to[short, -o] +(-1,0);
-		\draw (con4.east) to[short, -o] +(1,0);
-	\end{circuitikz}
-	\caption{Uspořádání šestého experimentu}
-	\label{fig:exp1}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\begin{circuitikz}
-		\node[connector] (con1) at (-5,0)
-			{\connector{SMA\female}{BNC\male}};
-		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
-			{BNC\female};
-		\node[connector, minimum width=1.4cm] (con3) at (2.3,0)
-			{BNC\female};
-		\coordinate[yshift=2mm] (n1) at (con2.east) {};
-		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
-		\coordinate[yshift=2mm] (n3) at (con3.west) {};
-		\coordinate[yshift=0-2mm] (n4) at (con3.west) {};
-		\draw (n1) to[short, -o] +(1.4,0);
-		\draw (n2) to[short, -*] +(1.4,0);
-		\draw (n3) to[short, -*] +(-1.4,0);
-		\draw (n4) to[short, -o] +(-1.4,0);
-		\node at (0,0.6) {banánky};
-		\node[connector] (con4) at (5,0)
-			{\connector{BNC\male}{SMA\female}};
-		\draw (con1.west) to[short, -o] +(-1,0);
-		\draw (con4.east) to[short, -o] +(1,0);
-	\end{circuitikz}
-	\caption{Uspořádání sedmého experimentu}
-	\label{fig:exp1}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\begin{circuitikz}
-		\node[connector] (con1) at (-5,0)
-			{\connector{SMA\female}{BNC\male}};
-		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
-			{BNC\female};
-		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
-		\draw (con2.east)++(0,0.2) to[short, -o] ++(1.4,0) -- ++(0,0.5)
-			-- node[midway] (clip1) {} ++(4,0) to[inductor]
-			++(0,-1.4) -- node[midway] (clip2) {} ++(-4,0) -- ++(0,0.5);
-		\draw (con2.east)++(0,-0.2) to[short, -*] +(1.4,0);
-		\draw[very thick] (clip1.center) -- +(150:1);
-		\draw (clip1.center) +(-0.7,0) arc (180:150:0.7);
-		\draw[very thick] (clip2.center) -- +(150:1);
-		\draw (clip2.center) +(-0.7,0) arc (180:150:0.7);
-		\node[yshift=1cm] at (clip2) {krokodýlky};
-		\draw (con1.west) to[short, -o] +(-1,0);
-	\end{circuitikz}
-	\caption{Uspořádání osmého experimentu}
+	\caption{Schéma zapojení 1. měření}
 	\label{fig:exp1}
 \end{figure}
 
@@ -260,6 +326,25 @@
 	\label{fig:01-s21}
 \end{figure}
 
+\newpage
+\subsection{2. měření}
+Měříme opět konektor (SMAf/SMAf)$_S$, avšak nyní je konektor ve stříbrné barvě (index $_S$). Schéma zapojení je na obr. \ref{fig:exp2}.
+V porovnání s konektorem ve zlaté barvě z prvního měření je u stříbrného na obr. %\ref{label}
+vidět menší odraz signálu při řádově GHz frekvencích. Může se tedy jednat o kvalitnější součástku, nebo je lepší průchod signálu způsoben preciznějším dotažením.
+%udělat 1 a 2 do jednoho grafu, aby se to lépe porovnalo
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (0,0)
+		{\connectord{SMA\female}{SMA\female}{stříbrný}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con1.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 2. měření}
+	\label{fig:exp2}
+\end{figure}
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data02-s11}
@@ -272,6 +357,26 @@
 	\input{plots/data02-s21}
 	\caption{$s_{21}$}
 	\label{fig:02-s21}
+\end{figure}
+
+
+\subsection{3. měření}
+Měříme zapojení (SMAf/SMAf)$_Z$---(SMAm/SMAm)$_Z$---(SMAf/SMAf)$_S$, kde m značí samčí vstup. Schéma zapojení je na obr. \ref{fig:exp3}. Úkolem je dopočítat matice prostředního konektoru (SMAm/SMAm)$_Z$, matice pro zbylé konektory známe z předchozích měření.
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-4,0)
+		{\connectord{SMA\female}{SMA\female}{zlatý}};
+		\node[connector] (con2) at (0,0)
+		{\connectord{SMA\male}{SMA\male}{zlatý}};
+		\node[connector] (con3) at (4,0)
+		{\connectord{SMA\female}{SMA\female}{stříbrný}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 3. měření}
+	\label{fig:exp3}
 \end{figure}
 
 \begin{figure}[htp]
@@ -288,6 +393,9 @@
 	\label{fig:03-s21}
 \end{figure}
 
+\subsection{4. měření}
+Máme zapojení (SMAf/BNCm)---(BNCf/SMAf), jeho schéma je vidět na obr. \ref{fig:exp4}. Jelikož nedokážeme zapojit ani jeden z těchto konektorů samostatně a chceme znát matici jednoho z nich, konektory budeme  považovat za identické a výslednou matici jednoho konektoru určíme jako odmocninu z naměřené matice.
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data04-s11}
@@ -302,6 +410,10 @@
 	\label{fig:04-s21}
 \end{figure}
 
+
+\subsection{5.měření}
+Ze zapojení (SMAf/BNCm)---(BNCf/BNCf)---(BNCm/SMAf), jehož schéma je vidět na obr. \ref{fig:exp5}, chceme nalézt parametry prostředního konektoru (BNCf/BNCf). Výpočet lze provézt díky znalosti výsledků z měření 4.
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data05-s11}
@@ -314,6 +426,35 @@
 	\input{plots/data05-s21}
 	\caption{$s_{21}$}
 	\label{fig:05-s21}
+\end{figure}
+
+\subsection{6. měření}
+Zapojení (SMAf/BNCm)---(BNCf/BNCm/BNCf)---(BNCm/SMAf), přičemž (BNCf/BNCm/BNCf) je člen ve tvaru T. Prostřední vstup členu T je zde jako otevřený obvod, viz obr. \ref{fig:exp6}. Na otevřeném obvodu dochází k odrazu signálu a destruktivní interferenci. Délka prostředního vstupu $d$ je s frekvencí $f$, při níž dochází k destruktivní interferenci, spojena vztahem
+
+\begin{equation}
+	d = \frac{(2k+1)}{4f} \frac{1}{\sqrt{\varepsilon_0 \varepsilon_r \mu_0}},
+\end{equation}
+kde k = 0,1,2,..., $\varepsilon_0$ je permitivita vakua, $\varepsilon_r$ =  je v tomto případě relativní permitivita polyethylenu a $\mu_0$ je permeabilita vakua.
+
+Destruktivní interference pro $\lambda/4$ je na frekvenci 3,33 GHz s útlumem 42 dB. Pro $3\lambda/4$ je útlum 36,4 dB na frekvenci 8,47 GHz.
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
+		{\connector{SMA\female}{BNC\male}};
+		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
+		-- (-0.75,2) -- (-0.75,0.75) -- (-2,0.75) -- cycle;
+		\node at (-1.2,0) {BNC\female};
+		\node at (0,1.375) {BNC\male};
+		\node at (1.2,0) {BNC\female};
+		\node[connector, minimum height=1.5cm] (con3) at (4,0)
+		{\connector{BNC\male}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 6. měření}
+	\label{fig:exp6}
 \end{figure}
 
 \begin{figure}[htp]
@@ -330,6 +471,29 @@
 	\label{fig:06-s21}
 \end{figure}
 
+\subsection{7. měření}
+Měříme (SMAf/BNCm)---(BNCf/BNCm + kabel/BNCf)---(BNCm/SMAf). Zapojení stejné jako u měření 6, tentokrát je však na prostřední vstup T členu připojen kabel neznámé délky. %Mění se fáze?
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
+		{\connector{SMA\female}{BNC\male}};
+		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
+		-- (-0.75,2) -- (-0.75,0.75) -- (-2,0.75) -- cycle;
+		\node at (-1.2,0) {BNC\female};
+		\node at (0,1.375) {BNC\male};
+		\node at (1.2,0) {BNC\female};
+		\node[connector, minimum height=1.5cm] (con3) at (4,0)
+		{\connector{BNC\male}{SMA\female}};
+		\draw (0,2) to[short, -o] (0,3);
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 7. měření}
+	\label{fig:exp7}
+\end{figure}
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data07-s11}
@@ -344,6 +508,9 @@
 	\label{fig:07-s21}
 \end{figure}
 
+\subsection{8.}
+Zapojení (SMAf/BNCm)---(BNCf/BNCm + kabel + terminátor/BNCf)---(BNCm/SMAf) vychází z měření 7, ke kabelu je navíc připojen terminátor.
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data08-s11}
@@ -356,6 +523,37 @@
 	\input{plots/data08-s21}
 	\caption{$s_{21}$}
 	\label{fig:08-s21}
+\end{figure}
+
+
+\subsection{9.}
+Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(banánky f/BNCf)---(BNCm/SMAf), přičemž banánky je koaxiální vedení zapojeno způsobem jádro-jádro a stínění-stínění. 
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\node[connector, minimum width=1.4cm] (con3) at (2.3,0)
+		{BNC\female};
+		\coordinate[yshift=2mm] (n1) at (con2.east) {};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\coordinate[yshift=2mm] (n3) at (con3.west) {};
+		\coordinate[yshift=0-2mm] (n4) at (con3.west) {};
+		\draw (n1) to[short, -o] +(1.4,0);
+		\draw (n2) to[short, -*] +(1.4,0);
+		\draw (n3) to[short, -o] +(-1.4,0);
+		\draw (n4) to[short, -*] +(-1.4,0);
+		\node at (0,0.6) {banánky};
+		\node[connector] (con4) at (5,0)
+		{\connector{BNC\male}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con4.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 9. měření}
+	\label{fig:exp9}
 \end{figure}
 
 \begin{figure}[htp]
@@ -372,6 +570,38 @@
 	\label{fig:09-s21}
 \end{figure}
 
+\subsection{10. měření}
+Vycházíme ze zapojení jako u měření 9 (SMAf/BNCm)---(BNCf/banánky m)---(banánky f/BNCf)---(BNCm/SMAf), přičemž nyní přehozením banánků máme zapojení koaxiálního vedení do kříže, tedy jádro-stínění.
+
+Podle očekávání dostáváme horší výsledky než v měření 9....
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\node[connector, minimum width=1.4cm] (con3) at (2.3,0)
+		{BNC\female};
+		\coordinate[yshift=2mm] (n1) at (con2.east) {};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\coordinate[yshift=2mm] (n3) at (con3.west) {};
+		\coordinate[yshift=0-2mm] (n4) at (con3.west) {};
+		\draw (n1) to[short, -o] +(1.4,0);
+		\draw (n2) to[short, -*] +(1.4,0);
+		\draw (n3) to[short, -*] +(-1.4,0);
+		\draw (n4) to[short, -o] +(-1.4,0);
+		\node at (0,0.6) {banánky};
+		\node[connector] (con4) at (5,0)
+		{\connector{BNC\male}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con4.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 10. měření}
+	\label{fig:exp10}
+\end{figure}
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data10-s11}
@@ -386,11 +616,40 @@
 	\label{fig:10-s21}
 \end{figure}
 
+\subsection{11.}
+Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky na prázdno) jako jednobran bez připojeného přijímače.
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data11-s11}
 	\caption{$s_{11}$}
 	\label{fig:11-s11}
+\end{figure}
+
+\subsection{12. měření}
+Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobran
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\draw (con2.east)++(0,0.2) to[short, -o] ++(1.4,0) -- ++(0,0.5)
+		-- node[midway] (clip1) {} ++(4,0) to[inductor]
+		++(0,-1.4) -- node[midway] (clip2) {} ++(-4,0) -- ++(0,0.5);
+		\draw (con2.east)++(0,-0.2) to[short, -*] +(1.4,0);
+		\draw[very thick] (clip1.center) -- +(150:1);
+		\draw (clip1.center) +(-0.7,0) arc (180:150:0.7);
+		\draw[very thick] (clip2.center) -- +(150:1);
+		\draw (clip2.center) +(-0.7,0) arc (180:150:0.7);
+		\node[yshift=1cm] at (clip2) {krokodýlky};
+		\draw (con1.west) to[short, -o] +(-1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 12. měření}
+	\label{fig:exp12}
 \end{figure}
 
 \begin{figure}[htp]
@@ -400,12 +659,19 @@
 	\label{fig:12-s11}
 \end{figure}
 
+
+\subsection{13.}
+(SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky s kondenzátorem)
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data13-s11}
 	\caption{$s_{11}$}
 	\label{fig:13-s11}
 \end{figure}
+
+\subsection{14.}
+(SMAf/BNCf)---(BNCm/kabel/banánky)
 
 \begin{figure}[htp]
 	\centering
@@ -414,12 +680,18 @@
 	\label{fig:14-s11}
 \end{figure}
 
+\subsection{15.}
+(SMAf/BNCf)---(BNCm/kabel/banánky)---rezistor
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data15-s11}
 	\caption{$s_{11}$}
 	\label{fig:15-s11}
 \end{figure}
+
+\subsection{16.}
+(SMAf/BNCf)---(BNCm/terminátor)
 
 \begin{figure}[htp]
 	\centering
@@ -428,11 +700,37 @@
 	\label{fig:16-s11}
 \end{figure}
 
+\subsection{17.}
+(SMAf/SMAf)---(vlnovod)---(SMAm/SMAm)
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data17-s21}
 	\caption{$s_{21}$}
 	\label{fig:17-s21}
 \end{figure}
+
+\newpage
+\begin{thebibliography}{}
+	
+	\bibitem{Pozar}
+	Pozar, David M. Microwave Engineering. 2012. ISBN 9781118213636
+	
+	\bibitem{schema}
+	https://uk.tek.com/
+	
+	\bibitem{rfhandbook}
+	Belov, L. A., et al. Handbook of RF, Microwave, and Millimeter-Wave Components. Artech House, 2012.
+	
+	\bibitem{czwiki}
+	https://cs.wikipedia.org/
+	
+	\bibitem{gme}
+	https://gme.cz/
+	
+	\bibitem{enwiki}
+	ttps://en.wikipedia.org/
+	
+\end{thebibliography}
 
 \end{document}
