@@ -1,14 +1,14 @@
-01;02 -- potøeba pro 03 --- vykreslit 01 a 02 dohromady pro lepší srovnání
-03;04;05 -- vısledkem jsou nové grafy
-06;07 -- vıpoèty vedoucí k vısledku
-08 -- potøeba ovìøit
-09;10 -- pouze komentáø
-11 -- pozadí pro 12 a 13
-12;13 -- nové grafy L(f);C(f)  ------ v excelu jsou záloky bez odeèteného pozadí a s odeètenım
-14 -- pozadí pro 15
-15 -- novı graf R(f)
-16 -- novı graf R(f)
-17 -- vıpoèet kritické lambdy
+01;02 -- potÅ™eba pro 03 --- vykreslit 01 a 02 dohromady pro lepÅ¡Ã­ srovnÃ¡nÃ­
+03;04;05 -- vÃ½sledkem jsou novÃ© grafy
+06;07 -- vÃ½poÄty vedoucÃ­ k vÃ½sledku
+08 -- potÅ™eba ovÄ›Å™it
+09;10 -- pouze komentÃ¡Å™
+11 -- pozadÃ­ pro 12 a 13
+12;13 -- novÃ© grafy L(f);C(f)  ------ v excelu jsou zÃ¡loÅ¾ky bez odeÄtenÃ©ho pozadÃ­ a s odeÄtenÃ½m
+14 -- pozadÃ­ pro 15
+15 -- novÃ½ graf R(f)
+16 -- novÃ½ graf R(f)
+17 -- vÃ½poÄet kritickÃ© lambdy
 
 exercise03_s11: 10*LN(1-((1-EXP("data03_s11"/10))/((1-EXP("data01_s11"/10))*(1-EXP("data02_s11"/10)))))
 exercise03_s21: 10*LN(EXP("data03_s21"/10)/(EXP("data01_s21"/10)*EXP("data02_s21"/10)))
@@ -22,40 +22,40 @@ exercise05_s21: 10*LN(EXP("data05_s21"/10)/EXP("data04_s21"/10))
 
 exercise06: d=23mm = lambda/4 = 1/(4*f*sqrt(e0*er*mu0)
             f = v / lambda
-            €r_XLPE = 2.25
-            v = 1 / sqrt(€0 * €r * mu0)
+            er_XLPE = 2.25
+            v = 1 / sqrt(e0 * er * mu0)
             
 exercise12: %https://leleivre.com/rf_gammatoz.html
             %https://www.eevblog.com/forum/rf-microwave/how-to-transfer-s11-to-impedance/?fbclid=IwAR2MYBqwAcYFeM4NXK4NuwSpRTsZI-wNtIweqdrxlnHKhgHxYBHTcdkBQvY
             %https://electronics.stackexchange.com/questions/555024/how-to-find-z-impedance-if-i-have-only-s11-db-and-phase?fbclid=IwAR0ho_HZI2K9mcu_IOO5wMfpOEo2g1DIED7LJ5U72BG3wtzBwAJQNd3rcSE
             %https://www.microwaves101.com/encyclopedias/voltage-standing-wave-ratio-vswr
-            %MAG je pomìr vıkonu odraeného zpìt do portu 1 a vıkonu vystupujícího z portu 1.
+            %MAG je pomÄ›r vÃ½konu odraÅ¾enÃ©ho zpÄ›t do portu 1 a vÃ½konu vystupujÃ­cÃ­ho z portu 1.
             MAG = 10^(-S11/20)
             Re(gamma) = cos(theta) * MAG
             Im(gamma) = sin(theta) * MAG
-            %Z = Z0 * (1+gamma) / (1-gamma) - obecnı vztah
+            %Z = Z0 * (1+gamma) / (1-gamma) - obecnÃ½ vztah
             
             Re(Z) = Z0 * ((1+Re(gamma))*(1-Re(gamma))+Im(gamma)*Im(gamma))/((1-Re(gamma))^2 + Im(gamma)^2)
             Im(Z) = Z0 * ((1+Re(gamma))*Im(gamma) + (1-Re(gamma))*Im(gamma))  /((1-Re(gamma))^2 + Im(gamma)^2)
             
-            %Z = omega iL - obecnı vztah
+            %Z = omega iL - obecnÃ½ vztah
             L = Z/(omega)
-            nevím jestli Z = sqrt(Re(Z)^2 + Im(Z)^2) -- velikost vektoru, ale nejspíše L_2 = sqrt((Im(Z)/omega)^2) je správnı vısledek
-            -> vısledkem je L_1 a L_2 -- z reálné a imaginární èásti Z
+            nevÃ­m jestli Z = sqrt(Re(Z)^2 + Im(Z)^2) -- velikost vektoru, ale nejspÃ­Å¡e L_2 = sqrt((Im(Z)/omega)^2) je sprÃ¡vnÃ½ vÃ½sledek
+            -> vÃ½sledkem je L_1 a L_2 -- z reÃ¡lnÃ© a imaginÃ¡rnÃ­ ÄÃ¡sti Z
 
 exercise13: %Z = 1/(i omega C)
             C = 1/(i omega Z)   
             
-            -> vısledkem je C_1 a C_2 -- z reálné a imaginární èásti Z, nejspíše C_2 = sqrt((1/omegaZ)^2) je správnì        
+            -> vÃ½sledkem je C_1 a C_2 -- z reÃ¡lnÃ© a imaginÃ¡rnÃ­ ÄÃ¡sti Z, nejspÃ­Å¡e C_2 = sqrt((1/omegaZ)^2) je sprÃ¡vnÄ›        
             
-exercise15: Z = sqrt(R^2) (pro odstranìní záporné hodnoty)
-            %Odpor zaène od 1 MHz mìnit fázi a pøestává se chovat pouze jako odpor, vısledek 122 Ohm
+exercise15: Z = sqrt(R^2) (pro odstranÄ›nÃ­ zÃ¡pornÃ© hodnoty)
+            %Odpor zaÄne od 1 MHz mÄ›nit fÃ¡zi a pÅ™estÃ¡vÃ¡ se chovat pouze jako odpor, vÃ½sledek 122 Ohm
             
-exercise16: Terminátor 51 Ohmù
-            zaène od 1e8 Hz posouvat fázi
+exercise16: TerminÃ¡tor 51 OhmÅ¯
+            zaÄne od 1e8 Hz posouvat fÃ¡zi
             
 exercise17: lambda = c/f
             f = 1,75 GHz
             lambda = 0,171 m
-            d = lambda/2 = 85,5 mm (ruènì jsme namìøili 85 mm)
+            d = lambda/2 = 85,5 mm (ruÄnÄ› jsme namÄ›Å™ili 85 mm)
             
