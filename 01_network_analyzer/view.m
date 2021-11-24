@@ -8,18 +8,18 @@ for e = experiment
 	clf;
 	## Real part
 	h1 = axes('position', [0.05, 0.5, 0.9, 0.45], "xticklabel", "");
-    semilogx(e.freq, real(e.s), line_config{:});
+	semilogx(e.freq, real(e.s), line_config{:});
 	set(h1, axes_config{:});
-    title(e.name);
+	title(e.name);
 	xticklabels({})
-    ylabel("Re(s) [db]");
+	ylabel("Re(s) [db]");
 	grid off;
 	# Imaginary part
 	h2 = axes('position', [0.05, 0.05, 0.9, 0.45]);
-    semilogx(e.freq, imag(e.s), "r", line_config{:});
+	semilogx(e.freq, imag(e.s), "r", line_config{:});
 	set(h2, axes_config{:});
-    xlabel("frekvence f [Hz]");
-    ylabel("Im(s) [deg]");
+	xlabel("frekvence f [Hz]");
+	ylabel("Im(s) [deg]");
 	yticks(-180:90:180);
 	grid off;
 endfor
