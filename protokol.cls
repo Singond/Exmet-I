@@ -8,7 +8,11 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{protokol}[2018/03/14 Protokol fyzikalniho praktika]
-\LoadClass[a4paper,11pt]{article}
+\PassOptionsToClass{a4paper}{article}
+\PassOptionsToClass{11pt}{article}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+\LoadClass{article}
 \usepackage[margin=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{xstring}

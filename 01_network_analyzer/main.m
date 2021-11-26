@@ -1,5 +1,18 @@
 0; # Not a function file
 
+function mag = db2mag(decibels)
+	mag = 10 .^ (decibels ./ 10);
+endfunction
+
+function decibels = mag2db(mag)
+	decibels = 10 .* log10(mag);
+end
+
+## Create a complex number from modulus and argument in degrees.
+function z = complex_polard(modulus, argument)
+	z = complex(modulus .* cosd(argument), modulus .* sind(argument));
+endfunction
+
 ## Import scattering matrix from data files.
 function ex = import_smatrix(s11_filename, s21_filename, name)
 	if (nargin < 3)
@@ -20,7 +33,7 @@ function ex = import_smatrix(s11_filename, s21_filename, name)
 		data = dlmread(f, "");
 		fclose(f);
 		ex.freq = data(:,1);
-		ex.s11 = complex(data(:,2), data(:,3));
+		ex.s11 = complex_polard(db2mag(data(:,2)), data(:,3));
 	end
 
 	# Read s_21 data
@@ -40,7 +53,7 @@ function ex = import_smatrix(s11_filename, s21_filename, name)
 		else
 			ex.freq = data(:,1);
 		endif
-		ex.s21 = complex(data(:,2), data(:,3));
+		ex.s21 = complex_polard(db2mag(data(:,2)), data(:,3));
 	end
 end
 

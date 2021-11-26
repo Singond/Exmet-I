@@ -9,18 +9,18 @@ function view_sparam(freq, s, name, elem)
 	clf;
 	## Real part
 	h1 = axes('position', [0.05, 0.5, 0.9, 0.45], "xticklabel", "");
-	semilogx(freq, real(s), line_config{:});
+	semilogx(freq, mag2db(abs(s)), line_config{:});
 	set(h1, axes_config{:});
 	title(name);
 	xticklabels({})
-	ylabel("Re(s) [db]");
+	ylabel(sprintf("|%s| [dB]", elem));
 	grid off;
 	# Imaginary part
 	h2 = axes('position', [0.05, 0.05, 0.9, 0.45]);
-	semilogx(freq, imag(s), "r", line_config{:});
+	semilogx(freq, rad2deg(arg(s)), "r", line_config{:});
 	set(h2, axes_config{:});
 	xlabel("frekvence f [Hz]");
-	ylabel(sprintf("Im(%s) [deg]", elem));
+	ylabel(sprintf("arg(%s) [deg]", elem));
 	yticks(-180:90:180);
 	grid off;
 endfunction

@@ -8,5 +8,5 @@ set ytics in mirror
 set key off
 set log x
 set format x ''
-set ylabel '$\Re(s)\,[\si{\decibel}]$'
+set ylabel '$|\sparam|\,[\si{\decibel}]$'
 set format y '%4g'  # Unify width

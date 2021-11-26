@@ -4,4 +4,4 @@ set xtics ('$10^4$' 1e4+1, '$10^5$' 1e5, '$10^6$' 1e6, '$10^7$' 1e7, '$10^8$' 1e
 set xlabel '$f\,[\si{\hertz}]$'
 set yrange[-180:180]
 set ytics (-180, -90, 0, 90)
-set ylabel '$\Im(s)\,[\si{\degree}]$'
+set ylabel '$\arg{\sparam}\,[\si{\degree}]$'
