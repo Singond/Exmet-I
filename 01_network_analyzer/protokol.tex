@@ -84,7 +84,7 @@ Díky malým rozměrům je v nich zároveň zanedbatelné fázové zpoždění
 mezi jednotlivými body v~obvodu.
 Tyto vlastnosti však obecně neplatí pro vysokofrekvenční obvody.
 K~jejich analýze je potřeba přistupovat odlišným způsobem,
-než jaký se využívá pro nízkofrekvenční obvody.\cite{Pozar}
+než jaký se využívá pro nízkofrekvenční obvody \cite{Pozar}.
 V~této úloze budeme zabývat vektorovým síťovým analyzátorem,
 který je vhodný pro měření parametrů vysokofrekvenčních obvodů.
 
@@ -99,8 +99,8 @@ pomocí nějž se měří rozptylové parametry elektrických obvodů
 s~různými prvky pro vysokofrekvenční aplikace.
 VNA je konstruován na měření velikosti a fáze prošlého a odraženého vlnění
 z~měřeného obvodu,
-který je obecně označován zkratkou DUT z~anglického device under test.%
-\cite{Pozar}
+který je obecně označován zkratkou DUT z~anglického device 
+under test \cite{Pozar}.
 VNA obsahuje zdroj signálu o~známých frekvencích a soustavu přijímačů,
 které měří změny v~signálu způsobené připojeným DUT.
 Schéma funkce přístroje je na obr.~\ref{VNA}.
@@ -125,8 +125,8 @@ Přímé měření napětí a proudů v~mikrovlnných obvodech není vhodné,
 jelikož naměřené hodnoty obsahují velikost a fázi postupující vlny
 v~daném směru nebo vlny stojaté.
 Je potřeba brát v~potaz dopadající, prošlé i odražené vlny.
-Proto zavádíme pojem rozptylová matice, která se označuje jako $(S)$ matice.%
-\cite{Pozar}
+Proto zavádíme pojem rozptylová matice, která se označuje 
+jako $(S)$ matice \cite{Pozar}.
 Rozptylová matice poskytuje kompletní popis obvodu s~$N$ svorkami,
 konkrétně vytváří vztah mezi vlněním dopadajícím na svorky
 a vlněním na svorkách odraženým.
@@ -309,7 +309,7 @@ Tento mechanismus je tvořen dvěma výstupky na samičím konektoru
 a drážkou se spirálou a vybráním na převlečné části samčího konektoru,
 viz obr.~\ref{BNC}.
 Umožňuje rychlé a spolehlivé spojení nasunutím a pootočením převlečné
-části o~90$^{\circ}$ \cite{czwiki}.
+části o~90~$^{\circ}$ \cite{czwiki}.
 Konektor je vhodný až do frekvence 11~GHz \cite{rfhandbook}.
 
 Konektor typu N, pojmenovaný po jeho vynálezci Paulu Neillovi,
@@ -364,8 +364,9 @@ takže opět dochází k~úplnému odrazu a znovu platí, že $S_{11}$ = 0~dB.
 Zbývá připojení portu 1 na přizpůsobenou impedanci.
 V~tomto případě by se měl ideálně veškerý signál absorbovat,
 tedy $S_{11}$ by měla být co nejnižší.
-U~frekvence 10~GHz je $S_{11}$ přibližně -25~dB,
-minimum $S_{11}$ je okolo -50~dB. Tyto hodnoty považujeme za dostatečně nízké.
+U~frekvence 10~GHz je $S_{11}$ přibližně $-25$~dB,
+minimum $S_{11}$ je okolo $-50$~dB. Tyto hodnoty považujeme 
+za dostatečně nízké.
 
 Kalibrace druhého portu probíhá obdobně,
 přičemž se místo $S_{11}$ měří $S_{22}$.
@@ -463,7 +464,7 @@ Měříme zapojení (SMAf/SMAf)$_Z$---(SMAm/SMAm)$_Z$---(SMAf/SMAf)$_S$,
 kde m značí samčí vstup.
 Schéma zapojení je na obr. \ref{fig:exp3}.
 Úkolem je dopočítat matice prostředního konektoru (SMAm/SMAm)$_Z$,
-matice pro zbylé konektory známe z předchozích měření.
+matice pro zbylé konektory známe z předchozích měření. 
 
 \begin{figure}[htp]
 	\centering
@@ -553,7 +554,8 @@ $\varepsilon_r$ = je v tomto případě relativní permitivita polyethylenu
 a $\mu_0$ je permeabilita vakua.
 
 Destruktivní interference pro $\lambda/4$ je na frekvenci 3,33~GHz
-s útlumem 42~dB. Pro $3\lambda/4$ je útlum 36,4 dB na frekvenci 8,47~GHz.
+s útlumem 42~dB. Pro $3\lambda/4$ je útlum 36,4~dB na 
+frekvenci 8,47~GHz.
 
 \begin{figure}[htp]
 	\centering
