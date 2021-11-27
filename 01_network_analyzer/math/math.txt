@@ -10,14 +10,14 @@
 16 -- nový graf R(f)
 17 -- výpočet kritické lambdy
 
-exercise03_s11: 10*LN(1-((1-EXP("data03_s11"/10))/((1-EXP("data01_s11"/10))*(1-EXP("data02_s11"/10)))))
-exercise03_s21: 10*LN(EXP("data03_s21"/10)/(EXP("data01_s21"/10)*EXP("data02_s21"/10)))
+exercise03_s11: 10*log10(1-((1-10^("data03_s11"/20))/((1-10^("data01_s11"/20))*(1-10^("data02_s11"/20)))))
+exercise03_s21: 10*log10(10^("data03_s21"/20)/(10^("data01_s21"/20)*10^("data02_s21"/20)))
 
-exercise04_s11: 10*LN(SQRT(EXP("data04_s11"/10)))
-exercise04_s21: 10*LN(SQRT(EXP("data04_s21"/10)))
+exercise04_s11: 10*log10(SQRT(10^("data04_s11"/20)))
+exercise04_s21: 10*log10(SQRT(10^("data04_s21"/20)))
 
-exercise05_s11: 10*LN(1-((1-EXP("data05_s11"/10))/(1-EXP("data04_s11"/10))))
-exercise05_s21: 10*LN(EXP("data05_s21"/10)/EXP("data04_s21"/10))
+exercise05_s11: 10*log10(1-((1-10^("data05_s11"/20))/(1-10^("data04_s11"/20))))
+exercise05_s21: 10*log10(10^("data05_s21"/20)/10^("data04_s21"/20))
 
 
 exercise06: d=23mm = lambda/4 = 1/(4*f*sqrt(e0*er*mu0)
@@ -30,7 +30,8 @@ exercise12: %https://leleivre.com/rf_gammatoz.html
             %https://electronics.stackexchange.com/questions/555024/how-to-find-z-impedance-if-i-have-only-s11-db-and-phase?fbclid=IwAR0ho_HZI2K9mcu_IOO5wMfpOEo2g1DIED7LJ5U72BG3wtzBwAJQNd3rcSE
             %https://www.microwaves101.com/encyclopedias/voltage-standing-wave-ratio-vswr
             %MAG je poměr výkonu odraženého zpět do portu 1 a výkonu vystupujícího z portu 1.
-            MAG = 10^(-S11/20)
+            MAG = 10^(S11/20) %někde je uváděno -S11, někde +S11, záleží na definici přístroje (zdali return loss je záporný nebo kladný)
+            theta = ang * pi / 180 %převod stupňů na rad, ang je třetí sloupec v datech
             Re(gamma) = cos(theta) * MAG
             Im(gamma) = sin(theta) * MAG
             %Z = Z0 * (1+gamma) / (1-gamma) - obecný vztah
