@@ -291,6 +291,94 @@ vyjádřit i admitanční matici jako:
 	S~\end{pmatrix}]^{-1}
 .\]
 
+\subsection{Transmisní matice}
+Při měření je v obvodu zpravidla zapojeno více prvků.
+Proto je vhodné zavést transmisní matici $(T)$ pro každý z prvků.
+U dvojbranů je matice $(T)$ řádu 2 a má tvar
+\[
+\begin{pmatrix}
+	A & B  \\
+	C &	D  \\
+\end{pmatrix}
+.\]
+
+V nejjednodušším obvodu se dvěma prvky je mezi celkovou transmisní
+maticí $(ABCD)$, transmisní maticí prvního prvku $(A_1B_1C_1D_1)$
+a transmisní maticí druhého prvku $(A_2B_2C_2D_2)$ vztah následující:
+
+\[
+\begin{pmatrix}
+	A & B  \\
+	C &	D  \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+	A_1 & B_1  \\
+	C_1 & D_1  \\
+\end{pmatrix}
+%
+\begin{pmatrix}
+	A_2 & B_2  \\
+	C_2 & D_2  \\
+\end{pmatrix}
+.\]
+
+Dále platí:
+
+\begin{equation}
+	A = \frac{(1+S_{11})(1-S_{22})+S_{12}S_{21}}{2S_{21}},
+\end{equation}
+
+\begin{equation}
+	B = Z_0 \frac{(1+S_{11})(1+S_{22})-S_{12}S_{21}}{2S_{21}},
+\end{equation}
+
+\begin{equation}
+	C = \frac{1}{Z_0} \frac{(1-S_{11})(1-S_{22})-S_{12}S_{21}}{2S_{21}},
+\end{equation}
+
+\begin{equation}
+	D = \frac{(1-S_{11})(1+S_{22})+S_{12}S_{21}}{2S_{21}}.
+\end{equation}
+
+Zpětný přepočet $ABCD$ prvků na $S_{11}$ a $S_{21}$ lze provést jako
+
+\begin{equation}
+	S_{11} = \frac{A+B/Z_0-CZ_0-D}{A+B/Z_0+CZ_0+D},
+\end{equation}
+
+\begin{equation}
+	S_{21} = \frac{2}{A+B/Z_0+CZ_0+D}.
+\end{equation}
+
+
+Velikost impedance $|Z|$ určíme jako
+
+\begin{equation}
+	|Z| = Z_{11}Z_{22}-Z_{12}Z_{21},
+\end{equation}
+
+kde $Z_{11}$, $Z_{12}$, $Z_{21}$ a $Z_{22}$ jsou prvky impedanční matice, které lze pomocí prvků rozptylové matice vyjádřit jako:
+
+\begin{equation}
+	Z_{11} = Z_0 \frac{(1+S_{11})(1-S_{22})+S_{12}S_{21}}{(1-S_{11})(1-S_{22})-S_{12}S_{21}},
+\end{equation}
+
+\begin{equation}
+	Z_{12} = Z_0
+	\frac{2S_{12}}{(1-S_{11})(1-S_{22})-S_{12}S_{21}},
+\end{equation}
+
+\begin{equation}
+	Z_{21} = Z_0
+	\frac{2S_{21}}{(1-S_{11})(1-S_{22})-S_{12}S_{21}},
+\end{equation}
+
+\begin{equation}
+	Z_{22} = Z_0
+	\frac{(1-S_{11})(1+S_{22})+S_{12}S_{21}}{(1-S_{11})(1-S_{22})-S_{12}S_{21}}.
+\end{equation}
+
 \subsection{Typy konektorů}
 V~tomto praktiku budeme měřit různá zapojení koaxiálních konektorů typu
 SMA, BNC a N s~impedancí 50 $\Omega$.
@@ -341,12 +429,12 @@ Je zobrazený na obr.~\ref{N}.
 \subsection{Kalibrace přístroje}
 K~měření budeme používat vektorový síťový analyzátor Rohde \& Schwarz ZVL,
 který měří v~rozsahu 9 kHz až 13,6 GHz.
-Měřený prvek se k přístroji připojuje pomocí testovacích kabelů.
+Měřený prvek se k přístroji připojuje pomocí testovacích kabelů s SMA konektory.
 Tyto kabely však nejsou dokonalé a mění parametry celého systému.
 Před samotným měřením je tedy potřeba přístroj s~kabely nakalibrovat.
 Pro kalibraci jednoho portu potřebujeme tři různé impedance.
-Z~praktických důvodů se volí známé impedance při třech situacích -- zkrat,
-otevřený obvod a přizpůsobený obvod.
+Z~praktických důvodů se volí známé impedance při třech situacích -- zkrat (short),
+otevřený obvod (open) a přizpůsobený obvod (match).
 Nejvhodnějším způsobem kalibrace je využití kalibračního členu,
 pomocí nějž lze jednoduše výše zmíněné impedance vytvořit.
 K~dispozici máme kalibrační člen Rohde \& Schwarz ZV-Z135,
@@ -388,9 +476,9 @@ Konektor je zlaté barvy (index $_Z$), což rozlišuje pouze z důvodu,
 Výsledné zapojení tedy označíme jako (SMAf/SMAf)$_Z$.
 Obdobné značení budeme využívat i nadále.
 Z $S_{11}$ na obr.~\ref{fig:01-s11} je vidět,
-že při vyšších frekvencích se na konektoru začíná signál odrážet.
+že na GHz frekvencích se na konektoru začíná signál odrážet.
 Z $S_{21}$ na obr.~\ref{fig:01-s21} vyplývá,
-že ve vysokých frekvencích je signál zeslaben jen o přibližně 0,5 dB.
+že na frekvencích blížících se 10 GHz je signál zeslaben téměř o 0,5 dB.
 
 \begin{figure}[htp]
 	\centering
@@ -424,12 +512,11 @@ Měříme opět konektor (SMAf/SMAf)$_S$, avšak nyní je konektor
 ve stříbrné barvě (index $_S$).
 Schéma zapojení je na obr. \ref{fig:exp2}.
 V porovnání s konektorem ve zlaté barvě z prvního měření
-je u stříbrného na obr. %\ref{label}
-vidět menší odraz signálu při řádově GHz frekvencích.
+je u stříbrného z 
+$S_{11}$ stříbrného konektoru na obr. \ref{fig:02-s11} má podobný průběh jako u zlatého konektoru.
+Na obr. \ref{fig:02-s21} je u $S_{21}$ vidět oproti zlatému konektoru menší útlum.
 Může se tedy jednat o kvalitnější součástku,
 nebo je lepší průchod signálu způsoben preciznějším dotažením.
-
-%udělat 1 a 2 do jednoho grafu, aby se to lépe porovnalo
 
 \begin{figure}[htp]
 	\centering
@@ -589,7 +676,7 @@ s útlumem 42 dB. Pro $3\lambda/4$ je útlum 36,4 dB na frekvenci 8,47 GHz.
 \end{figure}
 
 \subsection{7. měření}
-Měříme (SMAf/BNCm)---(BNCf/BNCm + kabel/BNCf)---(BNCm/SMAf).
+Měříme (SMAf/BNCm)---(BNCf/BNCm + kabel /BNCf)---(BNCm/SMAf).
 Zapojení stejné jako u měření 6, tentokrát je však na prostřední vstup
 T členu připojen kabel neznámé délky. %Mění se fáze?
 
@@ -627,8 +714,8 @@ T členu připojen kabel neznámé délky. %Mění se fáze?
 	\label{fig:07-s21}
 \end{figure}
 
-\subsection{8.}
-Zapojení (SMAf/BNCm)---(BNCf/BNCm + kabel + terminátor/BNCf)---(BNCm/SMAf)
+\subsection{8. měření}
+Zapojení (SMAf/BNCm)---(BNCf/BNCm + kabel + terminátor /BNCf)---(BNCm/SMAf)
 vychází z měření 7, ke kabelu je navíc připojen terminátor.
 
 \begin{figure}[htp]
@@ -646,7 +733,7 @@ vychází z měření 7, ke kabelu je navíc připojen terminátor.
 \end{figure}
 
 
-\subsection{9.}
+\subsection{9. měření}
 Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(banánky f/BNCf)---(BNCm/SMAf),
 přičemž ba\-nán\-ky je koaxiální vedení zapojeno způsobem
 jádro--jádro a stínění--stínění.
@@ -741,7 +828,7 @@ Podle očekávání dostáváme horší výsledky než v měření 9....
 	\label{fig:10-s21}
 \end{figure}
 
-\subsection{11.}
+\subsection{11. měření}
 Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky na prázdno)
 jako jednobran bez připojeného přijímače.
 
@@ -786,7 +873,7 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 \end{figure}
 
 
-\subsection{13.}
+\subsection{13. měření}
 (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky s kondenzátorem)
 
 \begin{figure}[htp]
@@ -796,7 +883,7 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 	\label{fig:13-s11}
 \end{figure}
 
-\subsection{14.}
+\subsection{14. měření}
 (SMAf/BNCf)---(BNCm/kabel/banánky)
 
 \begin{figure}[htp]
@@ -806,8 +893,8 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 	\label{fig:14-s11}
 \end{figure}
 
-\subsection{15.}
-(SMAf/BNCf)---(BNCm/kabel/banánky)---rezistor
+\subsection{15. měření}
+(SMAf/BNCf)---(BNCm/kabel/banánky)---(rezistor)
 
 \begin{figure}[htp]
 	\centering
@@ -816,7 +903,7 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 	\label{fig:15-s11}
 \end{figure}
 
-\subsection{16.}
+\subsection{16. měření}
 (SMAf/BNCf)---(BNCm/terminátor)
 
 \begin{figure}[htp]
@@ -826,7 +913,7 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 	\label{fig:16-s11}
 \end{figure}
 
-\subsection{17.}
+\subsection{17. měření}
 (SMAf/SMAf)---(vlnovod)---(SMAm/SMAm)
 
 \begin{figure}[htp]
