@@ -84,7 +84,7 @@ Díky malým rozměrům je v nich zároveň zanedbatelné fázové zpoždění
 mezi jednotlivými body v~obvodu.
 Tyto vlastnosti však obecně neplatí pro vysokofrekvenční obvody.
 K~jejich analýze je potřeba přistupovat odlišným způsobem,
-než jaký se využívá pro nízkofrekvenční obvody.\cite{Pozar}
+než jaký se využívá pro nízkofrekvenční obvody \cite{Pozar}.
 V~této úloze budeme zabývat vektorovým síťovým analyzátorem,
 který je vhodný pro měření parametrů vysokofrekvenčních obvodů.
 
@@ -99,8 +99,8 @@ pomocí nějž se měří rozptylové parametry elektrických obvodů
 s~různými prvky pro vysokofrekvenční aplikace.
 VNA je konstruován na měření velikosti a fáze prošlého a odraženého vlnění
 z~měřeného obvodu,
-který je obecně označován zkratkou DUT z~anglického device under test.%
-\cite{Pozar}
+který je obecně označován zkratkou DUT z~anglického device 
+under test \cite{Pozar}.
 VNA obsahuje zdroj signálu o~známých frekvencích a soustavu přijímačů,
 které měří změny v~signálu způsobené připojeným DUT.
 Schéma funkce přístroje je na obr.~\ref{VNA}.
@@ -125,8 +125,8 @@ Přímé měření napětí a proudů v~mikrovlnných obvodech není vhodné,
 jelikož naměřené hodnoty obsahují velikost a fázi postupující vlny
 v~daném směru nebo vlny stojaté.
 Je potřeba brát v~potaz dopadající, prošlé i odražené vlny.
-Proto zavádíme pojem rozptylová matice, která se označuje jako $(S)$ matice.%
-\cite{Pozar}
+Proto zavádíme pojem rozptylová matice, která se označuje 
+jako $(S)$ matice \cite{Pozar}.
 Rozptylová matice poskytuje kompletní popis obvodu s~$N$ svorkami,
 konkrétně vytváří vztah mezi vlněním dopadajícím na svorky
 a vlněním na svorkách odraženým.
@@ -146,7 +146,7 @@ $(S)$ matice je definovaná jako:
 \end{pmatrix}
 ,\]
 kde $U^+$ a $U^-$ jsou amplitudy dopadajícího a odraženého napětí
-(v~tomto pořadí).\cite{Pozar}
+(v~tomto pořadí) \cite{Pozar}.
 
 Pro obvod s~$N$ svorkami má $(S)$ matice tvar:
 \[
@@ -381,14 +381,14 @@ kde $Z_{11}$, $Z_{12}$, $Z_{21}$ a $Z_{22}$ jsou prvky impedanční matice, kter
 
 \subsection{Typy konektorů}
 V~tomto praktiku budeme měřit různá zapojení koaxiálních konektorů typu
-SMA, BNC a N s~impedancí 50 $\Omega$.
+SMA, BNC a N s~impedancí 50~$\Omega$.
 
 SubMiniature Type-A neboli SMA konektor je jedním z~nejpoužívanějších
 mikrovlnných konektorů. Je zobrazený na obr.~\ref{SMA}.
-Vnitřní průměry jeho koaxiálního vedení jsou 4,1 mm a 1,27 mm,
+Vnitřní průměry jeho koaxiálního vedení jsou 4,1~mm a 1,27~mm,
 funkci izolantu v~něm plní teflon.
 Spojení se zajišťuje pomocí šroubovacího mechanismu.
-Obecně se uvádí, že je vhodný až do frekvence 18 GHz \cite{rfhandbook}.
+Obecně se uvádí, že je vhodný až do frekvence 18~GHz \cite{rfhandbook}.
 
 Bayonet Neill Concelman, někdy nazývaný Bayonet Navel Connector,
 zkráceně BNC, je konektor vyvinutý ve čtyřicátých letech dvacátého století.
@@ -397,13 +397,13 @@ Tento mechanismus je tvořen dvěma výstupky na samičím konektoru
 a drážkou se spirálou a vybráním na převlečné části samčího konektoru,
 viz obr.~\ref{BNC}.
 Umožňuje rychlé a spolehlivé spojení nasunutím a pootočením převlečné
-části o~90$^{\circ}$ \cite{czwiki}.
-Konektor je vhodný až do frekvence 11 GHz \cite{rfhandbook}.
+části o~90~$^{\circ}$ \cite{czwiki}.
+Konektor je vhodný až do frekvence 11~GHz \cite{rfhandbook}.
 
 Konektor typu N, pojmenovaný po jeho vynálezci Paulu Neillovi,
 vznikl ve čtyřicátých letech dvacátého století.
 Jedná se o~konektor s~klasickým šroubovacím mechanismem.
-Využívá se při aplikacích kde frekvence nepřesahuje 11 GHz \cite{rfhandbook}.
+Využívá se při aplikacích, kde frekvence nepřesahuje 11~GHz \cite{rfhandbook}.
 Je zobrazený na obr.~\ref{N}.
 
 \begin{center}
@@ -428,8 +428,8 @@ Je zobrazený na obr.~\ref{N}.
 \section{Praktická část}
 \subsection{Kalibrace přístroje}
 K~měření budeme používat vektorový síťový analyzátor Rohde \& Schwarz ZVL,
-který měří v~rozsahu 9 kHz až 13,6 GHz.
-Měřený prvek se k přístroji připojuje pomocí testovacích kabelů s SMA konektory.
+který měří v~rozsahu 9~kHz až 13,6~GHz.
+Měřený prvek se k~přístroji připojuje pomocí testovacích kabelů s~SMA konektory.
 Tyto kabely však nejsou dokonalé a mění parametry celého systému.
 Před samotným měřením je tedy potřeba přístroj s~kabely nakalibrovat.
 Pro kalibraci jednoho portu potřebujeme tři různé impedance.
@@ -445,15 +445,16 @@ protože nedbalá kalibrace způsobená špatně připojeným kalibračním čle
 by mohla ovlivnit všechna následně naměřená data.
 
 První připojíme port 1 jako otevřený obvod.
-Veškerý signál by se měl odrazit, čemuž odpovídá $S_{11}$ = 0 dB.
+Veškerý signál by se měl odrazit, čemuž odpovídá $S_{11}$ = 0~dB.
 Další na řadě je zkrat na portu 1.
 Na zkratu se nemá výkon kde ztratit,
-takže opět dochází k~úplnému odrazu a znovu platí, že $S_{11}$ = 0 dB.
+takže opět dochází k~úplnému odrazu a znovu platí, že $S_{11}$ = 0~dB.
 Zbývá připojení portu 1 na přizpůsobenou impedanci.
 V~tomto případě by se měl ideálně veškerý signál absorbovat,
 tedy $S_{11}$ by měla být co nejnižší.
-U~frekvence 10 GHz je $S_{11}$ přibližně -25 dB,
-minimum $S_{11}$ je okolo -50 dB. Tyto hodnoty považujeme za dostatečně nízké.
+U~frekvence 10~GHz je $S_{11}$ přibližně $-25$~dB,
+minimum $S_{11}$ je okolo $-50$~dB. Tyto hodnoty považujeme 
+za dostatečně nízké.
 
 Kalibrace druhého portu probíhá obdobně,
 přičemž se místo $S_{11}$ měří $S_{22}$.
@@ -462,7 +463,7 @@ stejné hodnoty $S_{22}$ na portu 2 jako jsme naměřili pro $S_{11}$ na portu 1
 
 Posledním krokem je kalibrace obou portů současně nazývaná
 jako zapojení through.
-Přístroj měří $S_{21}$, která je podle očekávání kolem 0 dB.
+Přístroj měří $S_{21}$, která je podle očekávání kolem 0~dB.
 Tím je kalibrace hotová.
 
 Z~předpokladu symetrie budeme dále uvažovat rovnosti
@@ -478,7 +479,7 @@ Obdobné značení budeme využívat i nadále.
 Z $S_{11}$ na obr.~\ref{fig:01-s11} je vidět,
 že na GHz frekvencích se na konektoru začíná signál odrážet.
 Z $S_{21}$ na obr.~\ref{fig:01-s21} vyplývá,
-že na frekvencích blížících se 10 GHz je signál zeslaben téměř o 0,5 dB.
+že na frekvencích blížících se 10 GHz je signál zeslaben téměř o 0,5~dB.
 
 \begin{figure}[htp]
 	\centering
@@ -639,8 +640,9 @@ kde k = 0,1,2,..., $\varepsilon_0$ je permitivita vakua,
 $\varepsilon_r$ = je v tomto případě relativní permitivita polyethylenu
 a $\mu_0$ je permeabilita vakua.
 
-Destruktivní interference pro $\lambda/4$ je na frekvenci 3,33 GHz
-s útlumem 42 dB. Pro $3\lambda/4$ je útlum 36,4 dB na frekvenci 8,47 GHz.
+Destruktivní interference pro $\lambda/4$ je na frekvenci 3,33~GHz
+s útlumem 42~dB. Pro $3\lambda/4$ je útlum 36,4~dB na 
+frekvenci 8,47~GHz.
 
 \begin{figure}[htp]
 	\centering
