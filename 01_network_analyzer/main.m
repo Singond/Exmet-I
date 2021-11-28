@@ -152,3 +152,23 @@ k = [0; 1];
 d = (2*k + 1) ./ (4 .* fpks .* sqrt(eps0 * eps_polyethylene * mu0));
 d_mean = mean(d);
 d_ster = std(d) / sqrt(numel(d));
+
+## Experiment 7
+disp("Experiment 7:");
+s = experiment(7).s21(experiment(7).freq < 3e8);
+[~, pks] = findpeaksp(-abs(s), "MinPeakProminence", 0.1);
+fpks = experiment(7).freq(pks);
+k = (0:(numel(pks)-1))';
+
+## Fit function b(1) * x + b(2)
+x = v_pe .* (2.*k + 1) ./ 4;
+[beta, ~, r] = ols(fpks, [x ones(size(x))]);
+dcab = 1/beta(1);
+##dcab_std = sqrt((v_pe / (2 * mean(fpks)**2))**2 * std(r)**2);
+dcab_std = mean(sqrt((v_pe ./ (2 * fpks.**2)).**2 .* r.**2));
+dcab_ster = dcab_std / sqrt(numel(fpks));
+printf("Length of cable: d = %g +- %g [mm]\n", dcab*1000, dcab_ster*1000);
+
+dcab2 = (2*k + 1) ./ (4 .* fpks .* sqrt(eps0 * eps_polyethylene * mu0));
+dcab2_mean = mean(dcab2);
+dcab2_ster = std(dcab2) / sqrt(numel(dcab2));

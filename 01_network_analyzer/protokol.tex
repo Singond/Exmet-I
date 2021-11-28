@@ -695,10 +695,19 @@ Délka $d$ spočtená podle vztahu~\eqref{eq:resonance-length-freq} je
 	\label{fig:06-sparam}
 \end{figure}
 
-\subsection{7. měření}
+\subsection{7. měření: rezonance na T-průchodce s volným vodičem}
 Měříme (SMAf/BNCm)---(BNCf/BNCm + kabel /BNCf)---(BNCm/SMAf).
-Zapojení stejné jako u měření 6, tentokrát je však na prostřední vstup
+Zapojení je stejné jako u měření 6, tentokrát je však na prostřední vstup
 T členu připojen kabel neznámé délky. %Mění se fáze?
+
+Postup je obdobný předchozímu případu. Pro výpočet déllky $\freelen$
+jsme zvolili minima signálu $\sparam_{21}$ příslušící frekvencím
+pod \SI{3e8}{\hertz}, tedy patnáct hodnot.
+U~vyšších frekvencí roste nejistota určení polohy minima, jelikož
+se prodlužuje krok vzorkování, a proto nebyly uvažovány.
+
+Délka kabelu spočtená výše uvedenou metodou činí
+$\freelen = \SI{5.072(4)}{\metre}$.
 
 \begin{figure}[htp]
 	\centering
@@ -723,15 +732,11 @@ T členu připojen kabel neznámé délky. %Mění se fáze?
 \begin{figure}[htp]
 	\centering
 	\input{plots/data07-s11}
-	\caption{$s_{11}$}
-	\label{fig:07-s11}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
 	\input{plots/data07-s21}
-	\caption{$s_{21}$}
-	\label{fig:07-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		sestavy redukcí \connector{SMA\female}{BNC}
+		a~T-průchodky BNC s volným vodičem.}
+	\label{fig:07-sparam}
 \end{figure}
 
 \subsection{8. měření}
