@@ -601,7 +601,7 @@ jednoho konektoru určíme jako odmocninu z naměřené matice.
 	\label{fig:04-result-sparam}
 \end{figure}
 
-\subsection{5.měření}
+\subsection{5.měření: průchodka BNC\female}
 Ze zapojení (SMAf/BNCm)---(BNCf/BNCf)---(BNCm/SMAf),
 jehož schéma je vidět na obr.~\ref{fig:exp5},
 chceme nalézt parametry prostředního konektoru (BNCf/BNCf).
@@ -610,15 +610,19 @@ Výpočet lze provézt díky znalosti výsledků z měření 4.
 \begin{figure}[htp]
 	\centering
 	\input{plots/data05-s11}
-	\caption{$s_{11}$}
-	\label{fig:05-s11}
+	\input{plots/data05-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		sestavy redukcí \connector{SMA\female}{BNC} a~průchodky BNC\female.}
+	\label{fig:05-sparam}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
-	\input{plots/data05-s21}
-	\caption{$s_{21}$}
-	\label{fig:05-s21}
+	\input{plots/results05-s11}
+	\input{plots/results05-s21}
+	\caption{Spočtené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		průchodky BNC\female.}
+	\label{fig:05-result-sparam}
 \end{figure}
 
 \subsection{6. měření}

@@ -112,3 +112,19 @@ for k = 1:size(T_check)(3)
 	T_check(:,:,k) = T_bnc(:,:,k) * T_bnc(:,:,k);
 endfor
 assert(T_check, T_bncbnc, 1e-12);
+
+## Experiment 5
+T_5tot = tmatrix(experiment(5).s11, experiment(5).s21, z0);
+T_bncff = zeros(size(T_5tot));
+assert(size(T_5tot), size(T_bnc));
+for k = 1:size(T_5tot)(3)
+	T_bncff(:,:,k) = (T_bnc(:,:,k) \ T_5tot(:,:,k)) / T_bnc(:,:,k);
+endfor
+[s11_bncff, s21_bncff] = sparams(T_bncff, z0);
+
+## Check
+T_check = zeros(size(T_bncff));
+for k = 1:size(T_check)(3)
+	T_check(:,:,k) = T_bnc(:,:,k) * T_bncff(:,:,k) * T_bnc(:,:,k);
+endfor
+assert(T_check, T_5tot, 1e-12);

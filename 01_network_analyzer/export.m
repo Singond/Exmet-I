@@ -44,3 +44,7 @@ plot_sparam(experiment(3).freq, s21_smamm, "results03", "s21");
 ## Experiment 4
 plot_sparam(experiment(4).freq, s11_bnc, "results04", "s11");
 plot_sparam(experiment(4).freq, s21_bnc, "results04", "s21");
+
+## Experiment 5
+plot_sparam(experiment(5).freq, s11_bncff, "results05", "s11");
+plot_sparam(experiment(5).freq, s21_bncff, "results05", "s21");
