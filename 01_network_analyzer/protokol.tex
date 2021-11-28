@@ -63,6 +63,9 @@
 \newcommand\sparam{S}
 \newcommand\male{m}
 \newcommand\female{f}
+\newcommand\permitfree{\varepsilon_0}
+\newcommand\permitrel{\varepsilon_r}
+\newcommand\permeabfree{\mu_0}
 
 \newcommand\connector[2]{#1 -- #2}
 \newcommand\connectord[3]{#1 -- #2\\ #3}
@@ -627,6 +630,7 @@ Výpočet lze provézt díky znalosti výsledků z měření 4.
 \end{figure}
 
 \subsection{6. měření: rezonance na T-průchodce BNC}
+\newcommand\freelen{d}
 Zapojení (SMAf/BNCm)---(BNCf/BNCm/BNCf)---(BNCm/SMAf),
 přičemž (BNCf/BNCm/BNCf) je člen ve tvaru T.
 Prostřední vstup členu T je zde jako otevřený obvod, viz obr.~\ref{fig:exp6}.
@@ -641,11 +645,27 @@ kde k = 0,1,2,... je řád maxima, $\varepsilon_0$ je permitivita vakua,
 $\varepsilon_r = \num{2.25}$ je v tomto případě relativní permitivita polyethylenu
 a $\mu_0$ je permeabilita vakua.
 
-Destruktivní interference pro $\lambda/4$ je na frekvenci 3,33~GHz
-s útlumem 42~dB. Pro $3\lambda/4$ je útlum 36,4~dB na 
+Pro stanovení neznámé délky $\freelen$ přepišme vztah
+\eqref{eq:resonance-length} do tvaru:
+\begin{align}
+	\label{eq:resonance-length-freq}
+	f &= \frac{1}{\freelen} \frac{2k+1}{4}
+		\frac{1}{\sqrt{\permitfree\permitrel\permeabfree}}
+		= ax + b &
+	a &= 1/\freelen \\
+	& &
+	x &= \frac{2k+1}{4}
+		\frac{1}{\sqrt{\permitfree\permitrel\permeabfree}}
+\end{align}
+kde parametry $a$ a $b$ aproximujeme metodou nejmenších čtverců
+a~spočteme délku $\freelen = 1/a$.
+
+Destruktivní interference pro $\lambda/4$ nastává při frekvenci 3,33~GHz
+s~útlumem 42~dB. Pro $3\lambda/4$ je útlum 36,4~dB na
 frekvenci 8,47~GHz.
-Délka $d$ spočtená podle vztahu~\eqref{eq:resonance-length} je
-\SI{16.3(14)}{\milli\metre}.
+Délka $d$ spočtená podle vztahu~\eqref{eq:resonance-length-freq} je
+\SI{19.4}{\milli\metre}.
+% TODO: Calculate uncertainty
 
 \begin{figure}[htp]
 	\centering
