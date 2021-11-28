@@ -3,6 +3,7 @@ tmp/
 *.ods
 *.pdf
 *.md.backup
+materials
 octave-workspace
 
 # Eclipse files
