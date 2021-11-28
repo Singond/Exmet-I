@@ -134,9 +134,20 @@ endfor
 assert(T_check, T_5tot, 1e-12);
 
 ## Experiment 6
+disp("Experiment 6:");
 eps_polyethylene = 2.25;
+v_pe = 1 / sqrt(eps0 * eps_polyethylene * mu0);
 [~, pks] = findpeaksp(-abs(experiment(6).s21), "MinPeakProminence", 0.1);
 fpks = experiment(6).freq(pks);
+k = (0:(numel(pks)-1))';
+
+## Fit function b(1) * x + b(2)
+x = v_pe .* (2.*k + 1) ./ 4;
+[beta, ~, r] = ols(fpks, [x ones(size(x))]);
+d = 1/beta(1);
+printf("Length of T-piece: d = %g [mm]\n", d*1000);
+
+## Alternative solution
 k = [0; 1];
 d = (2*k + 1) ./ (4 .* fpks .* sqrt(eps0 * eps_polyethylene * mu0));
 d_mean = mean(d);
