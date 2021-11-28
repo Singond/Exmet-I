@@ -575,7 +575,7 @@ matice pro zbylé konektory známe z předchozích měření.
 	\label{fig:03-result-sparam}
 \end{figure}
 
-\subsection{4. měření}
+\subsection{4. měření: dvojice redukcí \connector{SMA\female}{BNC}}
 Máme zapojení (SMAf/BNCm)---(BNCf/SMAf),
 jeho schéma je vidět na obr.~\ref{fig:exp4}.
 Jelikož nedokážeme zapojit ani jeden z těchto konektorů samostatně
@@ -586,17 +586,20 @@ jednoho konektoru určíme jako odmocninu z naměřené matice.
 \begin{figure}[htp]
 	\centering
 	\input{plots/data04-s11}
-	\caption{$s_{11}$}
-	\label{fig:04-s11}
+	\input{plots/data04-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		dvojice redukcí \connector{SMA\female}{BNC}.}
+	\label{fig:04-sparam}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
-	\input{plots/data04-s21}
-	\caption{$s_{21}$}
-	\label{fig:04-s21}
+	\input{plots/results04-s11}
+	\input{plots/results04-s21}
+	\caption{Spočtené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		redukce \connector{SMA\female}{BNC}.}
+	\label{fig:04-result-sparam}
 \end{figure}
-
 
 \subsection{5.měření}
 Ze zapojení (SMAf/BNCm)---(BNCf/BNCf)---(BNCm/SMAf),

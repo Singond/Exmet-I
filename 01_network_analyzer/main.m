@@ -97,3 +97,18 @@ for k = 1:size(T_check)(3)
 	T_check(:,:,k) = T_smag(:,:,k) * T_smamm(:,:,k) * T_smas(:,:,k);
 endfor
 assert(T_check, T_3tot, 1e-12);
+
+## Experiment 4
+T_bncbnc = tmatrix(experiment(4).s11, experiment(4).s21, z0);
+T_bnc = zeros(size(T_bncbnc));
+for k = 1:size(T_bncbnc)(3)
+	T_bnc(:,:,k) = sqrtm(T_bncbnc(:,:,k));
+endfor
+[s11_bnc, s21_bnc] = sparams(T_bnc, z0);
+
+## Check
+T_check = zeros(size(T_bnc));
+for k = 1:size(T_check)(3)
+	T_check(:,:,k) = T_bnc(:,:,k) * T_bnc(:,:,k);
+endfor
+assert(T_check, T_bncbnc, 1e-12);
