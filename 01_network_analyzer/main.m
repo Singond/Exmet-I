@@ -1,4 +1,8 @@
+pkg load singon-ext
 addpath octave
+
+eps0 = 8.854E-12;           # Permittivity of free space [SI]
+mu0 = 1.257E-6;             # Permeability of free space [SI]
 
 function mag = db2mag(decibels)
 	mag = 10 .^ (decibels ./ 10);
@@ -128,3 +132,12 @@ for k = 1:size(T_check)(3)
 	T_check(:,:,k) = T_bnc(:,:,k) * T_bncff(:,:,k) * T_bnc(:,:,k);
 endfor
 assert(T_check, T_5tot, 1e-12);
+
+## Experiment 6
+eps_polyethylene = 2.25;
+[~, pks] = findpeaksp(-abs(experiment(6).s21), "MinPeakProminence", 0.1);
+fpks = experiment(6).freq(pks);
+k = [0; 1];
+d = (2*k + 1) ./ (4 .* fpks .* sqrt(eps0 * eps_polyethylene * mu0));
+d_mean = mean(d);
+d_ster = std(d) / sqrt(numel(d));

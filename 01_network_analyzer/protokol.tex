@@ -28,6 +28,7 @@
 	list-pair-separator  = \text{ a },
 	range-phrase         = \text{ až },
 	range-units          = single,
+	separate-uncertainty = true,
 }
 \usepackage{amsmath}
 
@@ -625,7 +626,7 @@ Výpočet lze provézt díky znalosti výsledků z měření 4.
 	\label{fig:05-result-sparam}
 \end{figure}
 
-\subsection{6. měření}
+\subsection{6. měření: rezonance na T-průchodce BNC}
 Zapojení (SMAf/BNCm)---(BNCf/BNCm/BNCf)---(BNCm/SMAf),
 přičemž (BNCf/BNCm/BNCf) je člen ve tvaru T.
 Prostřední vstup členu T je zde jako otevřený obvod, viz obr.~\ref{fig:exp6}.
@@ -634,14 +635,17 @@ Délka prostředního vstupu $d$ je s frekvencí $f$,
 při níž dochází k destruktivní interferenci, spojena vztahem
 \begin{equation}
 	d = \frac{(2k+1)}{4f} \frac{1}{\sqrt{\varepsilon_0 \varepsilon_r \mu_0}},
+	\label{eq:resonance-length}
 \end{equation}
-kde k = 0,1,2,..., $\varepsilon_0$ je permitivita vakua,
-$\varepsilon_r$ = je v tomto případě relativní permitivita polyethylenu
+kde k = 0,1,2,... je řád maxima, $\varepsilon_0$ je permitivita vakua,
+$\varepsilon_r = \num{2.25}$ je v tomto případě relativní permitivita polyethylenu
 a $\mu_0$ je permeabilita vakua.
 
 Destruktivní interference pro $\lambda/4$ je na frekvenci 3,33~GHz
 s útlumem 42~dB. Pro $3\lambda/4$ je útlum 36,4~dB na 
 frekvenci 8,47~GHz.
+Délka $d$ spočtená podle vztahu~\eqref{eq:resonance-length} je
+\SI{16.3(14)}{\milli\metre}.
 
 \begin{figure}[htp]
 	\centering
@@ -665,15 +669,10 @@ frekvenci 8,47~GHz.
 \begin{figure}[htp]
 	\centering
 	\input{plots/data06-s11}
-	\caption{$s_{11}$}
-	\label{fig:06-s11}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
 	\input{plots/data06-s21}
-	\caption{$s_{21}$}
-	\label{fig:06-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		sestavy redukcí \connector{SMA\female}{BNC} a~T-průchodky BNC.}
+	\label{fig:06-sparam}
 \end{figure}
 
 \subsection{7. měření}
