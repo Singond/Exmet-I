@@ -36,3 +36,7 @@ for e = experiment
 		plot_sparam(e.freq, e.s21, e.name, "s21");
 	end
 endfor
+
+## Experiment 3
+plot_sparam(experiment(3).freq, s11_smamm, "results03", "s11");
+plot_sparam(experiment(3).freq, s21_smamm, "results03", "s21");

@@ -59,7 +59,7 @@
 \teplota={}% [C]
 \vlhkost={}% [%]
 
-\newcommand\sparam{s}
+\newcommand\sparam{S}
 \newcommand\male{m}
 \newcommand\female{f}
 
@@ -469,17 +469,17 @@ Tím je kalibrace hotová.
 Z~předpokladu symetrie budeme dále uvažovat rovnosti
 $S_{11}$ = $S_{22}$ a $S_{21}$ = $S_{12}$.
 
-\subsection{1. měření}
+\subsection{1. měření: zlatý konektor SMA\female}
 Jako první měříme konektor SMA, který má z~obou stran samičí vstup (značíme f),
 schéma zapojení je na obr.~\ref{fig:exp1}.
 Konektor je zlaté barvy (index $_Z$), což rozlišuje pouze z důvodu,
 že budeme srovnávat dva konektory stejného typu lišící se barvou.
 Výsledné zapojení tedy označíme jako (SMAf/SMAf)$_Z$.
 Obdobné značení budeme využívat i nadále.
-Z $S_{11}$ na obr.~\ref{fig:01-s11} je vidět,
-že na GHz frekvencích se na konektoru začíná signál odrážet.
-Z $S_{21}$ na obr.~\ref{fig:01-s21} vyplývá,
-že na frekvencích blížících se 10 GHz je signál zeslaben téměř o 0,5~dB.
+Z~grafu č.~\ref{fig:01-sparam} je vidět,
+že v~GHz frekvencích se na konektoru začíná signál odrážet (viz $\sparam_{11}$),
+a na~frekvencích blížících se \SI{10}{\giga\hertz} je signál zeslaben téměř
+o~\SI{0.5}{\decibel}.
 
 \begin{figure}[htp]
 	\centering
@@ -496,26 +496,20 @@ Z $S_{21}$ na obr.~\ref{fig:01-s21} vyplývá,
 \begin{figure}[htp]
 	\centering
 	\input{plots/data01-s11}
-	\caption{První experiment ($s_{11}$)}
-	\label{fig:01-s11}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
 	\input{plots/data01-s21}
-	\caption{$s_{21}$}
-	\label{fig:01-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		zlatého konektoru SMA\female.}
+	\label{fig:01-sparam}
 \end{figure}
 
-\newpage
-\subsection{2. měření}
+\subsection{2. měření: stříbrný konektor SMA\female}
 Měříme opět konektor (SMAf/SMAf)$_S$, avšak nyní je konektor
 ve stříbrné barvě (index $_S$).
 Schéma zapojení je na obr. \ref{fig:exp2}.
 V porovnání s konektorem ve zlaté barvě z prvního měření
 je u stříbrného z 
-$S_{11}$ stříbrného konektoru na obr. \ref{fig:02-s11} má podobný průběh jako u zlatého konektoru.
-Na obr. \ref{fig:02-s21} je u $S_{21}$ vidět oproti zlatému konektoru menší útlum.
+$S_{11}$ stříbrného konektoru na obr. \ref{fig:02-sparam} má podobný průběh jako u zlatého konektoru.
+U~$S_{21}$ je vidět oproti zlatému konektoru menší útlum.
 Může se tedy jednat o kvalitnější součástku,
 nebo je lepší průchod signálu způsoben preciznějším dotažením.
 
@@ -534,19 +528,13 @@ nebo je lepší průchod signálu způsoben preciznějším dotažením.
 \begin{figure}[htp]
 	\centering
 	\input{plots/data02-s11}
-	\caption{$s_{11}$}
-	\label{fig:02-s11}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
 	\input{plots/data02-s21}
-	\caption{$s_{21}$}
-	\label{fig:02-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		stříbrného konektoru SMA\female.}
+	\label{fig:02-sparam}
 \end{figure}
 
-
-\subsection{3. měření}
+\subsection{3. měření: trojice konektorů SMA}
 Měříme zapojení (SMAf/SMAf)$_Z$---(SMAm/SMAm)$_Z$---(SMAf/SMAf)$_S$,
 kde m značí samčí vstup.
 Schéma zapojení je na obr. \ref{fig:exp3}.
@@ -572,15 +560,19 @@ matice pro zbylé konektory známe z předchozích měření.
 \begin{figure}[htp]
 	\centering
 	\input{plots/data03-s11}
-	\caption{$s_{11}$}
-	\label{fig:03-s11}
+	\input{plots/data03-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		trojice konektorů SMA.}
+	\label{fig:03-sparam}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
-	\input{plots/data03-s21}
-	\caption{$s_{21}$}
-	\label{fig:03-s21}
+	\input{plots/results03-s11}
+	\input{plots/results03-s21}
+	\caption{Spočtené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		kontektoru SMA\male.}
+	\label{fig:03-result-sparam}
 \end{figure}
 
 \subsection{4. měření}

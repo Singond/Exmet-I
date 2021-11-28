@@ -1,4 +1,4 @@
-0; # Not a function file
+addpath octave
 
 function mag = db2mag(decibels)
 	mag = 10 .^ (decibels ./ 10);
@@ -77,3 +77,23 @@ experiment(k++) = import_smatrix("data14-s11.csv", "");
 experiment(k++) = import_smatrix("data15-s11.csv", "");
 experiment(k++) = import_smatrix("data16-s11.csv", "");
 experiment(k++) = import_smatrix("", "data17-s21.csv", "data17");
+
+z0 = 50;     # Base impedance [ohm]
+
+## Experiment 3
+T_smag = tmatrix(experiment(1).s11, experiment(1).s21, z0);
+T_smas = tmatrix(experiment(2).s11, experiment(2).s21, z0);
+T_3tot = tmatrix(experiment(3).s11, experiment(3).s21, z0);
+T_smamm = zeros(size(T_smag));
+
+for k = 1:size(T_smag)(3)
+	T_smamm(:,:,k) = (T_smag(:,:,k) \ T_3tot(:,:,k)) / T_smas(:,:,k);
+endfor
+[s11_smamm, s21_smamm] = sparams(T_smamm, z0);
+
+## Check
+T_check = zeros(size(T_smamm));
+for k = 1:size(T_check)(3)
+	T_check(:,:,k) = T_smag(:,:,k) * T_smamm(:,:,k) * T_smas(:,:,k);
+endfor
+assert(T_check, T_3tot, 1e-12);
