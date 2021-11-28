@@ -25,11 +25,15 @@ function view_sparam(freq, s, name, elem)
 	grid off;
 endfunction
 
+function view_sparame(ex)
+	if (!isempty(ex.s11))
+		view_sparam(ex.freq, ex.s11, ex.name, "s11");
+	end
+	if (!isempty(ex.s21))
+		view_sparam(ex.freq, ex.s21, ex.name, "s21");
+	end
+endfunction
+
 for e = experiment
-	if (!isempty(e.s11))
-		view_sparam(e.freq, e.s11, e.name, "s11");
-	end
-	if (!isempty(e.s21))
-		view_sparam(e.freq, e.s21, e.name, "s21");
-	end
+	view_sparame(e);
 endfor
