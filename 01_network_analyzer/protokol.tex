@@ -840,18 +840,19 @@ Podle očekávání dostáváme horší výsledky než v měření 9....
 	\label{fig:10-sparam}
 \end{figure}
 
-\subsection{11. měření}
+\subsection{11. měření: krokodýlky}
 Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky na prázdno)
 jako jednobran bez připojeného přijímače.
 
 \begin{figure}[htp]
 	\centering
 	\input{plots/data11-s11}
-	\caption{$s_{11}$}
-	\label{fig:11-s11}
+	\caption{Naměřené hodnoty parametru $\sparam_{11}$
+		sestavy redukcí a~volných krokodýlků.}
+	\label{fig:11-sparam}
 \end{figure}
 
-\subsection{12. měření}
+\subsection{12. měření: krokodýlky s~cívkou}
 Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobran.
 
 \begin{figure}[htp]
@@ -873,26 +874,50 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 		\node[yshift=1cm] at (clip2) {krokodýlky};
 		\draw (con1.west) to[short, -o] +(-1,0);
 	\end{circuitikz}
-	\caption{Schéma zapojení 12. měření}
+	\caption{Schéma zapojení 12. měření.}
 	\label{fig:exp12}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
 	\input{plots/data12-s11}
-	\caption{$s_{11}$}
-	\label{fig:12-s11}
+	\caption{Naměřené hodnoty parametru $\sparam_{11}$
+		sestavy redukcí a~krokodýlků s~cívkou.}
+	\label{fig:12-sparam}
 \end{figure}
 
-
-\subsection{13. měření}
+\subsection{13. měření: krokodýlky s~kondenzátorem}
 (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky s kondenzátorem)
 
 \begin{figure}[htp]
 	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\draw (con2.east)++(0,0.2) to[short, -o] ++(1.4,0) -- ++(0,0.5)
+		-- node[midway] (clip1) {} ++(4,0) to[capacitor]
+		++(0,-1.4) -- node[midway] (clip2) {} ++(-4,0) -- ++(0,0.5);
+		\draw (con2.east)++(0,-0.2) to[short, -*] +(1.4,0);
+		\draw[very thick] (clip1.center) -- +(150:1);
+		\draw (clip1.center) +(-0.7,0) arc (180:150:0.7);
+		\draw[very thick] (clip2.center) -- +(150:1);
+		\draw (clip2.center) +(-0.7,0) arc (180:150:0.7);
+		\node[yshift=1cm] at (clip2) {krokodýlky};
+		\draw (con1.west) to[short, -o] +(-1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 13. měření.}
+	\label{fig:exp12}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
 	\input{plots/data13-s11}
-	\caption{$s_{11}$}
-	\label{fig:13-s11}
+	\caption{Naměřené hodnoty parametru $\sparam_{11}$
+		sestavy redukcí a~krokodýlků s~kondenzátorem.}
+	\label{fig:13-sparam}
 \end{figure}
 
 \subsection{14. měření}
