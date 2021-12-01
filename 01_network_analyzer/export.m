@@ -65,3 +65,20 @@ gp.exec("set term epslatex size 16cm,10cm");
 gp.exec("set output 'plots/results12-l.tex'");
 gp.doplot();
 clear gp;
+
+## Experiment 13
+gp = gnuplotter();
+gp.load("results-13-z.gp");
+gp.plot(experiment(13).freq, abs(z), "with lines ls 2");
+gp.exec("set term epslatex size 16cm,10cm");
+gp.exec("set output 'plots/results13-z.tex'");
+gp.doplot();
+clear gp;
+
+gp = gnuplotter();
+gp.load("results-13-c.gp");
+gp.plot(experiment(13).freq, abs(C), "with lines ls 2");
+gp.exec("set term epslatex size 16cm,10cm");
+gp.exec("set output 'plots/results13-c.tex'");
+gp.doplot();
+clear gp;

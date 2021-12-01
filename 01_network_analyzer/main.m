@@ -177,3 +177,8 @@ dcab2_ster = std(dcab2) / sqrt(numel(dcab2));
 s = experiment(12).s11;
 z = z0 .* (1 + s) ./ (1 - s);
 L = z ./ (2i .* pi .* experiment(12).freq);  # L is complex inductance
+
+## Experiment 13
+s = experiment(13).s11;
+z = z0 .* (1 + s) ./ (1 - s);
+C = 1 ./ (z .* 2i .* pi .* experiment(13).freq);  # C is complex capacitance
