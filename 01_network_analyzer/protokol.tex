@@ -743,6 +743,15 @@ $\freelen = \SI{5.072(4)}{\metre}$.
 Zapojení (SMAf/BNCm)---(BNCf/BNCm + kabel + terminátor /BNCf)---(BNCm/SMAf)
 vychází z měření 7, ke kabelu je navíc připojen terminátor.
 
+Jelikož impedance terminátoru je shodná s~impedancí vedení,
+z~pohledu vstupujícího signálu se jedná o~dvě stejně velké impedance
+zapojené vedle sebe.
+Dochází tedy k~dělení výkonu rovným dílem mezi obě větve.
+Očekáváme proto, že výkon procházejícího signálu bude polovinou výkonu
+vstupujícího, což odpovídá poklesu o~zhruba \SI{3.01}{\decibel}.
+Jak je patrno z~parametru $\sparam_{21}$ na obrázku~\ref{fig:08-sparam},
+tento předpoklad je splněn.
+
 \begin{figure}[htp]
 	\centering
 	\input{plots/data08-s11}
