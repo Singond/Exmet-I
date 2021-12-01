@@ -66,6 +66,11 @@
 \newcommand\permitfree{\varepsilon_0}
 \newcommand\permitrel{\varepsilon_r}
 \newcommand\permeabfree{\mu_0}
+\newcommand\freq{f}
+\newcommand\impedance{Z}
+\newcommand\resistance{R}
+\newcommand\inductance{L}
+\newcommand\capacitance{C}
 
 \newcommand\connector[2]{#1 -- #2}
 \newcommand\connectord[3]{#1 -- #2\\ #3}
@@ -893,6 +898,20 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 	\caption{Naměřené hodnoty parametru $\sparam_{11}$
 		sestavy redukcí a~krokodýlků s~cívkou.}
 	\label{fig:12-sparam}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/results12-z}
+	\caption{Spočtené hodnoty impedance $\impedance$ cívky.}
+	\label{fig:12-result-z}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/results12-l}
+	\caption{Spočtené hodnoty indukčnosti $\inductance$ cívky.}
+	\label{fig:12-result-l}
 \end{figure}
 
 \subsection{13. měření: krokodýlky s~kondenzátorem}

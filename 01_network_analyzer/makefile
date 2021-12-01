@@ -5,7 +5,8 @@ include ../basic.make
 all: protokol.pdf
 
 PLOTS != find data -name data*.csv | sed -E 's/^data\/(.*).csv/plots\/\1.tex/'
-plots/data%.tex plots/data%.eps : main.m export.m real.gp imag.gp
+plots/data%.tex plots/data%.eps : main.m export.m real.gp imag.gp \
+results-12-z.gp results-12-l.gp
 	@mkdir -p plots
 	octave export.m
 

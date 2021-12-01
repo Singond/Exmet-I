@@ -172,3 +172,8 @@ printf("Length of cable: d = %g +- %g [mm]\n", dcab*1000, dcab_ster*1000);
 dcab2 = (2*k + 1) ./ (4 .* fpks .* sqrt(eps0 * eps_polyethylene * mu0));
 dcab2_mean = mean(dcab2);
 dcab2_ster = std(dcab2) / sqrt(numel(dcab2));
+
+## Experiment 12
+s = experiment(12).s11;
+z = z0 .* (1 + s) ./ (1 - s);
+L = z ./ (2i .* pi .* experiment(12).freq);  # L is complex inductance
