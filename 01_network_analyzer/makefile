@@ -16,7 +16,8 @@ octave/plot_sparam.m gnuplot/real.gp gnuplot/imag.gp
 	octave export_data.m
 
 plots/results%.tex plots/results%.eps : load_data.m main.m export_results.m \
-octave/plot_sparam.m gnuplot/real.gp gnuplot/imag.gp
+octave/plot_sparam.m gnuplot/real.gp gnuplot/imag.gp \
+$(shell find gnuplot -name *.gp)
 	@mkdir -p plots
 	octave export_results.m
 
