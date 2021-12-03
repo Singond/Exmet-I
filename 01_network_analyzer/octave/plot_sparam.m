@@ -8,14 +8,14 @@ function plot_sparam(freq, s, name, elem)
 	gp.exec("set term epslatex size 16cm,10cm");
 	gp.exec(sprintf("set output 'plots/%s.tex'", [name "-" elem]));
 	gp.multiplot(2,1);
-	gp.load("real.gp");
+	gp.load("gnuplot/real.gp");
 	if (strcmp(elem, "s11"))
 		gp.exec("set ylabel '$|\\sparam_{11}|\\,[\\si{\\decibel}]$'");
 	elseif (strcmp(elem, "s21"))
 		gp.exec("set ylabel '$|\\sparam_{21}|\\,[\\si{\\decibel}]$'");
 	endif
 	gp.doplot(p1);
-	gp.load("imag.gp");
+	gp.load("gnuplot/imag.gp");
 	if (strcmp(elem, "s11"))
 		gp.exec("set ylabel '$\\arg{\\sparam_{11}}\\,[\\si{\\degree}]$'");
 	elseif (strcmp(elem, "s21"))

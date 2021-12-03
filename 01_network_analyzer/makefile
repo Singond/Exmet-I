@@ -11,12 +11,12 @@ figs += $(shell echo plots/results{03..05}-{s11,s21}{.eps,.tex})
 figs += $(shell echo plots/results{12-l,12-z,13-c,13-z}{.eps,.tex})
 
 plots/data%.tex plots/data%.eps : load_data.m export_data.m \
-octave/plot_sparam.m real.gp imag.gp
+octave/plot_sparam.m gnuplot/real.gp gnuplot/imag.gp
 	@mkdir -p plots
 	octave export_data.m
 
 plots/results%.tex plots/results%.eps : load_data.m main.m export_results.m \
-octave/plot_sparam.m real.gp imag.gp
+octave/plot_sparam.m gnuplot/real.gp gnuplot/imag.gp
 	@mkdir -p plots
 	octave export_results.m
 
