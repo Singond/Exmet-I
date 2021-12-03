@@ -105,3 +105,11 @@ L = z ./ (2i .* pi .* experiment(12).freq);  # L is complex inductance
 s = experiment(13).s11;
 z = z0 .* (1 + s) ./ (1 - s);
 C = 1 ./ (z .* 2i .* pi .* experiment(13).freq);  # C is complex capacitance
+
+## Experiment 15
+s = experiment(15).s11;
+z = z0 .* (1 + s) ./ (1 - s);
+
+## Experiment 16
+s = experiment(16).s11;
+z = z0 .* (1 + s) ./ (1 - s);
