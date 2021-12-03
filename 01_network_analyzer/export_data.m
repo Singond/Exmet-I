@@ -4,7 +4,7 @@ addpath octave
 load_data
 
 for e = experiment
-	printf("Plotting experiment %s.\n", e.name);
+	printf("Plotting data for experiment %s.\n", e.name);
 	if (!isempty(e.s11))
 		plot_sparam(e.freq, e.s11, e.name, "s11");
 	end
