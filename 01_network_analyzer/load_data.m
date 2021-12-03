@@ -58,7 +58,7 @@ function ex = import_smatrix(s11_filename, s21_filename, name)
 end
 
 ## Import the data into an array of structs called 'experiment'.
-ex = struct("name", {}, "freq", {}, "s11", {}, "s21", {});
+experiment = struct("name", {}, "freq", {}, "s11", {}, "s21", {});
 k = 1;
 experiment(k++) = import_smatrix("data01-s11.csv", "data01-s21.csv");
 experiment(k++) = import_smatrix("data02-s11.csv", "data02-s21.csv");
