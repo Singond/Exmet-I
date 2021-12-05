@@ -45,6 +45,9 @@
 \usepackage{epstopdf}
 \epstopdfsetup{outdir=./build/plots/}
 
+\usepackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+
 \jmenopraktika={Experimentální metody I}       % jmeno predmetu
 \jmeno={Radek Horňák, Jan Slaný, Lukáš Vrána}  % jmeno mericiho
 \obor={F}                                      % zkratka studovaneho oboru
@@ -93,7 +96,7 @@ Díky malým rozměrům je v nich zároveň zanedbatelné fázové zpoždění
 mezi jednotlivými body v~obvodu.
 Tyto vlastnosti však obecně neplatí pro vysokofrekvenční obvody.
 K~jejich analýze je potřeba přistupovat odlišným způsobem,
-než jaký se využívá pro nízkofrekvenční obvody \cite{Pozar}.
+než jaký se využívá pro nízkofrekvenční obvody \cite{pozar}.
 V~této úloze budeme zabývat vektorovým síťovým analyzátorem,
 který je vhodný pro měření parametrů vysokofrekvenčních obvodů.
 
@@ -109,7 +112,7 @@ s~různými prvky pro vysokofrekvenční aplikace.
 VNA je konstruován na měření velikosti a fáze prošlého a odraženého vlnění
 z~měřeného obvodu,
 který je obecně označován zkratkou DUT z~anglického device 
-under test \cite{Pozar}.
+under test \cite{pozar}.
 VNA obsahuje zdroj signálu o~známých frekvencích a soustavu přijímačů,
 které měří změny v~signálu způsobené připojeným DUT.
 Schéma funkce přístroje je na obr.~\ref{VNA}.
@@ -123,7 +126,7 @@ Výstupem měření VNA jsou prvky rozptylové matice.
 \begin{figure}[b]
 	\centering
 	\includegraphics[width=100mm,]{network-analyzer-diagram}
-	\caption{Princip funkce VNA, převzato z~\cite{schema} a upraveno}
+	\caption{Princip funkce VNA, převzato z~\cite{tektronix} a upraveno}
 	\label{VNA}
 \end{figure}
 
@@ -135,7 +138,7 @@ jelikož naměřené hodnoty obsahují velikost a fázi postupující vlny
 v~daném směru nebo vlny stojaté.
 Je potřeba brát v~potaz dopadající, prošlé i odražené vlny.
 Proto zavádíme pojem rozptylová matice, která se označuje 
-jako $(S)$ matice \cite{Pozar}.
+jako $(S)$ matice \cite{pozar}.
 Rozptylová matice poskytuje kompletní popis obvodu s~$N$ svorkami,
 konkrétně vytváří vztah mezi vlněním dopadajícím na svorky
 a vlněním na svorkách odraženým.
@@ -155,7 +158,7 @@ $(S)$ matice je definovaná jako:
 \end{pmatrix}
 ,\]
 kde $U^+$ a $U^-$ jsou amplitudy dopadajícího a odraženého napětí
-(v~tomto pořadí) \cite{Pozar}.
+(v~tomto pořadí) \cite{pozar}.
 
 Pro obvod s~$N$ svorkami má $(S)$ matice tvar:
 \[
@@ -1005,26 +1008,6 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 \end{figure}
 
 \newpage
-\begin{thebibliography}{}
-
-	\bibitem{Pozar}
-	Pozar, David M. Microwave Engineering. 2012. ISBN 9781118213636
-
-	\bibitem{schema}
-	https://uk.tek.com/
-
-	\bibitem{rfhandbook}
-	Belov, L. A., et al. Handbook of RF, Microwave, and Millimeter-Wave Components. Artech House, 2012.
-
-	\bibitem{czwiki}
-	https://cs.wikipedia.org/
-
-	\bibitem{gme}
-	https://gme.cz/
-
-	\bibitem{enwiki}
-	ttps://en.wikipedia.org/
-
-\end{thebibliography}
+\printbibliography
 
 \end{document}
