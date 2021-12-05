@@ -25,7 +25,7 @@ tex_resources: makefile ${figs}
 	@mkdir -p build/plots
 	@echo Successfully updated prerequisities for protokol.tex
 
-protokol.pdf : protokol.tex tex_resources
+protokol.pdf : protokol.tex references.bib tex_resources
 	TEXINPUTS=.:..: pdflatex protokol.tex
 
 clean:
