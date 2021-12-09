@@ -1,7 +1,8 @@
 slice;
 
+minval = min(stslice(:));
 maxval = max(stslice(:));
 if (!isfolder("results"))
 	mkdir("results")
 endif
-imwrite(stslice ./ maxval, "results/slice.png");
+imwrite((stslice - minval) ./ (maxval - minval), "results/slice.png");
