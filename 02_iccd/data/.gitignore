@@ -1,0 +1,2 @@
+# Require data files to be added explicitly, because they are big
+*.spe
