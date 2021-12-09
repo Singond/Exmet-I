@@ -1,4 +1,4 @@
-slice;
+imgslice;
 
 minval = min(stslice(:));
 maxval = max(stslice(:));
