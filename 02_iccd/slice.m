@@ -6,6 +6,6 @@ load_data
 m = mean(img(:,300:600,:), 2);
 m = squeeze(m);    # Remove the singleton dimension
 ## Scale in the horizontal direction for better visibility.
-xscale = 50;
+xscale = 40;
 yscale = 1;
 stslice = repelem(m, yscale, xscale);
