@@ -4,9 +4,12 @@ addpath octave
 
 ## In subsequent frames, the pixel columns are shifted
 ## by an increasing amount. The following corrects this offset.
-for fn = 1:size(img, 3)
-	offset = 2 * (fn - 1);  # Amount of offset
+frames = size(img, 3);
+for fn = 1:frames
+	offset = 2 * (mod(fn - 1, frames));  # Amount of offset
 	frame = img(:,:,fn);
-	img(:,:,fn) = frame(:,[offset+1:end 1:offset]);
+	if (offset != 0)
+		img(:,:,fn) = frame(:,[offset+1:end 1:offset]);
+	endif
 endfor
-clear fn frame offset
+clear fn frame frames offset
