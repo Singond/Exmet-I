@@ -98,18 +98,18 @@ dcab2_ster = std(dcab2) / sqrt(numel(dcab2));
 
 ## Experiment 12
 s = experiment(12).s11;
-z = z0 .* (1 + s) ./ (1 - s);
-L = z ./ (2i .* pi .* experiment(12).freq);  # L is complex inductance
+z12 = z0 .* (1 + s) ./ (1 - s);
+L12 = z12 ./ (2i .* pi .* experiment(12).freq);  # L is complex inductance
 
 ## Experiment 13
 s = experiment(13).s11;
-z = z0 .* (1 + s) ./ (1 - s);
-C = 1 ./ (z .* 2i .* pi .* experiment(13).freq);  # C is complex capacitance
+z13 = z0 .* (1 + s) ./ (1 - s);
+C13 = 1 ./ (z13 .* 2i .* pi .* experiment(13).freq);  # C is complex capacitance
 
 ## Experiment 15
 s = experiment(15).s11;
-z = z0 .* (1 + s) ./ (1 - s);
+z15 = z0 .* (1 + s) ./ (1 - s);
 
 ## Experiment 16
 s = experiment(16).s11;
-z = z0 .* (1 + s) ./ (1 - s);
+z16 = z0 .* (1 + s) ./ (1 - s);
