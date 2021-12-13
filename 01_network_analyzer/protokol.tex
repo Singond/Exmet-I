@@ -783,11 +783,11 @@ tento předpoklad je splněn.
 
 \subsection{9. měření: banánkový spoj}
 Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(banánky f/BNCf)---(BNCm/SMAf),
-přičemž ba\-nán\-ky je koaxiální vedení zapojeno způsobem
-jádro--jádro a stínění--stínění, viz schéma na obr.~\ref{fig:exp9}. Z 
-obr.~\ref{fig:09-sparam} můžeme říct, že do $\SI{0.1}{\giga\hertz}$ je tento 
-typ spoje použitelný. Nad $\SI{1}{\giga\hertz}$ je oproti předchozím měřením 
-jiných spojů vidět, že banánky vůbec nejsou vhodné pro vysoké frekvence.
+přičemž ba\-nán\-ky je koaxiální vedení zapojeno způsobem jádro--jádro a 
+stínění--stínění, viz schéma na obr.~\ref{fig:exp9}. Z obr.~\ref{fig:09-sparam} 
+můžeme říct, že do $\SI{0.1}{\giga\hertz}$ je tento typ spoje použitelný. Nad 
+$\SI{1}{\giga\hertz}$ je oproti předchozím měřením jiných spojů vidět, že 
+banánky vůbec nejsou vhodné pro vysoké frekvence.
 
 \begin{figure}[htp]
 	\centering
@@ -827,10 +827,9 @@ jiných spojů vidět, že banánky vůbec nejsou vhodné pro vysoké frekvence.
 \end{figure}
 
 \subsection{10. měření: banánkový spoj s~překřížením}
-Vycházíme ze zapojení jako u měření 9
-(SMAf/BNCm)---(BNCf/banánky m)---(banánky f/BNCf)---(BNCm/SMAf),
-přičemž nyní přehozením banánků máme zapojení koaxiálního vedení do kříže,
-tedy jádro--stínění, viz obr.~\ref{fig:exp10}.
+Vycházíme ze zapojení jako u měření 9 (SMAf/BNCm)---(BNCf/banánky m)---(banánky 
+f/BNCf)---(BNCm/SMAf), přičemž nyní přehozením banánků máme zapojení 
+koaxiálního vedení do kříže, tedy jádro--stínění, viz obr.~\ref{fig:exp10}.
 
 Očekáváme horší výsledky než v měření 9. Na obr.~\ref{fig:10-sparam} pozorujeme 
 mizerné hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$ na celém spektru 
@@ -874,11 +873,11 @@ frekvencí.
 \end{figure}
 
 \subsection{11. měření: krokodýlky}
-Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky na prázdno)
-jako jednobran bez připojeného přijímače, viz schéma na obr.~\ref{fig:exp11}. 
-Toto měření předchází měřením č. 12 a 13, abychom zjistili hodnoty 
-$\sparam_{11}$ tohoto vedení, viz obr.~\ref{fig:11-sparam}. K útlumům dochází 
-při frekvencích $\SI{0.1}{\giga\hertz}$ a výše.
+Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky na prázdno) jako 
+jednobran bez připojeného přijímače, viz schéma na obr.~\ref{fig:exp11}. Toto 
+měření předchází měřením č. 12 a 13, abychom zjistili hodnoty $\sparam_{11}$ 
+tohoto vedení, viz obr.~\ref{fig:11-sparam}. K útlumům dochází při frekvencích 
+$\SI{0.1}{\giga\hertz}$ a výše.
 
 \begin{figure}[htp]
 	\centering
@@ -895,15 +894,16 @@ parametru $\sparam_{11}$, které jsou vidět na obr.~\ref{fig:12-sparam},
 indukčnost cívky $\inductance$. Ta lze spočítat ze vztahu
 
 \begin{equation}
-	L = \frac{1}{i\omega\impedance}.
-	\label{key}
+	\inductance = \frac{\impedance}{i2\pi\freq}.
+	\label{eq:inductance}
 \end{equation}
 
 Impedanci $\impedance$ spočítáme pomocí rovnice \eqref{eq:Z}. Závislost 
 impedance $\impedance$ cívky na frekvenci je na obr.~\ref{fig:12-result-z} a 
 závislost indukčnosti $\inductance$ cívky na frekvenci je na 
 obr.~\ref{fig:12-result-l}. Pro nízké frekvence se cívka chová běžně, naměřená 
-hodnota $\inductance = \SI{1e-4}{\henry}$DODAT HODNOTU!!!. 
+hodnota $\inductance = \SI{1e-4}{\henry}$ DODAT HODNOTU!!!, ale s rostoucí 
+frekvencí klesá indukčnost.
 
 \begin{figure}[htp]
 	\centering
@@ -951,7 +951,23 @@ hodnota $\inductance = \SI{1e-4}{\henry}$DODAT HODNOTU!!!.
 \end{figure}
 
 \subsection{13. měření: krokodýlky s~kondenzátorem}
-(SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky s kondenzátorem)
+Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky s kondenzátorem) jako 
+jednobran, viz schéma na 
+obr.~\ref{fig:exp13}. Úkolem je spočítat z naměřených hodnot parametru 
+$\sparam_{11}$, které jsou vidět na obr.~\ref{fig:13-sparam}, kapacitu 
+kondenzátoru $\capacitance$. Ta lze spočítat ze vztahu
+
+\begin{equation}
+	\capacitance = \frac{1}{i2\pi\freq\impedance}.
+	\label{eq:capacitance}
+\end{equation}
+
+Impedanci $\impedance$ spočítáme opět pomocí rovnice \eqref{eq:Z}. Závislost 
+impedance $\impedance$ kondenzátoru na frekvenci je na 
+obr.~\ref{fig:13-result-z}. Kapacita $\capacitance$ klesá s rostoucí frekvencí, 
+tuto závislost vidíme na obr.~\ref{fig:13-result-c}. Pro frekvence $\freq = 
+\SI{1e4}{\hertz}$ je vypočítaná hodnota kapacity $\capacitance = 
+\SI{1e-8}{\farad}$.
 
 \begin{figure}[htp]
 	\centering
@@ -999,7 +1015,10 @@ hodnota $\inductance = \SI{1e-4}{\henry}$DODAT HODNOTU!!!.
 \end{figure}
 
 \subsection{14. měření: banánky s~vodičem}
-(SMAf/BNCf)---(BNCm/kabel/banánky)
+Zapojení (SMAf/BNCf)---(BNCm/kabel/banánky) jako jednobran, viz schéma na 
+obr.~\ref{fig:exp14}. Naměřené hodnoty $\sparam_{11}$ parametru jsou na 
+obr.~\ref{fig:14-sparam}. Toto měření předchází následujícímu měření, abychom 
+znali vlastnosti tohoto vedení.
 
 \begin{figure}[htp]
 	\centering
@@ -1010,7 +1029,9 @@ hodnota $\inductance = \SI{1e-4}{\henry}$DODAT HODNOTU!!!.
 \end{figure}
 
 \subsection{15. měření: banánky s~vodičem a~rezistorem}
-(SMAf/BNCf)---(BNCm/kabel/banánky)---(rezistor)
+Zapojení je stejné jako v předchozím měření s rezistorem připojeným na banánky 
+(SMAf/BNCf)---(BNCm/kabel/banánky)---(rezistor), viz schéma na 
+obr.~\ref{fig:exp15}. Úkolem je spočítat odpor rezistoru. 
 
 \begin{figure}[htp]
 	\centering
@@ -1020,24 +1041,25 @@ hodnota $\inductance = \SI{1e-4}{\henry}$DODAT HODNOTU!!!.
 	\label{fig:15-sparam}
 \end{figure}
 
-\subsection{16. měření}
+\subsection{16. měření: BNC redukce zakončená terminátorem}
 (SMAf/BNCf)---(BNCm/terminátor)
 
 \begin{figure}[htp]
 	\centering
 	\input{plots/data16-s11}
-	\caption{$s_{11}$}
-	\label{fig:16-s11}
+	\caption{Naměřené hodnoty parametru $\sparam_{11}$ BNC redukce zakončené 
+	terminátorem.}
+	\label{fig:16-sparam11}
 \end{figure}
 
-\subsection{17. měření}
+\subsection{17. měření: obvod s vlnovodem}
 (SMAf/SMAf)---(vlnovod)---(SMAm/SMAm)
 
 \begin{figure}[htp]
 	\centering
 	\input{plots/data17-s21}
-	\caption{$s_{21}$}
-	\label{fig:17-s21}
+	\caption{Naměřené hodnoty parametru $\sparam_{21}$ sestavy s vlnovodem.}
+	\label{fig:17-sparam21}
 \end{figure}
 
 \newpage
