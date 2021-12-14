@@ -600,6 +600,20 @@ Spojka je vhodná pro použití do $\SI{1}{\giga\hertz}$.
 
 \begin{figure}[htp]
 	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-2,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector] (con2) at (2,0)
+		{\connector{BNC\female}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con2.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 4. měření.}
+	\label{fig:exp4}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
 	\input{plots/data04-s11}
 	\input{plots/data04-s21}
 	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
@@ -625,6 +639,22 @@ parametrů $\sparam_{11}$ a~$\sparam_{21}$ je na obr.~\ref{fig:05-sparam} a
 vypočítané hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$ pro průchodku 
 BNC\female jsou na obr.~\ref{fig:05-result-sparam}. Opět vidíme, že pro 
 frekvence nad $\SI{1}{\giga\hertz}$ nejsou tyto konektory vhodné.
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-4,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector] (con2) at (0,0)
+		{\connector{BNC\female}{BNC\female}};
+		\node[connector] (con3) at (4,0)
+		{\connector{BNC\male}{SMA\female}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 5. měření.}
+	\label{fig:exp5}
+\end{figure}
 
 \begin{figure}[htp]
 	\centering
@@ -773,6 +803,28 @@ tento předpoklad je splněn.
 
 \begin{figure}[htp]
 	\centering
+	\begin{circuitikz}
+		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
+		{\connector{SMA\female}{BNC\male}};
+		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
+		-- (-0.75,2) -- (-0.75,0.75) -- (-2,0.75) -- cycle;
+		\node at (-1.2,0) {BNC\female};
+		\node at (0,1.375) {BNC\male};
+		\node at (1.2,0) {BNC\female};
+		\node[connector, minimum height=1.5cm] (con3) at (4,0)
+		{\connector{BNC\male}{SMA\female}};
+		\node[genericshape, rotate=90] (term) at (0,3.5) {};
+		\node at (0.6,3.5) {$\impedance_0$};
+		\draw (0,2) -- (term.west);
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 8. měření}
+	\label{fig:exp8}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
 	\input{plots/data08-s11}
 	\input{plots/data08-s21}
 	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
@@ -878,6 +930,29 @@ jednobran bez připojeného přijímače, viz schéma na obr.~\ref{fig:exp11}. T
 měření předchází měřením č. 12 a 13, abychom zjistili hodnoty $\sparam_{11}$ 
 tohoto vedení, viz obr.~\ref{fig:11-sparam}. K~útlumům dochází při frekvencích 
 $\SI{0.1}{\giga\hertz}$ a výše.
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\draw (con2.east)++(0,0.2) to[short, -o] ++(1.4,0) -- ++(0,0.5)
+		-- node[at end] (clip1) {} ++(2,0);
+		\draw (con2.east)++(0,-0.2) to[short, -*] ++(1.4,0) -- ++(0,-0.5)
+		-- node[at end] (clip2) {} ++(2,0);
+		\draw[very thick] (clip1.center) -- +(150:1);
+		\draw (clip1.center) +(-0.7,0) arc (180:150:0.7);
+		\draw[very thick] (clip2.center) -- +(150:1);
+		\draw (clip2.center) +(-0.7,0) arc (180:150:0.7);
+		\node[yshift=1cm] at (clip2) {krokodýlky};
+		\draw (con1.west) to[short, -o] +(-1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 11. měření.}
+	\label{fig:exp11}
+\end{figure}
 
 \begin{figure}[htp]
 	\centering
@@ -1022,6 +1097,24 @@ znali vlastnosti tohoto vedení.
 
 \begin{figure}[htp]
 	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\draw (con2.east)++(0,0.2) -- ++(1.4,0) -- ++(0,0.5)
+		to[short, -o] node[at end] (plug1) {} ++(2,0);
+		\draw (con2.east)++(0,-0.2) -- ++(1.4,0) -- ++(0,-0.5)
+		to[short, -*] node[at end] (plug2) {} ++(2,0);
+		\draw (con1.west) to[short, -o] +(-1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 14. měření.}
+	\label{fig:exp14}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
 	\input{plots/data14-s11}
 	\caption{Naměřené hodnoty parametru $\sparam_{11}$
 		sestavy redukcí a~vodiče s~banánky.}
@@ -1047,6 +1140,24 @@ $\SI{125}{\ohm}$.
 
 \begin{figure}[htp]
 	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\coordinate[yshift=0-2mm] (n2) at (con2.east) {};
+		\draw (con2.east)++(0,0.2) -- ++(1.4,0) -- ++(0,1)
+		to[short, -o] ++(2,0)
+		to[R, l=$\resistance$] ++(0,-2.4)
+		to[short, *-] ++(-2,0) -- ++(0,1) -- ++(-1.4,0);
+		\draw (con1.west) to[short, -o] +(-1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 15. měření.}
+	\label{fig:exp15}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
 	\input{plots/data15-s11}
 	\caption{Naměřené hodnoty parametru $\sparam_{11}$
 		sestavy redukcí a~vodiče s~banánky a~rezistorem.}
@@ -1068,6 +1179,21 @@ Vypočítané hodnoty impedance $\impedance_{T}$ jsou na
 obr.~\ref{fig:16-result-z}. Výsledná hodnota 
 $\SI{51}{\ohm}$ je konstantní až do frekvencí $10^9$~Hz. Dle výroby 
 je impedance terminátoru $Z_{T} = \SI{51}{\ohm}$.
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{BNC\male}};
+		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
+		{BNC\female};
+		\node[genericshape,label=below:$\impedance_0$] (term) {};
+		\draw (con2.east) -- (term.west);
+		\draw (con1.west) to[short, -o] +(-1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 16. měření.}
+	\label{fig:exp16}
+\end{figure}
 
 \begin{figure}[htp]
 	\centering
@@ -1102,6 +1228,23 @@ $\lambda_{krit}$, která je dána delší stranou vlnovodu $a$:
  \SI{171}{\milli\metre}$. Delší stranu $a = \SI{85.5}{\milli\metre}$, 
  vypočtenou dle rovnice \eqref{eq:vlnovod}, lze porovnat s~ručně naměřenou 
  vnitřní šířkou vlnovodu -- $\SI{85}{\milli\metre}$.
+
+\begin{figure}[htp]
+	\centering
+	\begin{circuitikz}
+		\node[connector] (con1) at (-5,0)
+		{\connector{SMA\female}{SMA\female}};
+		\node[draw, align=center,minimum width=6cm, minimum height=2cm]
+		(con2) at (0,0)
+		{vlnovod};
+		\node[connector] (con3) at (5,0)
+		{\connector{SMA\male}{SMA\male}};
+		\draw (con1.west) to[short, -o] +(-1,0);
+		\draw (con3.east) to[short, -o] +(1,0);
+	\end{circuitikz}
+	\caption{Schéma zapojení 17. měření.}
+	\label{fig:exp17}
+\end{figure}
 
 \begin{figure}[htp]
 	\centering
