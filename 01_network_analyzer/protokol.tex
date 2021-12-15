@@ -518,6 +518,25 @@ nebo je lepší průchod signálu způsoben preciznějším dotažením.
 	\label{fig:exp2}
 \end{figure}
 
+\begin{figure}[htp]
+	\centering
+	\input{plots/data01-s11}
+	\input{plots/data01-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		zlatého konektoru SMA\female.}
+	\label{fig:01-sparam}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
+	\input{plots/data02-s11}
+	\input{plots/data02-s21}
+	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
+		stříbrného konektoru SMA\female.}
+	\label{fig:02-sparam}
+\end{figure}
+
+\newpage
 \subsection{3. měření: trojice konektorů SMA}
 Měříme zapojení 
 (SMAf/SMAf)$_\text{Z}$---(SMAm/SMAm)$_\text{Z}$---(SMAf/SMAf)$_\text{S}$,
@@ -551,24 +570,6 @@ spojů, na které je vysokofrekvenční měření citlivé.
 
 \begin{figure}[htp]
 	\centering
-	\input{plots/data01-s11}
-	\input{plots/data01-s21}
-	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
-		zlatého konektoru SMA\female.}
-	\label{fig:01-sparam}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
-	\input{plots/data02-s11}
-	\input{plots/data02-s21}
-	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
-		stříbrného konektoru SMA\female.}
-	\label{fig:02-sparam}
-\end{figure}
-
-\begin{figure}[htp]
-	\centering
 	\input{plots/data03-s11}
 	\input{plots/data03-s21}
 	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
@@ -598,7 +599,7 @@ obr.~\ref{fig:04-result-sparam}. V~porovnání s~SMA konektory dochází u~těch
 redukcí k~většímu útlumu, a to až o~$\SI{2}{dB}$ při $\SI{5}{\giga\hertz}$. 
 Spojka je vhodná pro použití do $\SI{1}{\giga\hertz}$.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-2,0)
@@ -640,7 +641,7 @@ vypočítané hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$ pro průchodku
 BNC\female jsou na obr.~\ref{fig:05-result-sparam}. Opět vidíme, že pro 
 frekvence nad $\SI{1}{\giga\hertz}$ nejsou tyto konektory vhodné.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-4,0)
@@ -674,6 +675,7 @@ frekvence nad $\SI{1}{\giga\hertz}$ nejsou tyto konektory vhodné.
 	\label{fig:05-result-sparam}
 \end{figure}
 
+\newpage
 \subsection{6. měření: rezonance na T-průchodce BNC}
 \newcommand\freelen{d}
 Zapojení (SMAf/BNCm)---(BNCf/BNCm/BNCf)---(BNCm/SMAf),
@@ -758,7 +760,7 @@ se prodlužuje krok vzorkování, a proto nebyly uvažovány.
 Délka kabelu spočtená výše uvedenou metodou činí
 $\freelen = \SI{5.072(4)}{\metre}$.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
@@ -841,7 +843,7 @@ můžeme říct, že do $\SI{0.1}{\giga\hertz}$ je tento typ spoje použitelný.
 $\SI{1}{\giga\hertz}$ je oproti předchozím měřením jiných spojů vidět, že 
 banánky vůbec nejsou vhodné pro vysoké frekvence.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-5,0)
@@ -887,7 +889,7 @@ Očekáváme horší výsledky než v~měření 9. Na obr.~\ref{fig:10-sparam} p
 mizerné hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$ na celém spektru 
 frekvencí.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-5,0)
@@ -954,14 +956,6 @@ $\SI{0.1}{\giga\hertz}$ a výše.
 	\label{fig:exp11}
 \end{figure}
 
-\begin{figure}[htp]
-	\centering
-	\input{plots/data11-s11}
-	\caption{Naměřené hodnoty parametru $\sparam_{11}$
-		sestavy redukcí a~volných krokodýlků.}
-	\label{fig:11-sparam}
-\end{figure}
-
 \subsection{12. měření: krokodýlky s~cívkou}
 Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobran, 
 viz schéma na obr.~\ref{fig:exp12}. Úkolem je spočítat z~naměřených hodnot 
@@ -977,8 +971,10 @@ Impedanci $\impedance$ spočítáme pomocí rovnice \eqref{eq:Z}. Závislost
 impedance $\impedance$ cívky na frekvenci je na obr.~\ref{fig:12-result-z} a 
 závislost indukčnosti $\inductance$ cívky na frekvenci je na 
 obr.~\ref{fig:12-result-l}. Pro nízké frekvence se cívka chová běžně, naměřená 
-hodnota $\inductance = \SI{1e-4}{\henry}$ DODAT HODNOTU!!!, ale s~rostoucí 
+hodnota $\inductance = \SI{1e-4}{\henry}$ DODAT HODNOTU, ale s~rostoucí 
 frekvencí klesá indukčnost.
+
+
 
 \begin{figure}[htp]
 	\centering
@@ -1005,6 +1001,14 @@ frekvencí klesá indukčnost.
 
 \begin{figure}[htp]
 	\centering
+	\input{plots/data11-s11}
+	\caption{Naměřené hodnoty parametru $\sparam_{11}$
+		sestavy redukcí a~volných krokodýlků.}
+	\label{fig:11-sparam}
+\end{figure}
+
+\begin{figure}[htp]
+	\centering
 	\input{plots/data12-s11}
 	\caption{Naměřené hodnoty parametru $\sparam_{11}$
 		sestavy redukcí a~krokodýlků s~cívkou.}
@@ -1025,6 +1029,7 @@ frekvencí klesá indukčnost.
 	\label{fig:12-result-l}
 \end{figure}
 
+\newpage
 \subsection{13. měření: krokodýlky s~kondenzátorem}
 Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky s~kondenzátorem) jako 
 jednobran, viz schéma na 
@@ -1044,7 +1049,7 @@ tuto závislost vidíme na obr.~\ref{fig:13-result-c}. Pro frekvence $\freq =
 10^4$~Hz je vypočítaná hodnota kapacity $\capacitance = 
 10^{-8}$~F.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-5,0)
@@ -1067,7 +1072,7 @@ tuto závislost vidíme na obr.~\ref{fig:13-result-c}. Pro frekvence $\freq =
 	\label{fig:exp13}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\input{plots/data13-s11}
 	\caption{Naměřené hodnoty parametru $\sparam_{11}$
@@ -1075,6 +1080,7 @@ tuto závislost vidíme na obr.~\ref{fig:13-result-c}. Pro frekvence $\freq =
 	\label{fig:13-sparam}
 \end{figure}
 
+\newpage
 \begin{figure}[htp]
 	\centering
 	\input{plots/results13-z}
@@ -1082,7 +1088,7 @@ tuto závislost vidíme na obr.~\ref{fig:13-result-c}. Pro frekvence $\freq =
 	\label{fig:13-result-z}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\input{plots/results13-c}
 	\caption{Spočtené hodnoty kapacity $\capacitance$ kondenzátoru.}
@@ -1095,7 +1101,7 @@ obr.~\ref{fig:exp14}. Naměřené hodnoty $\sparam_{11}$ parametru jsou na
 obr.~\ref{fig:14-sparam}. Toto měření předchází následujícímu měření, abychom 
 znali vlastnosti tohoto vedení.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-5,0)
@@ -1121,6 +1127,7 @@ znali vlastnosti tohoto vedení.
 	\label{fig:14-sparam}
 \end{figure}
 
+\newpage
 \subsection{15. měření: banánky s~vodičem a~rezistorem}
 Zapojení je stejné jako v~předchozím měření s~rezistorem připojeným na banánky 
 (SMAf/BNCf)---(BNCm/kabel/banánky)---(rezistor), viz schéma na 
@@ -1171,6 +1178,7 @@ $\SI{125}{\ohm}$.
 	\label{fig:15-result-z}
 \end{figure}
 
+\newpage
 \subsection{16. měření: BNC redukce zakončená terminátorem}
 Zapojení (SMAf/BNCf)---(BNCm/terminátor) jako jednobran, viz schéma na 
 obr.~\ref{fig:exp16}. Úkolem je změřit impedanci $\impedance_{T}$ terminátoru. 
@@ -1180,7 +1188,7 @@ obr.~\ref{fig:16-result-z}. Výsledná hodnota
 $\SI{51}{\ohm}$ je konstantní až do frekvencí $10^9$~Hz. Dle výroby 
 je impedance terminátoru $Z_{T} = \SI{51}{\ohm}$.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-5,0)
@@ -1211,6 +1219,7 @@ je impedance terminátoru $Z_{T} = \SI{51}{\ohm}$.
 	\label{fig:16-result-z}
 \end{figure}
 
+\newpage
 \subsection{17. měření: obvod s~vlnovodem}
 Zapojení (SMAf/SMAf)---(vlnovod)---(SMAm/SMAm), které je vidět na 
 obr.~\ref{fig:exp17}. Pro vlnovod existuje tzv. kritická vlnová délka 
@@ -1229,7 +1238,7 @@ $\lambda_{krit}$, která je dána delší stranou vlnovodu $a$:
  vypočtenou dle rovnice \eqref{eq:vlnovod}, lze porovnat s~ručně naměřenou 
  vnitřní šířkou vlnovodu -- $\SI{85}{\milli\metre}$.
 
-\begin{figure}[htp]
+\begin{figure}[H]
 	\centering
 	\begin{circuitikz}
 		\node[connector] (con1) at (-5,0)
