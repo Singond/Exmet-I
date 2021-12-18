@@ -2,6 +2,7 @@ pkg load singon-ext
 addpath octave
 
 load_data
+disp("");
 
 eps0 = 8.854E-12;           # Permittivity of free space [SI]
 mu0 = 1.257E-6;             # Permeability of free space [SI]
@@ -68,7 +69,8 @@ k = (0:(numel(pks)-1))';
 x = v_pe .* (2.*k + 1) ./ 4;
 [beta, ~, r] = ols(fpks, [x ones(size(x))]);
 d = 1/beta(1);
-printf("Length of T-piece: d = %g [mm]\n", d*1000);
+printf("  Length of T-piece: d = %g [mm]\n", d*1000);
+disp("");
 
 ## Alternative solution
 k = [0; 1];
@@ -90,11 +92,12 @@ dcab = 1/beta(1);
 ##dcab_std = sqrt((v_pe / (2 * mean(fpks)**2))**2 * std(r)**2);
 dcab_std = mean(sqrt((v_pe ./ (2 * fpks.**2)).**2 .* r.**2));
 dcab_ster = dcab_std / sqrt(numel(fpks));
-printf("Length of cable: d = %g +- %g [mm]\n", dcab*1000, dcab_ster*1000);
+printf("  Length of cable: d = %g +- %g [mm]\n", dcab*1000, dcab_ster*1000);
 
 dcab2 = (2*k + 1) ./ (4 .* fpks .* sqrt(eps0 * eps_polyethylene * mu0));
 dcab2_mean = mean(dcab2);
 dcab2_ster = std(dcab2) / sqrt(numel(dcab2));
+disp("");
 
 ## Experiment 12
 s = experiment(12).s11;
