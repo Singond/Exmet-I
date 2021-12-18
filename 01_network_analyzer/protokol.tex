@@ -973,7 +973,6 @@ Zapojení (SMAf/BNCm)---(BNCf/banánky m)---(krokodýlky + cívka) jako jednobra
 viz schéma na obr.~\ref{fig:exp12}. Úkolem je spočítat z~naměřených hodnot 
 parametru $\sparam_{11}$, které jsou vidět na obr.~\ref{fig:12-sparam}, 
 indukčnost cívky $\inductance$. Ta lze spočítat ze vztahu
-
 \begin{equation}
 	\inductance = \frac{\impedance}{i2\pi\freq}.
 	\label{eq:inductance}
@@ -983,7 +982,7 @@ Impedanci $\impedance$ spočítáme pomocí rovnice \eqref{eq:Z}. Závislost
 impedance $\impedance$ cívky na frekvenci je na obr.~\ref{fig:12-result-z} a 
 závislost indukčnosti $\inductance$ cívky na frekvenci je na 
 obr.~\ref{fig:12-result-l}. Pro nízké frekvence se cívka chová běžně, naměřená 
-hodnota $\inductance = \SI{1e-4}{\henry}$ DODAT HODNOTU, ale s~rostoucí 
+hodnota $\inductance = \SI{1.63e-4}{\henry}$, ale s~rostoucí
 frekvencí klesá indukčnost.
 
 \begin{figure}[h]
@@ -1131,9 +1130,9 @@ roven impedanci, tedy
 \end{equation}
 
 Naměřené hodnoty parametru $\sparam_{11}$ jsou na obr.~\ref{fig:15-sparam}. 
-Spočtené hodnoty jsou na obr.~\ref{fig:15-result-z}. Výsledná hodnota 
-$\SI{1111111}{\ohm}$ !!!HODNOTA?!!! je konstantní až do frekvencí 
-$10^7$~Hz, kde začnou mít vliv rozměry rezistoru a vzniká parazitní 
+Spočtené hodnoty odporu $\impedance$ jsou na obr.~\ref{fig:15-result-z}.
+Výsledná hodnota $\SI{71.3}{\ohm}$ je konstantní až do frekvencí
+$\SI{e7}{\hertz}$, kde začnou mít vliv rozměry rezistoru a vzniká parazitní
 kapacita a indukčnost. Stejnosměrným multimetrem jsme naměřili hodnotu 
 $\SI{125}{\ohm}$.
 

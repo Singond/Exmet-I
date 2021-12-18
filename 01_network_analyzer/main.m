@@ -100,9 +100,13 @@ dcab2_ster = std(dcab2) / sqrt(numel(dcab2));
 disp("");
 
 ## Experiment 12
+disp("Experiment 12:");
 s = experiment(12).s11;
 z12 = z0 .* (1 + s) ./ (1 - s);
 L12 = z12 ./ (2i .* pi .* experiment(12).freq);  # L is complex inductance
+printf("  Inductance for low frequencies: |L| = %g [H]\n",
+	mean(abs(L12(experiment(12).freq < 1e5))));
+disp("");
 
 ## Experiment 13
 s = experiment(13).s11;
@@ -110,8 +114,12 @@ z13 = z0 .* (1 + s) ./ (1 - s);
 C13 = 1 ./ (z13 .* 2i .* pi .* experiment(13).freq);  # C is complex capacitance
 
 ## Experiment 15
+disp("Experiment 15:");
 s = experiment(15).s11;
 z15 = z0 .* (1 + s) ./ (1 - s);
+printf("  Impedance for low frequencies: |Z| = %g [ohm]\n",
+	mean(abs(z15(experiment(15).freq < 3e6))))
+disp("");
 
 ## Experiment 16
 s = experiment(16).s11;
