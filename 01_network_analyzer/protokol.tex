@@ -74,6 +74,7 @@
 \newcommand\resistance{R}
 \newcommand\inductance{L}
 \newcommand\capacitance{C}
+\newcommand\wavelen{\lambda}
 
 \newcommand\connector[2]{#1 -- #2}
 \newcommand\connectord[3]{#1 -- #2\\ #3}
@@ -1219,18 +1220,19 @@ je impedance terminátoru $Z_{T} = \SI{51}{\ohm}$.
 
 \clearpage
 \subsection{17. měření: obvod s~vlnovodem}
+\newcommand\wavelencrit{\wavelen_\mathrm{krit}}
 Zapojení (SMAf/SMAf)---(vlnovod)---(SMAm/SMAm), které je vidět na
 obr.~\ref{fig:exp17}. Pro vlnovod existuje tzv. kritická vlnová délka
-$\lambda_{krit}$. Do vlnovodu může vstoupit pouze vlna kratší vlnové délky než
-$\lambda_{krit}$, která je dána delší stranou vlnovodu $a$:
+$\wavelencrit$. Do vlnovodu může vstoupit pouze vlna kratší vlnové délky než
+$\wavelencrit$, která je dána delší stranou vlnovodu $a$:
 \begin{equation}
-	\lambda_{krit} = 2a.
+	\wavelencrit = 2a.
 	\label{eq:vlnovod}
 \end{equation}
 
 Dle naměřených hodnot $\sparam_{21}$, které vidíme na
 obr.~\ref{fig:17-sparam21}, pozorujeme na frekvenci $\SI{1.75}{\giga\hertz}$
-nárůst signálu. Tato frekvence odpovída vlnové délce $\lambda_{krit} = c/f =
+nárůst signálu. Tato frekvence odpovída vlnové délce $\wavelencrit = c/f =
 \SI{171}{\milli\metre}$. Delší stranu $a = \SI{85.5}{\milli\metre}$,
 vypočtenou dle rovnice \eqref{eq:vlnovod}, lze porovnat s~ručně naměřenou
 vnitřní šířkou vlnovodu -- $\SI{85}{\milli\metre}$.
