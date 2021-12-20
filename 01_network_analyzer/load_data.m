@@ -1,11 +1,11 @@
 0;  # Not a function file
 
 function mag = db2mag(decibels)
-	mag = 10 .^ (decibels ./ 10);
+	mag = 10 .^ (decibels ./ 20);
 endfunction
 
 function decibels = mag2db(mag)
-	decibels = 10 .* log10(mag);
+	decibels = 20 .* log10(mag);
 end
 
 ## Create a complex number from modulus and argument in degrees.
