@@ -194,8 +194,7 @@ Impedance $Z$ je komplexní veličinou a je definovaná jako poměr napětí a p
 \begin{equation}
 	Z~= \frac{U}{I}
 \end{equation}
-
-\noindent Impedanční matice mikrovlnného obvodu s~$N$ branami
+Impedanční matice mikrovlnného obvodu s~$N$ branami
 udává vztah mezi napětími a proudy následovně:
 \[
 \begin{pmatrix}
@@ -219,13 +218,11 @@ udává vztah mezi napětími a proudy následovně:
 	I_N
 \end{pmatrix}
 \]
-
-\noindent Admitance $Y$ je převrácenou hodnotou impedance, tedy platí:
+Admitance $Y$ je převrácenou hodnotou impedance, tedy platí:
 \begin{equation}
 	Y = \frac{1}{Z}
 \end{equation}
-
-\noindent Admitanční matice je definovaná jako
+Admitanční matice je definovaná jako
 \[
 \begin{pmatrix}
 	Y
@@ -234,8 +231,7 @@ udává vztah mezi napětími a proudy následovně:
 \begin{pmatrix}
 	Z~\end{pmatrix}^{-1}
 \]
-
-\noindent což pro obvod s~$N$ branami můžeme rozepsat ve tvaru
+což pro obvod s~$N$ branami můžeme rozepsat ve tvaru
 
 \[
 \begin{pmatrix}
@@ -304,7 +300,7 @@ vyjádřit i admitanční matici jako:
 
 \subsection{Transmisní matice}
 Při měření obvod zpravidla tvoří série prvků.
-Proto je vhodné zavést transmisní matici $T$ pro každý z~prvků.
+Při výpočtech sériově zapojených prvků je vhodné zavést transmisní matici $T$ pro každý z~prvků.
 U~dvojbranů je matice $T$ řádu 2 a má tvar
 \[
 \begin{pmatrix}
@@ -397,7 +393,7 @@ a drážkou se spirálou a vybráním na převlečné části samčího konektor
 viz obr.~\ref{BNC}.
 Umožňuje rychlé a spolehlivé spojení nasunutím a pootočením převlečné
 části o~90$^{\circ}$ \cite{czwiki}.
-Dle \cite{rfhandbook} je konektor vhodný až do frekvence 11~GHz, většinou je všas uváděna hodnota nižší.
+Dle \cite{rfhandbook} je konektor vhodný až do frekvence 11~GHz, většinou je však uváděna hodnota nižší.
 
 Konektor typu N, pojmenovaný po jeho vynálezci Paulu Neillovi,
 vznikl ve čtyřicátých letech dvacátého století.
@@ -451,7 +447,7 @@ takže by opět mělo docházet k~úplnému odrazu a platit, že $|S_{11}|$ = 0~
 Zbývá připojení brány 1 na přizpůsobenou impedanci.
 V~tomto případě by se měl ideálně veškerý signál absorbovat,
 tedy $|S_{11}|$ by měla být co nejnižší.
-U našeho kalibračního členu je na frekvenci 10~GHz je $|S_{11}|$ přibližně $-25$~dB,
+U našeho kalibračního členu je na frekvenci 10~GHz $|S_{11}|$ přibližně $-25$~dB,
 minimum $|S_{11}|$ je okolo $-50$~dB. Tyto hodnoty považujeme
 za dostatečně nízké.
 
