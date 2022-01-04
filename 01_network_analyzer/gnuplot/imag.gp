@@ -1,3 +1,5 @@
+# Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
 set tmargin at screen 0.55
 set bmargin at screen 0.15
 set xtics ('$10^4$' 1e4+1, '$10^5$' 1e5, '$10^6$' 1e6, '$10^7$' 1e7, '$10^8$' 1e8, '$10^9$' 1e9, '$10^{10}$' 1e10)

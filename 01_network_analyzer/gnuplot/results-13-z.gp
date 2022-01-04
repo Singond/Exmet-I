@@ -1,3 +1,5 @@
+# Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
 load "../plotsettings.gp"
 set log
 set border 15

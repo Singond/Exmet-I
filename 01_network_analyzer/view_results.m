@@ -1,3 +1,5 @@
+## Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
 main
 
 ## Plot the data for each experiment.

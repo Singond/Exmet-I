@@ -1,3 +1,6 @@
+## Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
+## Convert the given transmission matrix into a corresponding scattering matrix.
 function [s11, s21] = sparams(T, z0)
 	a = T(1,1,:)(:);
 	b = T(1,2,:)(:);

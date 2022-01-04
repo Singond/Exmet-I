@@ -1,3 +1,5 @@
+# Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
 MAKEFLAGS += --no-builtin-rules
 
 PROJECT_NAME=Exmet-I-01

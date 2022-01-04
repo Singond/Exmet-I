@@ -1,3 +1,5 @@
+## Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
 0;  # Not a function file
 
 function mag = db2mag(decibels)

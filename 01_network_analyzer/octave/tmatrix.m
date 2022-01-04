@@ -1,3 +1,6 @@
+## Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
+## Convert the given scattering matrix into a corresponding transmission matrix.
 function T = tmatrix(s11, s21, z0)
 	s22 = s11;
 	s12 = s21;

@@ -1,3 +1,6 @@
+## Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
+
+## Plot the modulus and argument of a scattering parameter s.
 function plot_sparam(freq, s, name, elem)
 	pkg load report;
 	gp = gnuplotter();
