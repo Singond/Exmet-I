@@ -145,45 +145,39 @@ konkrétně popisuje vztah mezi vlněním dopadajícím na brány
 a vlněním na branách odraženým.
 Pro některé prvky je možné $S$ matici spočítat,
 ovšem často jednodušší způsob je prvky matice přímo změřit pomocí VNA.
-$S$ matice je definovaná jako:
-\[
-\begin{pmatrix}
-	V^-
-\end{pmatrix}
-=
-\begin{pmatrix}
-	S~\end{pmatrix}
-%
-\begin{pmatrix}
-	V^+
-\end{pmatrix}
-\]
+% TODO: Nedefinovat pomoci napeti, kdyz to neni dobre definovano
+$S$ matice je definována vztahem:
+\begin{equation}
+	\label{eq:smatrix-short}
+	V^- = S V^+
+\end{equation}
 kde $V^+$ a $V^-$ jsou amplitudy dopadající a odražené vlny
 (v~tomto pořadí).
 
 Pro obvod s~$N$ branami má $S$ matice tvar:
-\[
-\begin{pmatrix}
-	V_1^-     \\
-	V_2^-		\\
-	\vdots	\\
-	V_N^-
-\end{pmatrix}
-=
-\begin{pmatrix}
-	S_{11} & S_{12} & \dots & S_{1N}   \\
-	S_{21} &		& 		& \vdots	\\
-	\vdots &		& 		& \vdots	\\
-	S_{N1} & \dots	& \dots & S_{NN} 	\\
-\end{pmatrix}
-%
-\begin{pmatrix}
-	V_1^+     \\
-	V_2^+		\\
-	\vdots	\\
-	V_N^+
-\end{pmatrix}
-\]
+\begin{equation}
+	\label{eq:smatrix-full}
+	\begin{pmatrix}
+		V_1^-  \\
+		V_2^-  \\
+		\vdots \\
+		V_N^-
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		S_{11} & S_{12} & \dots & S_{1N} \\
+		S_{21} &        &       & \vdots \\
+		\vdots &        &       & \vdots \\
+		S_{N1} & \dots	& \dots & S_{NN} \\
+	\end{pmatrix}
+	%
+	\begin{pmatrix}
+		V_1^+  \\
+		V_2^+  \\
+		\vdots \\
+		V_N^+
+	\end{pmatrix}
+\end{equation}
 
 Pro obvod s~dvěma branami tedy bude $S$ matice řádu 2.
 V~ní prvek $S_{11}$ je spojen s odraženým signálem na vstupu,
@@ -194,184 +188,142 @@ a $S_{12}$ je transmisní prvek z~výstupu na vstup.
 
 Impedance $Z$ je komplexní veličinou a je definovaná jako poměr napětí a proudu:
 \begin{equation}
+	\label{eq:impedance}
 	Z~= \frac{U}{I}
 \end{equation}
 Impedanční matice mikrovlnného obvodu s~$N$ branami
 udává vztah mezi napětími a proudy následovně:
-\[
-\begin{pmatrix}
-	V_1     \\
-	V_2		\\
-	\vdots	\\
-	V_N
-\end{pmatrix}
-=
-\begin{pmatrix}
-	Z_{11} & Z_{12} & \dots & Z_{1N}   \\
-	Z_{21} &		& 		& \vdots	\\
-	\vdots &		& 		& \vdots	\\
-	Z_{N1} & \dots	& \dots & Z_{NN} 	\\
-\end{pmatrix}
-%
-\begin{pmatrix}
-	I_1     \\
-	I_2		\\
-	\vdots	\\
-	I_N
-\end{pmatrix}
-\]
+\begin{equation}
+	\label{eq:zmatrix}
+	\begin{pmatrix}
+		V_1    \\
+		V_2    \\
+		\vdots \\
+		V_N
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		Z_{11} & Z_{12} & \dots & Z_{1N} \\
+		Z_{21} &        &       & \vdots \\
+		\vdots &        &       & \vdots \\
+		Z_{N1} & \dots	& \dots & Z_{NN} \\
+	\end{pmatrix}
+	%
+	\begin{pmatrix}
+		I_1    \\
+		I_2    \\
+		\vdots \\
+		I_N
+	\end{pmatrix}
+\end{equation}
 Admitance $Y$ je převrácenou hodnotou impedance, tedy platí:
 \begin{equation}
+	\label{eq:admittance}
 	Y = \frac{1}{Z}
 \end{equation}
-Admitanční matice je definovaná jako
-\[
-\begin{pmatrix}
-	Y
-\end{pmatrix}
-=
-\begin{pmatrix}
-	Z~\end{pmatrix}^{-1}
-\]
-což pro obvod s~$N$ branami můžeme rozepsat ve tvaru
-
-\[
-\begin{pmatrix}
-	I_1     \\
-	I_2		\\
-	\vdots	\\
-	I_N
-\end{pmatrix}
-=
-\begin{pmatrix}
-	Y_{11} & Y_{12} & \dots & Y_{1N}   \\
-	Y_{21} &		& 		& \vdots	\\
-	\vdots &		& 		& \vdots	\\
-	Y_{N1} & \dots	& \dots & Y_{NN} 	\\
-\end{pmatrix}
-%
-\begin{pmatrix}
-	V_1     \\
-	V_2		\\
-	\vdots	\\
-	V_N
-\end{pmatrix}
-\]
+Admitanční matice je definovaná jako:
+\begin{equation}
+	\label{eq:ymatrix-short}
+	Y = Z^{-1}
+\end{equation}
+což pro obvod s~$N$ branami můžeme rozepsat ve tvaru:
+\begin{equation}
+	\label{eq:ymatrix-full}
+	\begin{pmatrix}
+		I_1    \\
+		I_2    \\
+		\vdots \\
+		I_N
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		Y_{11} & Y_{12} & \dots & Y_{1N} \\
+		Y_{21} &        &       & \vdots \\
+		\vdots &        &       & \vdots \\
+		Y_{N1} & \dots	& \dots & Y_{NN} \\
+	\end{pmatrix}
+	%
+	\begin{pmatrix}
+		V_1    \\
+		V_2    \\
+		\vdots \\
+		V_N
+	\end{pmatrix}
+\end{equation}
 
 \subsection{Výpočet impedanční a admitanční matice z~rozptylové matice}
 
 Impedanční matici můžeme vyjádřit pomocí rozptylové matice jako:
-\[
-\begin{pmatrix}
-	Z~\end{pmatrix}
-=
-[\begin{pmatrix}
-	E~\end{pmatrix}
-+
-\begin{pmatrix}
-	S~\end{pmatrix}]
-%
-[\begin{pmatrix}
-	E~\end{pmatrix}
--
-\begin{pmatrix}
-	S~\end{pmatrix}]^{-1}
-\]
+\begin{equation}
+	\label{eq:zmatrix-smatrix}
+	Z = [E + S] [E - S]^{-1}
+\end{equation}
 kde $E$ je jednotková matice.
-\bigskip
-
 Obdobně můžeme pomocí rozptylové matice a jednotkové matice
-vyjádřit i admitanční matici jako:
-\[
-\begin{pmatrix}
-	Y
-\end{pmatrix}
-=
-[\begin{pmatrix}
-	E~\end{pmatrix}
--
-\begin{pmatrix}
-	S~\end{pmatrix}]
-%
-[\begin{pmatrix}
-	E~\end{pmatrix}
-+
-\begin{pmatrix}
-	S~\end{pmatrix}]^{-1}
-\]
+vyjádřit i admitanční matici:
+\begin{equation}
+	\label{eq:ymatrix-smatrix}
+	Y = [E - S] [E + S]^{-1}
+\end{equation}
 
 \subsection{Transmisní matice}
 Při měření obvod zpravidla tvoří série prvků.
 Při výpočtech sériově zapojených prvků je vhodné zavést
 \emph{transmisní matici} $T$ pro každý z~nich.
 U~dvojbranů je matice $T$ řádu 2 a má tvar:
-\[
-\begin{pmatrix}
-	A~& B  \\
-	C &	D  \\
-\end{pmatrix}
-\]
+\begin{equation}
+	\label{eq:tmatrix}
+	\begin{pmatrix}
+		A & B  \\
+		C & D  \\
+	\end{pmatrix}
+\end{equation}
 
 V~nejjednodušším obvodu se dvěma prvky je mezi celkovou transmisní
 maticí $ABCD$, transmisní maticí prvního prvku $A_1B_1C_1D_1$
 a transmisní maticí druhého prvku $A_2B_2C_2D_2$ vztah následující:
-
-\[
-\begin{pmatrix}
-	A~& B  \\
-	C &	D  \\
-\end{pmatrix}
-=
-\begin{pmatrix}
-	A_1 & B_1  \\
-	C_1 & D_1  \\
-\end{pmatrix}
-%
-\begin{pmatrix}
-	A_2 & B_2  \\
-	C_2 & D_2  \\
-\end{pmatrix}
-\]
+\begin{equation}
+	\label{eq:tmatrix-series}
+	\begin{pmatrix}
+		A & B  \\
+		C &	D  \\
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		A_1 & B_1  \\
+		C_1 & D_1  \\
+	\end{pmatrix}
+	%
+	\begin{pmatrix}
+		A_2 & B_2  \\
+		C_2 & D_2  \\
+	\end{pmatrix}
+\end{equation}
 
 Dále platí:
-
-\begin{equation}
-	A~= \frac{(1+S_{11})(1-S_{22})+S_{12}S_{21}}{2S_{21}}
-	\label{eq:A}
-\end{equation}
-
-\begin{equation}
-	B = Z_0 \frac{(1+S_{11})(1+S_{22})-S_{12}S_{21}}{2S_{21}}
-	\label{eq:B}
-\end{equation}
-
-\begin{equation}
-	C = \frac{1}{Z_0} \frac{(1-S_{11})(1-S_{22})-S_{12}S_{21}}{2S_{21}}
-	\label{eq:C}
-\end{equation}
-
-\begin{equation}
-	D = \frac{(1-S_{11})(1+S_{22})+S_{12}S_{21}}{2S_{21}}
-	\label{eq:D}
-\end{equation}
+\begin{align}
+	\label{eq:tmatrix-elema}
+	A &= \frac{(1+S_{11})(1-S_{22})+S_{12}S_{21}}{2S_{21}} \\
+	\label{eq:tmatrix-elemb}
+	B &= \frac{(1+S_{11})(1+S_{22})-S_{12}S_{21}}{2S_{21}} Z_0 \\
+	\label{eq:tmatrix-elemc}
+	C &= \frac{(1-S_{11})(1-S_{22})-S_{12}S_{21}}{2S_{21}} \frac{1}{Z_0} \\
+	\label{eq:tmatrix-elemd}
+	D &= \frac{(1-S_{11})(1+S_{22})+S_{12}S_{21}}{2S_{21}}
+\end{align}
 kde $\impedance_{0}$ je charakteristická impedance.
-
-Zpětný přepočet $ABCD$ prvků na $S_{11}$ a $S_{21}$ lze provést jako
-
-\begin{equation}
-	S_{11} = \frac{A+B/Z_0-CZ_0-D}{A+B/Z_0+CZ_0+D}
+Zpětný přepočet prvků $A$, $B$, $C$, $D$ na $S_{11}$ a $S_{21}$
+lze provést následovně:
+\begin{align}
 	\label{eq:s11}
-\end{equation}
-
-\begin{equation}
-	S_{21} = \frac{2}{A+B/Z_0+CZ_0+D}
+	S_{11} &= \frac{A+B/Z_0-CZ_0-D}{A+B/Z_0+CZ_0+D} \\
 	\label{eq:s21}
-\end{equation}
+	S_{21} &= \frac{2}{A+B/Z_0+CZ_0+D}
+\end{align}
 
 \subsection{Výpočet impedance z~$\sparam_{11}$ v~případě jednobranu}
-V~případě jednobranu měříme pouze prvek $\sparam_{11}$, impedanci $\impedance$
-lze z~něj dopočítat ze vztahu
-
+V~případě jednobranu měříme pouze prvek $\sparam_{11}$,
+z~nějž lze impedanci $\impedance$ dopočítat podle vztahu:
 \begin{equation}
 	\impedance = \impedance_{0}\frac{1+\sparam_{11}}{1-\sparam_{11}}
 	\label{eq:Z}
@@ -538,12 +490,12 @@ Měříme zapojení
 kde m značí samčí konektor.
 Sché\-ma zapojení je na obr.~\ref{fig:exp3}.
 Úkolem je dopočítat matice prostřední spojky (SMAm/SMAm)$_\text{Z}$,
-matice pro zbylé spojky známe z~předchozích měření. Hodnoty $\sparam_{11}$
-a~$\sparam_{21}$ pro naměřenou trojici spojek vidíme na obr.~
-\ref{fig:03-sparam} a dopočítané
-hodnoty pomocí rovnic \eqref{eq:A} až \eqref{eq:s21} jsou vyneseny do grafu na
+matice pro zbylé spojky známe z~předchozích měření.
+Hodnoty $\sparam_{11}$ a~$\sparam_{21}$ pro naměřenou trojici spojek vidíme
+na obr.~\ref{fig:03-sparam} a hodnoty dopočtené pomocí rovnic
+\eqref{eq:tmatrix-elema} až \eqref{eq:s21} jsou vyneseny do grafu na
 obr.~\ref{fig:03-result-sparam}. Z~dopočítaných hodnot vychází, že spojka by
-měl při frekvencích $>\SI{1}{\giga\hertz}$ zesilovat signál. Jelikož se jedná
+měla při frekvencích $>\SI{1}{\giga\hertz}$ zesilovat signál. Jelikož se jedná
 pouze o~velmi nízké hodnoty, vysvětlením může být šum nebo nedokonalé dotažení
 spojů, na které je vysokofrekvenční měření citlivé.
 
