@@ -75,6 +75,8 @@
 \newcommand\inductance{L}
 \newcommand\capacitance{C}
 \newcommand\wavelen{\lambda}
+\newcommand\real{\operatorname{Re}}
+\newcommand\imag{\operatorname{Im}}
 
 \newcommand\connector[2]{#1 -- #2}
 \newcommand\connectord[3]{#1 -- #2\\ #3}
@@ -104,25 +106,25 @@ V~této úloze se budeme zabývat vektorovou síťovou analýzou vysokofrekvenč
 
 \subsection{Vektorový síťový analyzátor}
 
-Následující teoretická část včetně terminologie a značení vychází zejména z knihy Microwave Engineering \cite{pozar}.
-Pro označení vektorového síťového analyzátoru budeme z~anglického
-vector network analyzer používat zkratku VNA.
-Bývá to zpravidla dvoukanálový mikrovlnný měřící přístroj,
+Následující teoretická část včetně terminologie a značení vychází zejména
+z~knihy \emph{Microwave Engineering} \cite{pozar}.
+Pro označení vektorového síťového analyzátoru budeme používat zkratku VNA
+(z~anglického \emph{vector network analyzer}).
+Bývá to zpravidla dvoukanálový mikrovlnný měřicí přístroj,
 pomocí nějž se měří rozptylové parametry elektrických obvodů
 s~různými prvky pro vysokofrekvenční aplikace.
-VNA je konstruován na měření velikosti a fáze prošlého a odraženého vlnění
+Je konstruován na měření velikosti a fáze prošlého a odraženého vlnění
 z~měřeného obvodu,
-který je obecně označován zkratkou DUT z~anglického device
-under test.
-VNA obsahuje zdroj signálu o~známých frekvencích a soustavu přijímačů,
+který je obecně označován zkratkou DUT (z~anglického \emph{device under test}).
+VNA obsahuje zdroj signálu o~laditelné frekvenci a soustavu přijímačů,
 které měří změny v~signálu způsobené připojeným DUT.
 Schéma funkce přístroje je na obr.~\ref{VNA}.
 Vygenerovaný signál postupuje směrem k~DUT.
-Část signálu se na vstupu DUT odrazí zpět, část projde k~výstupní bráně.
+Část signálu se na vstupu DUT odrazí zpět, část projde k~výstupní bráně čili portu.
 Přijímače poté porovnávají výsledný signál na ně dopadající
 se signálem vygenerovaným ve zdroji.
 Výsledek je poté počítačově zpracován a zobrazen na displeji.
-Výstupem měření VNA jsou prvky rozptylové matice.
+Výstupem měření jsou prvky rozptylové matice.
 
 \begin{figure}[b]
 	\centering
@@ -135,11 +137,11 @@ Výstupem měření VNA jsou prvky rozptylové matice.
 \subsection{Rozptylová matice}
 
 V mikrovlnných obvodech dokážeme dobře měřit výkon, impedanci a fázi. 
-Napětí a proudy nejsou v tomto případě na rozdíl od nízkofrekvenčních obvodů definované. 
-Zavádíme pojem rozptylová matice, která se označuje
-jako $S$ matice.
+Napětí a proudy nejsou v~tomto případě na rozdíl od nízkofrekvenčních obvodů
+dobře definovány.
+Zavádíme pojem \emph{rozptylová matice}, také označovaná jako $S$ matice.
 Rozptylová matice poskytuje kompletní popis obvodu s~$N$ branami,
-konkrétně vytváří vztah mezi vlněním dopadajícím na brány
+konkrétně popisuje vztah mezi vlněním dopadajícím na brány
 a vlněním na branách odraženým.
 Pro některé prvky je možné $S$ matici spočítat,
 ovšem často jednodušší způsob je prvky matice přímo změřit pomocí VNA.
@@ -300,8 +302,9 @@ vyjádřit i admitanční matici jako:
 
 \subsection{Transmisní matice}
 Při měření obvod zpravidla tvoří série prvků.
-Při výpočtech sériově zapojených prvků je vhodné zavést transmisní matici $T$ pro každý z~prvků.
-U~dvojbranů je matice $T$ řádu 2 a má tvar
+Při výpočtech sériově zapojených prvků je vhodné zavést
+\emph{transmisní matici} $T$ pro každý z~nich.
+U~dvojbranů je matice $T$ řádu 2 a má tvar:
 \[
 \begin{pmatrix}
 	A~& B  \\
@@ -379,13 +382,14 @@ lze z~něj dopočítat ze vztahu
 V~tomto praktiku budeme měřit různá zapojení koaxiálních konektorů typu
 SMA, BNC a N s~impedancí 50~$\Omega$.
 
-SubMiniature Type-A neboli SMA konektor je jedním z~nejpoužívanějších
-mikrovlnných konektorů. Je zobrazený na obr.~\ref{SMA}. Průměry jeho koaxiálního vedení jsou 4,1~mm a 1,27~mm,
+Konektor \emph{SubMiniature Type-A} neboli SMA je jedním z~nejpoužívanějších
+mikrovlnných konektorů. Je zobrazený na obr.~\ref{SMA}.
+Průměry jeho koaxiálního vedení jsou 4,1~mm a 1,27~mm,
 funkci izolantu v~něm plní teflon.
 Spojení se zajišťuje pomocí šroubovacího mechanismu.
 Obecně se uvádí, že je vhodný až do frekvence 18~GHz \cite{rfhandbook}.
 
-Bayonet Neill Concelman, někdy nazývaný Bayonet Naval Connector,
+\emph{Bayonet Neill--Concelman}, někdy nazývaný \emph{Bayonet Naval Connector},
 zkráceně BNC, je konektor vyvinutý ve čtyřicátých letech dvacátého století.
 Jeho charakteristikou je bajonetový mechanismus spojení.
 Tento mechanismus je tvořen dvěma výstupky na samičím konektoru
@@ -393,7 +397,8 @@ a drážkou se spirálou a vybráním na převlečné části samčího konektor
 viz obr.~\ref{BNC}.
 Umožňuje rychlé a spolehlivé spojení nasunutím a pootočením převlečné
 části o~90$^{\circ}$ \cite{czwiki}.
-Dle \cite{rfhandbook} je konektor vhodný až do frekvence 11~GHz, většinou je však uváděna hodnota nižší.
+Dle \cite{rfhandbook} je konektor vhodný až do frekvence 11~GHz,
+většinou je však uváděna hodnota nižší.
 
 Konektor typu N, pojmenovaný po jeho vynálezci Paulu Neillovi,
 vznikl ve čtyřicátých letech dvacátého století.
@@ -527,11 +532,11 @@ nebo je lepší průchod signálu způsoben preciznějším dotažením.
 \end{figure}
 
 \clearpage
-\subsection{Měření 3: kaskáda trojice spojek SMA}
+\subsection{Měření 3: kaskáda spojek SMA}
 Měříme zapojení
 (SMAf/SMAf)$_\text{Z}$---(SMAm/SMAm)$_\text{Z}$---(SMAf/SMAf)$_\text{S}$,
-kde m značí samčí port.
-Schéma zapojení je na obr.~\ref{fig:exp3}.
+kde m značí samčí konektor.
+Sché\-ma zapojení je na obr.~\ref{fig:exp3}.
 Úkolem je dopočítat matice prostřední spojky (SMAm/SMAm)$_\text{Z}$,
 matice pro zbylé spojky známe z~předchozích měření. Hodnoty $\sparam_{11}$
 a~$\sparam_{21}$ pro naměřenou trojici spojek vidíme na obr.~
@@ -617,7 +622,7 @@ Opět vidíme, že s kritériem $|\sparam_{11}| < \SI{-20}{dB}$ není spojka pro
 	\input{plots/data03-s11}
 	\input{plots/data03-s21}
 	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
-		kaskády trojice spojek SMA.}
+		kaskády spojek SMA.}
 	\label{fig:03-sparam}
 \end{figure}
 
@@ -1113,16 +1118,18 @@ znali vlastnosti tohoto vedení.
 
 \subsection{Měření 15: banánky s~vodičem a~rezistorem}
 Zapojení je stejné jako v~předchozím měření s~rezistorem připojeným na banánky
-(SMAf/BNCf)---(BNCm/kabel/banánky)---(rezistor), viz schéma na
-obr.~\ref{fig:exp15}. Úkolem je spočítat odpor rezistoru. V oblasti, ve které je impedance reálná, ji můžeme položit rovnu odporu
+(SMAf/BNCf)---(BNCm/kabel/banánky)---(rezistor), viz schéma
+na obr.~\ref{fig:exp15}. Úkolem je spočítat odpor rezistoru.
+V~oblasti, kde je imaginární složka impedance zanedbatelná,
+můžeme odpor položit roven reálné složce impedance:
 \begin{equation}
-	R = Z
+	\resistance = \real(\impedance)
 \end{equation}
 
 Naměřené hodnoty parametru $\sparam_{11}$ jsou na obr.~\ref{fig:15-sparam}.
 Spočtené hodnoty odporu $\impedance$ jsou na obr.~\ref{fig:15-result-z}.
-Výsledná hodnota $\SI{71.3}{\ohm}$ je konstantní až do frekvencí
-$\SI{e7}{\hertz}$, kde začnou mít vliv rozměry rezistoru i přívody a vzniká parazitní
+Výsledná hodnota $\SI{122}{\ohm}$ je konstantní až do frekvencí
+$\SI{e7}{\hertz}$, kde začnou mít vliv rozměry rezistoru i~přívody a vzniká parazitní
 kapacita a indukčnost. Stejnosměrným multimetrem jsme naměřili hodnotu
 $\SI{125}{\ohm}$.
 
