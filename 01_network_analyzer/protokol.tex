@@ -643,8 +643,9 @@ kde k~= 0,1,2,... je řád maxima, $\varepsilon_0$ je permitivita vakua,
 $\varepsilon_r = \num{2.25}$ je v~tomto případě relativní permitivita polyethylenu
 a $\mu_0$ je permeabilita vakua.
 
-Pro stanovení neznámé délky $\freelen$ přepišme vztah
-\eqref{eq:resonance-length} do tvaru:
+V~obecném případě, kdy jsou známa více než dvě interferenční maxima,
+lze pro stanovení neznámé délky $\freelen$ přepsat
+vztah \eqref{eq:resonance-length} do tvaru:
 \begin{align}
 	\label{eq:resonance-length-freq}
 	f &= \frac{1}{\freelen} \frac{2k+1}{4}
@@ -655,20 +656,24 @@ Pro stanovení neznámé délky $\freelen$ přepišme vztah
 	x &= \frac{2k+1}{4}
 		\frac{1}{\sqrt{\permitfree\permitrel\permeabfree}}
 \end{align}
-kde parametry $a$ a $b$ aproximujeme metodou nejmenších čtverců
-a~spočteme délku $\freelen = 1/a$.
+aproximovat parametry $a$ a $b$ metodou nejmenších čtverců
+a~spočítat délku $\freelen = 1/a$.
 
-Destruktivní interference pro $\lambda/4$ nastává při frekvenci 3,33~GHz
-s~útlumem 42~dB. Pro $3\lambda/4$ je útlum 36,4~dB na
-frekvenci 8,47~GHz.
+Jak je patrno z~obrázku~\ref{fig:06-sparam}, v~měřené oblasti se vyskytla
+pouze dvě maxima a výše uvedený postup se proto redukoval na triviální
+spojení dvou bodů přímkou.
+Destruktivní interference pro $\wavelen/4$ nastala při frekvenci
+\SI{3.33}{\giga\hertz} s~útlumem \SI{42}{\decibel}.
+Pro $3\wavelen/4$ byl útlum \SI{36.4}{\decibel} při frekvenci
+\SI{8.47}{\giga\hertz}.
 Délka $d$ spočtená podle vztahu~\eqref{eq:resonance-length-freq} je
-\SI{19.4}{\milli\metre}. Odhadovaná délka naměřená ručně posuvným měřítkem je
+\SI{19.4}{\milli\metre}. Odhadovaná délka naměřená posuvným měřítkem je
 $\approx\SI{23}{\milli\metre}$.
 % TODO: Calculate uncertainty
 
 \begin{figure}[hb]
 	\centering
-	\begin{circuitikz}
+	\begin{circuitikz}[scale=0.9, every node/.style={scale=0.9}]
 		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
 		{\connector{SMA\female}{BNC\male}};
 		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
@@ -702,7 +707,7 @@ $\freelen = \SI{5.072(4)}{\metre}$.
 
 \begin{figure}[hb]
 	\centering
-	\begin{circuitikz}
+	\begin{circuitikz}[scale=0.9, every node/.style={scale=0.9}]
 		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
 		{\connector{SMA\female}{BNC\male}};
 		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
