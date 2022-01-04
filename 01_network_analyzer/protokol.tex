@@ -109,20 +109,20 @@ V~této úloze se budeme zabývat vektorovou síťovou analýzou vysokofrekvenč
 
 Následující teoretická část včetně terminologie a značení vychází zejména
 z~knihy \emph{Microwave Engineering} \cite{pozar}.
-Pro označení vektorového síťového analyzátoru budeme používat zkratku VNA
-(z~anglického \emph{vector network analyzer}).
-Bývá to zpravidla dvoukanálový mikrovlnný měřicí přístroj,
-pomocí nějž se měří rozptylové parametry elektrických obvodů
-s~různými prvky pro vysokofrekvenční aplikace.
-Je konstruován na měření velikosti a fáze prošlého a odraženého vlnění
-z~měřeného obvodu,
-který je obecně označován zkratkou DUT (z~anglického \emph{device under test}).
+Vektorový síťový analyzátor (VNA, z~anglického \emph{vector network analyzer})
+je zpravidla dvoukanálový mikrovlnný měřicí přístroj,
+sloužící k~měření rozptylových parametrů vysokofrekvenčních elektrických obvodů.
+Umožňuje měřit velikost a fázi vlnění, které obvodem prochází
+či se od něj odráží.
+Zkoumaný obvod bývá někdy označován zkratkou DUT
+(z~anglického \emph{device under test}).
+
 VNA obsahuje zdroj signálu o~laditelné frekvenci a soustavu přijímačů,
-které měří změny v~signálu způsobené připojeným DUT.
+které měří odražený a~procházející signál.
 Schéma funkce přístroje je na obr.~\ref{VNA}.
 Vygenerovaný signál postupuje směrem k~DUT.
 Část signálu se na vstupu DUT odrazí zpět, část projde k~výstupní bráně čili portu.
-Přijímače poté porovnávají výsledný signál na ně dopadající
+Přijímače porovnávají výsledný signál na ně dopadající
 se signálem vygenerovaným ve zdroji.
 Výsledek je poté počítačově zpracován a zobrazen na displeji.
 Výstupem měření jsou prvky rozptylové matice.
