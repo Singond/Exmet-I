@@ -18,6 +18,8 @@ figs != find data -name data*.csv | sed -E 's/^data\/(.*).csv/plots\/\1.tex/'
 figs += $(shell echo plots/results{03..05}-{s11,s21}{.eps,.tex})
 figs += $(shell echo plots/results{12-l,12-z,13-c,13-z}{.eps,.tex})
 
+tex_resources = makefile ${figs}
+
 plots/data%.tex plots/data%.eps : load_data.m export_data.m \
 octave/plot_sparam.m gnuplot/real.gp gnuplot/imag.gp
 	@mkdir -p plots
@@ -30,11 +32,11 @@ $(shell find gnuplot -name *.gp)
 	octave export_results.m
 
 .PHONY: tex_resources
-tex_resources: makefile ${figs}
+tex_resources: ${tex_resources}
 	@mkdir -p build/plots
 	@echo Successfully updated prerequisities for protokol.tex
 
-protokol.pdf : protokol.tex references.bib tex_resources
+protokol.pdf : protokol.tex references.bib ${tex_resources}
 	TEXINPUTS=.:..: ${LATEX} protokol.tex
 
 .PHONY: clean
