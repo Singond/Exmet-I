@@ -1,5 +1,6 @@
 # Copyright 2021 Radek Hornak, Jan Slany, Lukas Vrana
 
+SHELL := /bin/bash
 MAKEFLAGS += --no-builtin-rules
 
 PROJECT_NAME=Exmet-I-01
