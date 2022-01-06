@@ -38,6 +38,7 @@ tex_resources: ${tex_resources}
 
 protokol.pdf : protokol.tex references.bib ${tex_resources}
 	TEXINPUTS=.:..: ${LATEX} protokol.tex
+	touch protokol.pdf
 
 .PHONY: clean
 clean:
