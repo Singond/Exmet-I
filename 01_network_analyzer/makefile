@@ -11,7 +11,7 @@ endif
 PROJECT_NAME=Exmet-I-01
 include ../basic.make
 
-.PHONY: all clean tex_resources
+.PHONY: all
 all: protokol.pdf
 
 figs != find data -name data*.csv | sed -E 's/^data\/(.*).csv/plots\/\1.tex/'
@@ -29,6 +29,7 @@ $(shell find gnuplot -name *.gp)
 	@mkdir -p plots
 	octave export_results.m
 
+.PHONY: tex_resources
 tex_resources: makefile ${figs}
 	@mkdir -p build/plots
 	@echo Successfully updated prerequisities for protokol.tex
@@ -36,6 +37,7 @@ tex_resources: makefile ${figs}
 protokol.pdf : protokol.tex references.bib tex_resources
 	TEXINPUTS=.:..: ${LATEX} protokol.tex
 
+.PHONY: clean
 clean:
 	rm -rf plots
 	rm -rf build
