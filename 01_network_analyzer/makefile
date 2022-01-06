@@ -2,6 +2,11 @@
 
 SHELL := /bin/bash
 MAKEFLAGS += --no-builtin-rules
+ifneq (,$(shell which latexmk 2> /dev/null))
+	LATEX := latexmk --pdf
+else
+	LATEX := pdflatex
+endif
 
 PROJECT_NAME=Exmet-I-01
 include ../basic.make
@@ -29,7 +34,7 @@ tex_resources: makefile ${figs}
 	@echo Successfully updated prerequisities for protokol.tex
 
 protokol.pdf : protokol.tex references.bib tex_resources
-	TEXINPUTS=.:..: pdflatex protokol.tex
+	TEXINPUTS=.:..: ${LATEX} protokol.tex
 
 clean:
 	rm -rf plots
