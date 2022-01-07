@@ -9,7 +9,7 @@ all: pdf
 pdf: ${PDF_OUTPUT}
 
 ${PDF_OUTPUT}: %.pdf: %/protokol.pdf
-	ln -fs "$^" "$@"
+	if [ -f "$^" ]; then ln -fs "$^" "$@"; fi
 
 .PHONY: $(PROJECTS:%=%/protokol.pdf)
 $(PROJECTS:%=%/protokol.pdf): %/protokol.pdf : %/protokol.tex %/makefile
