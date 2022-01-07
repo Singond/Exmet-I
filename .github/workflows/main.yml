@@ -1,0 +1,20 @@
+name: build
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Build output
+        uses: ./.github/actions/build-resources/
+      - name: Create a release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: "${{github.tag}}"
+          token: ${{secrets.GITHUB_TOKEN}}
+          artifacts: "01_network_analyzer.pdf"

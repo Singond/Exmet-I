@@ -1,0 +1,8 @@
+name: 'Build resources'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  entrypoint: 'make'
+  args:
+    - '-i'
+    - 'all'
