@@ -13,4 +13,4 @@ ${PDF_OUTPUT}: %.pdf: %/protokol.pdf
 
 .PHONY: $(PROJECTS:%=%/protokol.pdf)
 $(PROJECTS:%=%/protokol.pdf): %/protokol.pdf : %/protokol.tex %/makefile
-	cd "$*" && $(MAKE) all
+	cd "$*" && $(MAKE) protokol.pdf
