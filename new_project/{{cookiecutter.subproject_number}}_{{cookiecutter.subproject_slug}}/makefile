@@ -1,14 +1,31 @@
 PROJECT_NAME=Exmet-I-{{cookiecutter.subproject_number}}
 include ../basic.make
 
-.PHONY: all clean tex_resources
-all: tex_resources
+# Uncomment the following line to force Make to use a specific shell
+# SHELL := /bin/bash
+MAKEFLAGS += --no-builtin-rules
+ifneq (,$(shell which latexmk 2> /dev/null))
+	LATEX := latexmk --pdf
+else
+	LATEX := pdflatex
+endif
 
-tex_resources: makefile # List prerequisities for protokol.tex
-	@mkdir -p build/plots
+.PHONY: all
+all: protokol.pdf
+
+tex_resources = build/plots # List prerequisities for protokol.tex
+
+build/plots:
+	mkdir -p build/plots
+
+.PHONY: tex_resources
+tex_resources: makefile ${tex_resources}
 	@echo Successfully updated prerequisities for protokol.tex
 
+protokol.pdf : protokol.tex ${tex_resources}
+	TEXINPUTS=.:..: ${LATEX} protokol.tex && touch protokol.pdf
+
+.PHONY: clean
 clean:
 	rm -rf plots
 	rm -rf build
-
