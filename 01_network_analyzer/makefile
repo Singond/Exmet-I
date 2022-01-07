@@ -39,8 +39,7 @@ tex_resources: makefile ${tex_resources}
 	@echo Successfully updated prerequisities for protokol.tex
 
 protokol.pdf : protokol.tex references.bib ${tex_resources}
-	TEXINPUTS=.:..: ${LATEX} protokol.tex
-	touch protokol.pdf
+	TEXINPUTS=.:..: ${LATEX} protokol.tex && touch protokol.pdf
 
 .PHONY: clean
 clean:
