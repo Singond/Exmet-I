@@ -5,6 +5,7 @@ set decimalsign ','
 set border 3
 set xtics out nomirror
 set ytics out nomirror
+set key spacing 1.3
 
 # Line styles (based on "set 1" from gnuplot-palettes)
 set style line 1 lw 2 lc rgb '#E41A1C' pt 13 ps 2   # red
@@ -16,4 +17,3 @@ set style line 6 lw 2 lc rgb '#DDDD33' pt 15 ps 2   # yellow
 set style line 7 lw 2 lc rgb '#A65628' pt 3  ps 1.3 # brown
 set style line 8 lw 2 lc rgb '#F781BF' pt 9  ps 2   # pink
 set style increment user
-
