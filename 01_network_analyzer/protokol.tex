@@ -759,6 +759,7 @@ $\freelen = \SI{5.072(4)}{\metre}$.
 
 \clearpage
 \subsection{Měření 8: rezonance na T kusu s~vedením zakončeným terminátorem}
+\label{sec:exp8}
 Zapojení (SMAf/BNCm)---(BNCf/BNCm + kabel + terminátor /BNCf)---(BNCm/SMAf)
 vychází z~měření 7, ke kabelu je navíc připojen terminátor.
 
@@ -768,12 +769,16 @@ zapojené vedle sebe.
 Dochází tedy k~dělení výkonu rovným dílem mezi obě větve.
 Očekáváme proto, že výkon procházejícího signálu bude polovinou výkonu
 vstupujícího, což odpovídá poklesu o~zhruba \SI{3.01}{\decibel}.
-Jak je patrno z~parametru $\sparam_{21}$ na obr.~\ref{fig:08-sparam},
-tento předpoklad je splněn.
+
+Na obrázku \ref{fig:08-sparam} jsou naměřené hodnoty $\sparam_{21}$
+uvedeny spolu s~hodnotami teoreticky spočtenými pomocí výše popsané úvahy.
+Je vidět dobrá shoda mezi očekávanými a~pozorovanými hodnotami.
+% Jak je patrno z~parametru $\sparam_{21}$ na obr.~\ref{fig:08-sparam},
+% tento předpoklad je splněn.
 
 \begin{figure}[h]
 	\centering
-	\begin{circuitikz}
+	\begin{circuitikz}[scale=0.9, every node/.style={scale=0.9}]
 		\node[connector, minimum height=1.5cm] (con1) at (-4,0)
 		{\connector{SMA\female}{BNC\male}};
 		\draw (-2,-0.75) -- (2,-0.75) -- (2,0.75) -- (0.75,0.75) -- (0.75,2)
@@ -803,7 +808,7 @@ banánky nejsou vůbec vhodné pro vysoké frekvence.
 
 \begin{figure}[h]
 	\centering
-	\begin{circuitikz}
+	\begin{circuitikz}[scale=0.9, every node/.style={scale=0.9}]
 		\node[connector] (con1) at (-5,0)
 		{\connector{SMA\female}{BNC\male}};
 		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
@@ -838,7 +843,7 @@ frekvencí.
 
 \begin{figure}[h]
 	\centering
-	\begin{circuitikz}
+	\begin{circuitikz}[scale=0.9, every node/.style={scale=0.9}]
 		\node[connector] (con1) at (-5,0)
 		{\connector{SMA\female}{BNC\male}};
 		\node[connector, minimum width=1.4cm] (con2) at (-2.3,0)
@@ -866,10 +871,12 @@ frekvencí.
 \begin{figure}[p]
 	\centering
 	\input{plots/data08-s11}
-	\input{plots/data08-s21}
+	\input{plots/results08-s21}
 	\caption{Naměřené hodnoty parametrů $\sparam_{11}$ a~$\sparam_{21}$
 		sestavy redukcí \connector{SMA\female}{BNC}
-		a~T kusu BNC s~ vedením a~terminátorem.}
+		a~T kusu BNC s~ vedením a~terminátorem.
+		Parametr $\sparam_{21}$ je zároveň spočten teoreticky
+		z~$\sparam_{11}$ pomocí úvahy uvedené v~části~\ref{sec:exp8}.}
 	\label{fig:08-sparam}
 \end{figure}
 

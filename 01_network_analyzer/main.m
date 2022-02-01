@@ -101,6 +101,27 @@ dcab2_mean = mean(dcab2);
 dcab2_ster = std(dcab2) / sqrt(numel(dcab2));
 disp("");
 
+## Experiment 8
+## Predict s21 based on s11.
+## The reflected power is the input power times the square of s11:
+##
+##   P_refl = P_in * |s11|^2.
+##
+## The rest (P1) is divided into halves.
+## P_term to the terminator and P_out to the output:
+##
+##   P1 = P_in - P_refl
+##
+##   P_out = P1/2 = (P_in - P_refl)/2 = P_in * (1 - |s11|^2) / 2
+##
+## The predicted s21 is related to P_out by:
+##
+##   |s21|^2 = P_out / P_in
+##
+##   |s21|^2 = (1 - |s11|^2) / 2
+##
+s21_8p = sqrt((1 - abs(experiment(8).s11) .^ 2) ./ 2);
+
 ## Experiment 12
 disp("Experiment 12:");
 s = experiment(12).s11;
