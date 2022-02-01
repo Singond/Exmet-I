@@ -101,7 +101,8 @@
 		\sf
 		\noindent
 		\begin{tabularx}{\textwidth}{@{}XXX@{}}
-			\multicolumn{2}{@{}l@{}}{\large {\bfseries \IfSubStr{\the\jmeno}{,}{Zpracovali:}{Zpracoval:}} \the\jmeno} &
+			\multicolumn{2}{@{}l@{}}{\large {\bfseries
+				\IfSubStr{\the\jmeno}{,}{Zpracovali:}{Zpracoval:}} \the\jmeno} &
 			\large {\bfseries Naměřeno:} \the\datum
 			\\ [0.5em]
 			\large {\bfseries Obor:} \the\obor &
@@ -114,50 +115,19 @@
 	{
 		\sf
 		\noindent \begin{tabular}{p{3cm} p{0.6\textwidth}}
-			\Large  Úloha č. {\bfseries \the\cisloulohy:} \par
-			\smallskip
-			$T=\the\teplota$~$^\circ$C \par
-			$p=\the\tlak$~hPa \par
-			$\varphi=\the\vlhkost$~\%
-			&\Large \bfseries \the\jmenoulohy  \\[2mm]
+			\Large  Úloha č. {\bfseries \the\cisloulohy:}
+			\IfStrEq{\the\teplota\the\tlak\the\vlhkost}{}{}{\par \smallskip}
+			\IfStrEq{\the\teplota}{}{}{$T=\the\teplota$~$^\circ$C \par}
+			\IfStrEq{\the\tlak}{}{}{$p=\the\tlak$~hPa \par}
+			\IfStrEq{\the\vlhkost}{}{}{$\varphi=\the\vlhkost$~\%}
+			&\Large \bfseries \the\jmenoulohy  \\
 		\end{tabular}
 	}
 	\vskip1cm
 }
-\newcommand{\headernoenv}{
-	\thispagestyle{empty}
-	\begin{center}
-		\sf
-		{\Large Ústav fyzikální elektroniky Přírodovědecké fakulty Masarykovy univerzity} \\
-		\bigskip
-		{\huge \bfseries FYZIKÁLNÍ PRAKTIKUM} \\
-		\bigskip
-		{\Large \the\jmenopraktika}
-	\end{center}
-	\smallskip
-	\begin{center}
-		\sf
-		\noindent
-		\begin{tabularx}{\textwidth}{@{}XXX@{}}
-			\multicolumn{2}{@{}l@{}}{\large {\bfseries \IfSubStr{\the\jmeno}{,}{Zpracovali:}{Zpracoval:}} \the\jmeno} &
-			\large {\bfseries Naměřeno:} \the\datum
-			\\ [0.5em]
-			\large {\bfseries Obor:} \the\obor &
-			\large {\bfseries Skupina:} \the\skupina &
-			\large {\bfseries Testováno:}
-			\\ [0.5em] \hline
-		\end{tabularx}
-	\end{center}
-	\bigskip
-	{
-		\sf \noindent
-		\begin{tabular}{p{3cm} p{0.6\textwidth}}
-			\Large  Úloha č. {\bfseries \the\cisloulohy:} &
-			\Large \bfseries \the\jmenoulohy \\
-		\end{tabular}
-	}
-	\vskip1cm
-}
+% Header without environmental conditions.
+% Deprecated, because the default header can now achieve the same results.
+\newcommand{\headernoenv}{\header}
 \newcommand{\headerennoenv}{
 	\thispagestyle{empty}
 	\begin{center}
@@ -192,3 +162,5 @@
 	}
 	\vskip1cm
 }
+\title{\the\jmenoulohy}
+\author{\the\jmeno}
